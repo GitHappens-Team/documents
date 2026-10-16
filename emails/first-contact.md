@@ -1,6 +1,11 @@
 ## Registro delle modifiche
 
 1. **v1.0.0** 16/10/2026 - Filippo Lissandrin
+2. **v1.1.0** 16/10/2026 - Filippo Lissandrin: aggiunta dell'oggetto
+
+## Oggetto
+
+Primo contatto gruppo Git Happens - SWE Informatica UniPD
 
 ## Corpo
 
