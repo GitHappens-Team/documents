@@ -1,0 +1,35 @@
+% ==========================================
+% SEZIONI DEL VERBALE
+% ==========================================
+% \section{Revisione del periodo precedente}
+% Inserire testo revisione del periodo precedente
+\newpage
+\vspace{0.8cm}
+
+\section{Ordine del giorno}
+Questo riunione rappresenta il nostro primo incontro con l'azienda Sanmarco Informatica, committente del capitolato C0. Questo incontro ha lo scopo di risolvere alcune incertezze relative ai requisiti e allo svolgimento del progetto e di introdurre il nostro gruppo all'azienda.
+
+\subsection{Comunicazione}
+Il metodo principale di comunicazione avverrà attraverso videoconferenze tramite Google Meet. Gli incontri inizialmente saranno bisettimanali  durante la pianificazione del progetto; che successivamente diventerà settimanale quando inizierà il vero sviluppo del progetto.
+É possibile anche comunicare tramite email (o un canale discord) per dubbi e/o domande semplici senza dover aspettare il prossimo incontro.
+
+\subsection{Gestione dei Token e Costi per l'Intelligenza Artificiale}
+Ci è consigliato di usare API AI Openweight (come Qwen) per la realizzazione del progetto con un'interfaccia modulare per poter iniettare a caldo un modello a scelta senza cambiare il codice.
+
+\subsection{Accesso ai Canali Reali per il Testing}
+Non è necessario l'accesso ai canali reali in quanto Sanmarco Informatica fornisce il mock per il testing, questi includono input di tipologia email e PDF. Mentre per gli input audio, tramite il canale Whatsapp, verranno creati da noi in riferimento agli esempi email/PDF forniti dall'azienda.
+
+
+\subsection{Riconoscimento Articoli e Catalogo Prodotti}
+Non è il nostro obiettivo creare il match tra richiesta e il prodotto in quanto non ci è fornito una lista esaustiva di prodotti.
+Il nostro focus principale sarà l'estrazione ed elaborazione dei dati dai canali per creare le richieste.
+
+\subsection{Gestione della Privacy e Sicurezza}
+Ci è stato conferito che la Sicurezza dev'essere \textbf{by design}e \textbf{by default}, seguendo lo standard di sicurezza dall'inizio del progetto.
+La questione della privacy verrà ulteriormente approfondita successivamente con l'azienda.
+
+\subsection{Gestione degli errori di estrazione e input a bassa qualità}
+Ci è stato riferito che gli errori devono essere gestiti tramite la stratificazione/classificazione, ogni errore dev'essere classificato e memorizzato nel log degli errori. Questo log deve essere leggibile e consultabile. Ci è anche consigliato di creare un sistema che risponde al cliente in caso di avvenimento di errore d'input.
+
+
+
