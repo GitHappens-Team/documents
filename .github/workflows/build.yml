@@ -22,7 +22,10 @@ jobs:
       - name: Compila
         run: |
           mkdir -p out/content
+          mkdir -p out/content
           for d in ${{ steps.find.outputs.dirs }}; do
+            rel="${d#./}"
+            name="$(basename "$rel")"
             rel="${d#./}"
             name="$(basename "$rel")"
             docker run --rm -v "$PWD:/work" -w "/work/$d" \
