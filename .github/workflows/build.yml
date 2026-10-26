@@ -1,0 +1,33 @@
+name: Build documenti
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Find .tex docs
+        id: find
+        run: |
+          echo "dirs=$(find . -name main.tex -not -path './.latex/*' -printf '%h\n' | sort | tr '\n' ' ')" >> "$GITHUB_OUTPUT"
+
+      - name: Compila
+        run: |
+          mkdir -p out
+          for d in ${{ steps.find.outputs.dirs }}; do
+            docker run --rm -v "$PWD:/work" -w "/work/$d" \
+              -e TEXINPUTS=/work/.latex//: \
+              texlive/texlive:latest \
+              latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+            cp "$d/main.pdf" "out/$(basename "$(dirname "$d")")_$(basename "$d").pdf"
+          done
+
+      # Not yet needed
+      # - uses: actions/upload-artifact@v4
+      #   with:
+      #     name: pdf
+      #     path: out/*.pdf
