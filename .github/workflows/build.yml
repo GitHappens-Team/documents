@@ -3,6 +3,11 @@ name: Build documenti
 on:
   push:
   pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
   build:
@@ -14,20 +19,75 @@ jobs:
         id: find
         run: |
           echo "dirs=$(find . -name main.tex -not -path './.latex/*' -printf '%h\n' | sort | tr '\n' ' ')" >> "$GITHUB_OUTPUT"
-
       - name: Compila
         run: |
-          mkdir -p out
+          mkdir -p out/content
+          mkdir -p out/content
           for d in ${{ steps.find.outputs.dirs }}; do
+            rel="${d#./}"
+            name="$(basename "$rel")"
+            rel="${d#./}"
+            name="$(basename "$rel")"
             docker run --rm -v "$PWD:/work" -w "/work/$d" \
               -e TEXINPUTS=/work/.latex//: \
               texlive/texlive:latest \
               latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
-            cp "$d/main.pdf" "out/$(basename "$(dirname "$d")")_$(basename "$d").pdf"
+            mkdir -p "out/content/$rel"
+            cp "$d/main.pdf" "out/content/$rel/$name.pdf"
+            if [ -f "$d/metadata.json" ]; then
+              cp "$d/metadata.json" "out/content/$rel/metadata.json"
+            fi
           done
 
-      # Not yet needed
-      # - uses: actions/upload-artifact@v4
-      #   with:
-      #     name: pdf
-      #     path: out/*.pdf
+      - name: Show result
+        run: find out/content -type f | sort
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: content
+          path: out/content
+          if-no-files-found: error
+  publish:
+    needs: build
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    env:
+      WEBSITE_REPO: ${{ vars.WEBSITE_REPO }}
+    steps:
+      - name: Check configuration
+        run: |
+          [ -n "$WEBSITE_REPO" ] || { echo "::error::Set the WEBSITE_REPO repository variable (owner/name of the website repo)"; exit 1; }
+          [ -n "${{ secrets.WEBSITE_DEPLOY_KEY }}" ] || { echo "::error::Set the WEBSITE_DEPLOY_KEY secret (private half of a deploy key with write access on the website repo)"; exit 1; }
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: content
+          path: built
+
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ vars.WEBSITE_REPO }}
+          ssh-key: ${{ secrets.WEBSITE_DEPLOY_KEY }}
+          ref: main
+          path: website
+
+      # elimina i pdf di cui non esiste il source
+      - name: Sync content
+        run: |
+          rsync -a --delete \
+            --exclude '.gitkeep' --exclude 'manifest.json' \
+            built/ website/content/
+
+      - name: Commit and push
+        working-directory: website
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A content
+          if git diff --cached --quiet; then
+            echo "Nothing changed, nothing to publish."
+            exit 0
+          fi
+          git commit -m "docs: update content from ${{ github.repository }}@${GITHUB_SHA::7}"
+          git pull --rebase origin main
+          git push origin HEAD:main
