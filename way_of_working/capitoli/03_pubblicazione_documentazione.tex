@@ -1,0 +1,86 @@
+
+\section{Pubblicazione di documentazione (sul repo di documentazione e nel sito web)}
+
+Riferirsi alla procedura alla sezione \ref{mainsec:contrib} per quanto riguarda l'utilizzo di git.
+
+\newpage
+
+\subsection{Creazione del documento}
+Per pubblicare qualsiasi documento relativo al team git HAPPENS, per prima cosa è necessario trovare (o creare)
+la cartella di destinazione nel repo \textit{documents} (e.g. \textit{verbali/esterni/yyyy-mm-dd} o \textit{verbali/interni/yyyy-mm-dd}).
+
+
+\paragraph{Intestazione e template}
+Creare nella cartella un file \textit{main.tex} e inserire la direttiva \texttt{\textbackslash documentclass\{gh\}}.
+Questa direttiva importerà in automatico l'intestazione e il template di git HAPPENS.
+
+Combinare in modo opportuno questi comandi per riempire i campi comuni del file (omettere i comandi non necessari):
+
+\begin{center}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabularx}{\textwidth}{@{} l X @{}}
+        \toprule
+        \textbf{Comando}                                & \textbf{Descrizione}                                           \\
+        \midrule
+        \texttt{\textbackslash tipodoc\{\dots\}}        & Tipo o titolo del documento, riportato anche nel piè di pagina \\
+        \texttt{\textbackslash datadoc\{\dots\}}        & Data del documento                                             \\
+        \texttt{\textbackslash modalita\{\dots\}}       & Modalità di svolgimento (es.\ Online - Google Meet)            \\
+        \texttt{\textbackslash orario\{\dots\}}         & Orario di inizio e fine                                        \\
+        \texttt{\textbackslash redattori\{\dots\}}      & Redattori del documento                                        \\
+        \texttt{\textbackslash verificatori\{\dots\}}   & Verificatori del documento                                     \\
+        \texttt{\textbackslash amministratore\{\dots\}} & Amministratore del gruppo                                      \\
+        \texttt{\textbackslash responsabile\{\dots\}}   & Responsabile, riportato anche nel piè della prima pagina       \\
+        \texttt{\textbackslash destinatari\{\dots\}}    & Destinatari del documento                                      \\
+        \bottomrule
+    \end{tabularx}
+\end{center}
+
+Per inserire più valori in ogni campo, utilizzare il separatore "\textbackslash \textbackslash" (e.g. "F. Lissandrin \textbackslash \textbackslash{ } G. Gambarro").
+
+\paragraph{Corpo del documento}
+Inserire le direttive di corpo:
+
+\begin{verbatim}
+    \begin{document}
+
+    \makeheader
+
+
+    \end{document}
+\end{verbatim}
+
+Per ogni capitolo del file, creare un file in \textit{capitoli/xx\_nome\_capitolo.tex} (dove \textit{xx} è il numero progressivo di capitolo).
+Richiamare ogni capitolo inserendo l'istruzione \texttt{ \textbackslash input\{capitoli/xx\_nome\_capitolo.tex\} } dopo l'istruzione \textit{makeheader}.
+
+\subsubsection{Altre convenzioni file}
+\begin{itemize}
+    \item Se il documento deve contenere immagini, porle in una cartella \textbf{"assets"} allo stesso livello del file \textit{main.tex}
+    \item (TBA)
+\end{itemize}
+
+\subsection{Pubblicazione del documento}
+\begin{enumerate}
+    \item (Opzionale) Creare un file \textit{metadata.json} (vedi \ref{docpub:metadata_json})
+    \item Facendo riferimento alla procedura \ref{mainsec:contrib}, inviare il documento per la revisione.
+\end{enumerate}
+Un workflow di GitHub Actions si occuperà di controllare la build, e al merge della \textit{PR} un altro workflow effettuerà la pubblicazione sul sito web.
+
+
+\subsubsection{File metadata.json}\label{docpub:metadata_json}
+Il file \textit{metadata.json} definisce alcuni campi per migliorare la visualizzazione del file nel sito web.
+
+Un file metadata è composto come segue:
+\begin{verbatim}
+    {
+        "title": "Titolo documento (e.g. 'Verbale esterno del 20 ottobre 2026')",
+        "description": "Descrizione documento (e.g. 'Primo incontro con Sanmarco Informatica: ...')
+    }
+\end{verbatim}
+
+L'assenza di un file metadata non causa errori ma peggiora la visualizzazione del file nel sito (titolo dedotto dal nome file e descr. assente).
+
+\subsection{Strumenti di supporto}\label{docpub_tech}
+
+\begin{enumerate}
+    \item Estensione \href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{Latex Workshop} per VS Code: consente di avviare una preview live dei documenti su cui si lavora. Prevede dei requisiti ulteriori da installare, riferirsi alla pagina dell'estensione.
+\end{enumerate}
