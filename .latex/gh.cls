@@ -49,6 +49,13 @@
 % Elenco su piu' righe dentro una cella: \lista{A. Rossi \\ B. Bianchi}
 \newcommand{\lista}[1]{\begin{tabular}[t]{@{}l@{}}#1\end{tabular}}
 
+% Campi opzionali: la riga (o la data) compare solo se il campo e' stato impostato
+\makeatletter
+\newcommand{\inforow}[2]{%
+    \ifx#2\@empty\else\textbf{#1} & \lista{#2} \\\fi}
+\newcommand{\@ifdatadoc}[1]{\ifx\@datadoc\@empty\else#1\fi}
+\makeatother
+
 % --- STILE PIÈ DI PAGINA ---
 \pagestyle{fancy}
 \fancyhf{}
@@ -78,7 +85,7 @@
     \includegraphics[width=10cm]{LogoNoBg.png}\\[0.4cm]
     {\large \textbf{Git Happens}}\\[0.2cm]
     {\small \texttt{githappens4swe@gmail.com}}\\[0.6cm]
-    {\Large \textbf{\documento \quad Data: \@datadoc}}
+    {\Large \textbf{\documento \@ifdatadoc{\quad Data: \@datadoc}}}
 \end{center}
 
 \vspace{0.8cm}
@@ -86,13 +93,13 @@
 \noindent{\large \textbf{Informazioni documento}}\\[0.3cm]
 \renewcommand{\arraystretch}{1.4}
 \noindent\begin{tabularx}{\textwidth}{@{} p{3.8cm} X @{}}
-    \textbf{Modalità}       & \@modalita \\
-    \textbf{Orario}         & \@orario \\
-    \textbf{Redattori}      & \lista{\@redattori} \\
-    \textbf{Verificatori}   & \lista{\@verificatori} \\
-    \textbf{Amministratore} & \@amministratore \\
-    \textbf{Responsabile}   & \@responsabile \\
-    \textbf{Destinatari}    & \lista{\@destinatari} \\
+    \inforow{Modalità}{\@modalita}
+    \inforow{Orario}{\@orario}
+    \inforow{Redattori}{\@redattori}
+    \inforow{Verificatori}{\@verificatori}
+    \inforow{Amministratore}{\@amministratore}
+    \inforow{Responsabile}{\@responsabile}
+    \inforow{Destinatari}{\@destinatari}
 \end{tabularx}
 
 \vfill
@@ -107,7 +114,7 @@
 \end{minipage}%
 \begin{minipage}[c]{0.40\textwidth}
     \raggedleft
-    \footnotesize Il responsabile: \@responsabile \quad {\small 1}
+    \footnotesize \ifx\@responsabile\@empty\else Il responsabile: \@responsabile \quad \fi {\small 1}
 \end{minipage}
 \newpage
 }
