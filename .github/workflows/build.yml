@@ -39,6 +39,27 @@ jobs:
             fi
           done
 
+      # pdf già buildati (es. firmati da enti esterni), inseriti a mano.
+      - name: Copia PDF precompilati
+        run: |
+          git ls-files -z -- '*.pdf' ':!:.latex/*' | while IFS= read -r -d '' pdf; do
+            d="$(dirname "$pdf")"
+            if [ -f "$d/main.tex" ]; then
+              echo "::warning file=$pdf::Ignorato: la cartella contiene main.tex, il pdf viene generato dal sorgente"
+              continue
+            fi
+            if [ "$(git ls-files -- "$d/*.pdf" | grep -c "^$d/[^/]*\.pdf$")" -ne 1 ]; then
+              echo "::error file=$pdf::Piu' di un pdf nella cartella $d: ne e' ammesso uno solo"
+              exit 1
+            fi
+            name="$(basename "$d")"
+            mkdir -p "out/content/$d"
+            cp "$pdf" "out/content/$d/$name.pdf"
+            if [ -f "$d/metadata.json" ]; then
+              cp "$d/metadata.json" "out/content/$d/metadata.json"
+            fi
+          done
+
       - name: Show result
         run: find out/content -type f | sort
 
