@@ -1,0 +1,146 @@
+
+\section{Valutazione Capitolati}
+
+\subsection{Obiettivo documento}
+Il presente documento raccoglie la valutazione dei dieci capitolati d'appalto (da C0 a C9) proposti per il corso di Ingegneria del Software. L'analisi è stata condotta dal gruppo di lavoro valutando per ciascuna opzione la fattibilità tecnica, l'interesse dei membri del team e la presenza di eventuali criticità operative.
+L'obiettivo di questo studio è motivare in modo trasparente il percorso che ha condotto alla selezione dell'opzione ritenuta ideale per lo svolgimento del progetto.
+
+\subsection{Analisi del Capitolato Scelto C0 — AIRA (AI Requests Automation)}
+\begin{itemize}
+    \item \textbf{Proponente}: Sanmarco Informatica SPA
+    \item \textbf{Dettagli del Progetto}: Realizzazione di una piattaforma multimodale guidata dall'Intelligenza Artificiale volta a centralizzare e automatizzare i flussi informativi in ambito Business-to-Business. Il sistema presidia costantemente canali di ingresso eterogenei come: caselle e-mail, messaggistica WhatsApp, cartelle su filesystem, applicando un filtro di sicurezza preventivo per l'isolamento dei dati e l'identificazione del mittente. Attraverso tecnologie di trascrizione audio, riconoscimento ottico dei caratteri e LLM, il tool estrae il significato semantico da input non strutturati (testi informali, note vocali, fotografie di cataloghi o allegati PDF) e li converte in payload strutturati. In base all'intenzione rilevata (inserimento ordini d'acquisto, apertura ticket di assistenza, prenotazione appuntamenti o richieste contabili), la piattaforma innesca automaticamente azioni di notifica o chiamate API REST verso i sistemi gestionali aziendali, affiancando al motore di elaborazione un'interfaccia web amministrativa per la configurazione delle regole, il monitoraggio dei canali e la consultazione dei log.
+\end{itemize}
+
+\subsubsection{Punti di Forza (Pro)}
+\begin{itemize}
+    \item \textbf{Architettura lineare e parallelizzabile}: Il flusso operativo è strutturato in blocchi ben definiti e indipendenti: ingestione, estrazione OCR, elaborazione LLM, integrazione API. Questa netta separazione logica non solo rende chiara la pipeline dei dati, ma permette di distribuire agevolmente i compiti all'interno di un team di 7 persone, azzerando i colli di bottiglia durante lo sviluppo.
+    \item \textbf{Architettura puramente software}: Assenza totale di dipendenze da componenti hardware fisici, fattore che azzera i rischi di configurazione dell'ambiente di lavoro simulato e semplifica i test.
+
+    \item \textbf{Stack tecnologico standard e stabile}: Basato su tecnologie solide, ampiamente diffuse nel mercato del lavoro e dotate di vasta documentazione (Java/Spring Boot, Angular, LLM/LangChain4j), offrendo un'ottima curva di apprendimento e riducendo le incertezze di sviluppo.
+
+    \item \textbf{Forte impatto pratico e spendibilità aziendale}: Il progetto affronta un problema B2B reale e quotidiano, permettendo al gruppo di confrontarsi con l'integrazione tra architetture enterprise classiche e moderne pipeline di Intelligenza Artificiale multimodale.
+
+    \item \textbf{Supporto e metodologia strutturati}: L'azienda proponente garantisce l'affiancamento di figure dedicate per il setup degli ambienti e la risoluzione delle criticità, adottando fin da subito una metodologia Agile in piena sintonia con l'impostazione didattica del corso.
+\end{itemize}
+\subsubsection{Criticità e Sfide (Contro)}
+\begin{itemize}
+    \item \textbf{Sicurezza e Multi-tenancy}: Richiede una progettazione rigorosa del filtro di sicurezza in ingresso per garantire l'isolamento dei dati sensibili e la corretta gestione degli accessi multi-tenant.
+
+    \item \textbf{Gestione di input rumorosi e imprecisi}: L'estrazione di informazioni da fonti non strutturate come note vocali con rumori di fondo, fotografie sfocate di etichette, abbreviazioni informali o codici articolo incompleti comporta il rischio di errori di trascrizione o allucinazioni del modello LLM, rendendo necessaria una solida logica di validazione e gestione dei margini di confidenza.
+
+    \item \textbf{Orchestrazione asincrona e scalabilità}:  Il presidio continuo di canali eterogenei e l'elaborazione di grandi volumi di allegati multimediali richiedono un'attenta progettazione event-driven e di scheduling per evitare blocchi o rallentamenti nella pipeline.
+
+    \item \textbf{Costi e limiti delle API esterne}:  L'utilizzo combinato di servizi di trascrizione audio, visione artificiale e modelli linguistici comporta una dipendenza da provider esterni, richiedendo un attento monitoraggio delle quote d'uso e la creazione di efficaci mock per i test automatici.
+\end{itemize}
+\subsection*{Motivazione della Scelta}
+Il gruppo Git Happens ha individuato nel capitolato\textbf{ C0 — AIRA} di Sanmarco Informatica SPA la proposta più solida, stimolante e coerente con gli obiettivi formativi e le competenze del team.
+La scelta è maturata innanzitutto dall'ottimo equilibrio tra \textbf{innovazione tecnologica} e solidità architetturale. Da un lato, il progetto offre l'opportunità di sperimentare sul campo l'orchestrazione di modelli di Intelligenza Artificiale multimodale applicati a un caso d'uso industriale concreto e ad alto valore aggiunto; dall'altro, poggia su uno stack enterprise maturo e fortemente richiesto dal mercato del lavoro, come \textbf{Java con Spring Boot} per il backend e \textbf{Angular/TypeScript} per l'interfaccia amministrativa. Questa combinazione mitiga il rischio tecnologico e garantisce a tutti i componenti del gruppo un ritorno formativo altamente spendibile.
+Dal punto di vista dell'ingegneria del software e della gestione del progetto, la natura \textbf{modulare della pipeline} si presta in modo ottimale all'organizzazione del lavoro di una squadra di sette persone. Tale struttura consente di definire interfacce chiare fin dalle prime fasi di progettazione, facilitando lo sviluppo parallelo e l'implementazione di test di unità e di integrazione ben isolati. Inoltre, l'assenza di vincoli legati a dispositivi hardware fisici elimina potenziali ritardi logistici, permettendo di concentrare l'intero monte ore sulla qualità del design, del codice e della verifica.
+Infine, i colloqui preliminari e la disponibilità dimostrata dal proponente nell'affiancare il team con figure tecniche dedicate all'interno di un processo Agile hanno confermato la presenza delle condizioni ideali per instaurare una collaborazione proficua e portare a termine con successo il \textit{Minimum Viable Product} nei tempi preventivati.
+
+\subsection{Analisi dei capitolati considerati (C1, C5, C8)}
+\subsubsection{Capitolato C1: AURA (AI for Understanding, Reasoning and Automation)}
+\begin{itemize}
+    \item \textbf{Proponente}: VIMAR
+    \item \textbf{Dettagli}: Progettazione di un server MCP per fare da ponte tra lo standard KNX IoT 3rd Party API e i principali servizi di IA Generativa. Il sistema permette all'utente di gestire l'impianto domotico interrogandolo in linguaggio naturale.
+
+    \item \textbf{Punti di Forza (Pro)}: Fornitura da parte dell'azienda di un Kit Smart portatile fisico che permette di testare il codice su dispositivi reali; ampia libertà di scelta sul linguaggio di programmazione e sull'infrastruttura, pur con l'obbligo di utilizzare container Docker e approcci Infrastructure as Code (IaC).
+
+    \item \textbf{Criticità e Sfide (Contro)}: Curva di apprendimento ripida per interfacciarsi correttamente con le API proprietarie KNX e i sistemi di autenticazione OAuth2; la gestione del contesto del dialogo LLM richiede logiche complesse; requisiti di validazione e test imposti dall'azienda particolarmente severi (copertura minima 75\% per unità/integrazione e 80\% per End-to-End).
+
+\end{itemize}
+
+\subsubsection{Capitolato C5: RareCare}
+\begin{itemize}
+    \item \textbf{Proponente}: MIRIADE
+    \item \textbf{Dettagli}: Sviluppo di una piattaforma cloud-native e app mobile per supportare le famiglie colpite da malattie rare neuro degenerative (nello specifico, la Sindrome di Sanfilippo). Integra un assistente AI basato su architettura RAG per l'orientamento burocratico e algoritmi NLP/NER per estrarre farmaci, dosaggi e scadenze da note vocali o referti medici.
+
+    \item \textbf{Punti di Forza (Pro)}: Progetto dal fortissimo impatto etico e sociale; adotta un'elegante architettura modulare "a plugin" (chiamata Disease Pack) che separa il nucleo del software dai dati della specifica malattia, rendendo il sistema facilmente scalabile ad altre patologie.
+
+    \item \textbf{Criticità e Sfide (Contro)}: Trattando dati sanitari di minori, il progetto presenta altissime criticità sul piano legale e normativo, imponendo cifratura end-to-end e un controllo degli accessi granulare e complesso per gestire i permessi tra genitori, medici e scuole. Sussiste inoltre il rischio intrinseco di allucinazioni dell'IA, molto pericoloso in ambito clinico.
+
+\end{itemize}
+
+\subsubsection{Capitolato C8: Sonar: Documentazione vivente di uno store Shopify}
+\begin{itemize}
+    \item \textbf{Proponente}: Halue S.r.l. Società Benefit
+
+    \item \textbf{Dettagli}: Creazione di un'applicazione web per il monitoraggio e l'igiene tecnica degli store e-commerce enterprise su Shopify. Tramite scansioni periodiche via API GraphQL, Sonar costruisce un grafo delle dipendenze per individuare configurazioni orfane, campi non valorizzati e codice morto nel tema grafico, generando una documentazione confrontabile nel tempo (diff).
+
+    \item \textbf{Punti di Forza (Pro)}: Il software opera in sola lettura, azzerando i rischi di danneggiare il business del cliente; l'azienda impone uno stack tecnologico moderno e altamente formativo come Next.js, Vercel e Supabase, favorendo grande trasparenza documentale.
+
+    \item \textbf{Criticità e Sfide (Contro)}: Le scansioni devono essere "durevoli", ovvero capaci di mettersi in pausa e riprendere da sole per sopravvivere ai severi limiti di traffico imposti dai server di Shopify; rigidità sui limiti dei piani cloud gratuiti e complessità nel gestire i limiti di chiamate (rate-limit) imposti da Shopify, che richiederebbero molto tempo solo per la gestione delle pause/riprese delle scansioni. 
+
+\end{itemize}
+
+\subsection{Analisi dei capitolati restanti (C2, C3, C4, C6, C7, C9)}
+
+\subsubsection{Capitolato C2: Concierge}
+\begin{itemize}
+    \item \textbf{Proponente}: EGGON
+    \item \textbf{Dettagli}: Assistente AI aziendale per supportare il personale nella ricerca di informazioni su ferie e permessi, nella comprensione delle procedure e nell'accesso ai servizi interni tramite linguaggio naturale.
+
+    \item \textbf{Punti di Forza (Pro)}: Utilità reale ed elevata applicabilità in ambito aziendale; documentazione di partenza completa e affidabile; il sistema si basa su una chiara separazione tra la conoscenza, istruzioni del prodotto e operazioni di lettura/scrittura sui dati personali.
+
+    \item \textbf{Criticità e Sfide (Contro)}:  Gestione complessa della riservatezza dei dati sensibili e necessità di gestire in modo rigoroso le autorizzazioni; scarsa flessibilità nella scelta dello stack tecnologico; il progetto non prevede il mantenimento dello storico delle conversazioni, limitando le potenzialità dell'assistente.
+
+\end{itemize}
+
+\subsubsection{Capitolato C3: Fossdot}
+\begin{itemize}
+    \item \textbf{Proponente}: Uranion
+
+    \item \textbf{Dettagli}:  Ecosistema open source per uno smart speaker vocale estensibile e focalizzato sulla privacy con provider AI configurabili tramite protocollo MCP, Skills e Agenti.
+
+    \item \textbf{Punti di Forza (Pro)}: Progetto fortemente stimolante che integra componenti hardware e firmware; forte utilità pratica in ambito personale e totale assenza di vendor lock-in.
+
+    \item \textbf{Criticità e Sfide (Contro)}: Architettura molto frammentata che richiede lo sviluppo e l'integrazione di molteplici servizi complessi; l'elevato livello di personalizzazione e la necessità di testare il tutto su hardware fisico o audio simulato complica notevolmente la fase di implementazione.
+\end{itemize}
+
+\subsubsection{Capitolato C4: Gestione Veicoli e Servizi Post-Vendita}
+\begin{itemize}
+    \item \textbf{Proponente}: M31 S.r.l.
+
+    \item \textbf{Dettagli}: Sistema gestionale web centralizzato, basato su microservizi, per monitorare l'intero ciclo di vita di un autoveicolo, connettendo su tre livelli logici le case automobilistiche, i concessionari e i clienti finali.
+
+    \item \textbf{Punti di Forza (Pro)}: Possibilità di progettare un sistema distribuito e scalabile che copre l'intero ciclo di vita del prodotto, con l'utilizzo di orchestrazione e messaggistica asincrona basata su eventi.
+
+    \item \textbf{Criticità e Sfide (Contro)}: Dominio applicativo molto vasto che richiede la gestione di un'ampia mole di dati fortemente eterogenei; l'architettura a microservizi e la molteplicità di database presentano una ripida curva di apprendimento per il deployment.
+
+\end{itemize}
+
+\subsubsection{Capitolato C6: Sistema AI di caching semantico e dashboard FinOps}
+\begin{itemize}
+    \item \textbf{Proponente}: VAR GROUP
+
+    \item \textbf{Dettagli}: Estensione del progetto open source LiteLLM con un layer di caching semantico per riconoscere query simili e ridurre le chiamate al modello e una dashboard FinOps per aggregare i consumi, gestire i budget e calcolare i risparmi generati dalla cache.
+    \item \textbf{Punti di Forza (Pro)}: Forte rilevanza nel mercato enterprise attuale per l'ottimizzazione dei costi generati dagli LLM; possibilità di lavorare su una solida base di codice open source già avviata sviluppando componenti in Python e front-end in React/Streamlit.
+
+    \item \textbf{Criticità e Sfide (Contro)}: Trattandosi dell'estensione di un progetto open source esistente (LiteLLM), l'attività si sarebbe concentrata prevalentemente sull'analisi e la modifica di un codebase di terze parti, sottraendo risorse allo sviluppo su misura della nostra architettura.
+
+\end{itemize}
+
+\subsubsection{Capitolato C7: Smart Dashboard}
+\begin{itemize}
+    \item \textbf{Proponente}: ERGON
+    \item \textbf{Dettagli}: Piattaforma di Business Intelligence end-to-end self-service. Prevede un processo ETL dai dati ERP a un Data Warehouse, un builder di dashboard drag \& drop e un layer AI per generare grafici e fornire "insight" in linguaggio naturale.
+
+    \item \textbf{Punti di Forza (Pro)}: Ottime opportunità di sviluppo sul fronte User Interface e User Experience per la creazione del costruttore di dashboard interattivo; solida architettura a strati che separa nettamente la persistenza dei dati grezzi dall'analisi ottimizzata.
+
+    \item \textbf{Criticità e Sfide (Contro)}: Difficoltà architetturale nel garantire l'accuratezza delle generazioni AI senza mai esporre direttamente le interrogazioni del livello dati al frontend; numero elevato di requisiti funzionali dall'ingestione dati, alla reportistica, fino alle spiegazioni AI che obbligano a uno sviluppo strettamente incrementale per evitare di non concludere l'MVP in tempo.
+
+\end{itemize}
+
+\subsubsection{Capitolato C9: SpecCheck}
+\begin{itemize}
+    \item \textbf{Proponente}: ZUCCHETTI
+    \item \textbf{Dettagli}: Sviluppo di estensioni per il sistema OpenCode al fine di verificare, tramite LLM, la coerenza e la tracciabilità end-to-end tra i casi d'uso, le specifiche dei requisiti e il codice sorgente finale, con una dashboard per i risultati.
+
+    \item \textbf{Punti di Forza (Pro)}: Progetto fortemente incentrato sulla qualità e sull'ingegneria del software con diretta applicabilità nei processi di sviluppo professionali per automatizzare i controlli e risolvere il collo di bottiglia della validazione del codice.
+
+    \item \textbf{Criticità e Sfide (Contro)}: Il progetto chiedeva di fare test e verifiche su codice e requisiti di altri; il gruppo preferiva invece cimentarsi nello sviluppo completo di un prodotto software. 
+
+\end{itemize}
+
+\section{Esito della Valutazione}
+Il confronto tra i dieci capitolati ha evidenziato come \textbf{C0 (AIRA)} rappresenti la scelta strategica migliore per il gruppo. A differenza di proposte vincolate da complessità hardware (C1, C3), da incertezze comunicative o di dominio (C5, C8) o da scarsa attrattività (C4, C9), il progetto \textbf{AIRA} unisce la concretezza di un caso d'uso reale aziendale con uno stack tecnologico solido e ampiamente documentato, fornendo le condizioni ideali per applicare con successo le metodologie di Ingegneria del Software.
