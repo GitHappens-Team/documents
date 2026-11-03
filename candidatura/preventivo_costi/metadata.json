@@ -1,4 +1,9 @@
 {
-	"title": "Preventivo costi e assunzione impegni",
-	"description": ""
+	"title": "Dichiarazione impegni",
+	"description": "",
+	"important": true,
+	"version": {
+		"version": "1.0.0",
+		"atTimestamp": "2026-11-03T00:00:00Z"
+	}
 }

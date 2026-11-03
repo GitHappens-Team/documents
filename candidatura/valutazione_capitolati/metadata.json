@@ -1,4 +1,9 @@
 {
 	"title": "Valutazione capitolati",
-	"description": ""
+	"description": "",
+	"important": true,
+	"version": {
+		"version": "1.0.0",
+		"atTimestamp": "2026-10-30T15:19:54Z"
+	}
 }

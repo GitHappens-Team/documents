@@ -1,4 +1,9 @@
 {
 	"title": "Definizione del Way Of Working",
-	"description": "Documento di definizione incrementale del way of working."
+	"description": "Documento di definizione incrementale del way of working.",
+	"important": true,
+	"version": {
+		"version": "0.0.1",
+		"atTimestamp": "2026-10-28T00:00:00Z"
+	}
 }

@@ -1,4 +1,9 @@
 {
 	"title": "Verbale esterno del 27 ottobre 2026 - Firmato dall'azienda",
-	"description": "Primo incontro con Miriade s.r.l."
+	"description": "Primo incontro con Miriade s.r.l.",
+	"createdAt": "2026-10-27T00:00:00Z",
+	"version": {
+		"version": "0.0.3",
+		"atTimestamp": "2026-10-29T00:00:00Z"
+	}
 }
