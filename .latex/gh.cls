@@ -28,6 +28,7 @@
 \newcommand{\tipodoc}[1]{\renewcommand{\documento}{#1\xspace}}
 \newcommand{\documento}{Documento\xspace}
 \newcommand{\datadoc}[1]{\renewcommand{\@datadoc}{#1}}
+\newcommand{\versione}[1]{\renewcommand{\@versione}{#1}}
 \newcommand{\modalita}[1]{\renewcommand{\@modalita}{#1}}
 \newcommand{\orario}[1]{\renewcommand{\@orario}{#1}}
 \newcommand{\redattori}[1]{\renewcommand{\@redattori}{#1}}
@@ -38,6 +39,7 @@
 \newcommand{\partecipanti}[1]{\renewcommand{\@partecipanti}{#1}}
 \makeatletter
 \newcommand{\@datadoc}{}
+\newcommand{\@versione}{}
 \newcommand{\@modalita}{}
 \newcommand{\@orario}{}
 \newcommand{\@redattori}{}
@@ -112,6 +114,7 @@
 \noindent{\large \textbf{Informazioni documento}}\\[0.3cm]
 \renewcommand{\arraystretch}{1.4}
 \noindent\begin{tabularx}{\textwidth}{@{} p{3.8cm} X @{}}
+    \inforow{Versione}{\@versione}
     \inforow{Modalità}{\@modalita}
     \inforow{Orario}{\@orario}
     \inforow{Redattori}{\@redattori}
