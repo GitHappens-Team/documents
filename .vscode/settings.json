@@ -7,7 +7,7 @@
       "command": "latexmk",
       "args": ["-pdf", "-synctex=1", "-interaction=nonstopmode", "-file-line-error", "%DOC%"],
       "env": {
-        "TEXINPUTS": "%WORKSPACE_FOLDER%/.latex//;"
+        "TEXINPUTS": ".;%WORKSPACE_FOLDER%/.latex//;"
       }
     }
   ],
