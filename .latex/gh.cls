@@ -6,7 +6,7 @@
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 \RequirePackage[italian]{babel}
-\RequirePackage[margin=2.5cm, headheight=20pt, footskip=33pt]{geometry}
+\RequirePackage[margin=2.5cm, bottom=3.5cm, headheight=20pt, footskip=45pt]{geometry}
 \RequirePackage{graphicx}
 \RequirePackage{tabularx}
 \RequirePackage{booktabs}
@@ -35,6 +35,7 @@
 \newcommand{\amministratore}[1]{\renewcommand{\@amministratore}{#1}}
 \newcommand{\responsabile}[1]{\renewcommand{\@responsabile}{#1}}
 \newcommand{\destinatari}[1]{\renewcommand{\@destinatari}{#1}}
+\newcommand{\partecipanti}[1]{\renewcommand{\@partecipanti}{#1}}
 \makeatletter
 \newcommand{\@datadoc}{}
 \newcommand{\@modalita}{}
@@ -44,6 +45,7 @@
 \newcommand{\@amministratore}{}
 \newcommand{\@responsabile}{}
 \newcommand{\@destinatari}{}
+\newcommand{\@partecipanti}{}
 \makeatother
 
 % Elenco su piu' righe dentro una cella: \lista{A. Rossi \\ B. Bianchi}
@@ -79,8 +81,25 @@
 
 % --- PRIMA PAGINA: INTESTAZIONE E INFORMAZIONI ---
 \makeatletter
+\fancypagestyle{copertina}{%
+    \fancyhf{}%
+    \fancyfoot[C]{%
+        \vspace{0.15cm}%
+        \noindent
+        \begin{minipage}[c]{0.12\textwidth}
+            \includegraphics[height=50pt,keepaspectratio]{LogoSmallNoBg.png}
+        \end{minipage}%
+        \begin{minipage}[c]{0.48\textwidth}
+            \footnotesize \quad \documento
+        \end{minipage}%
+        \begin{minipage}[c]{0.40\textwidth}
+            \raggedleft
+            \footnotesize \ifx\@responsabile\@empty\else Il responsabile: \@responsabile \quad \fi {\small \thepage}
+        \end{minipage}%
+    }%
+}
 \newcommand{\makeheader}{%
-\thispagestyle{empty}
+\thispagestyle{copertina}
 \begin{center}
     \includegraphics[width=10cm]{LogoNoBg.png}\\[0.4cm]
     {\large \textbf{Git Happens}}\\[0.2cm]
@@ -100,22 +119,11 @@
     \inforow{Amministratore}{\@amministratore}
     \inforow{Responsabile}{\@responsabile}
     \inforow{Destinatari}{\@destinatari}
+    \inforow{Partecipanti}{\@partecipanti}
 \end{tabularx}
 
 \vfill
 
-\noindent\rule{\textwidth}{0.4pt}\\[0.15cm]
-\noindent
-\begin{minipage}[c]{0.12\textwidth}
-    \includegraphics[height=50pt,keepaspectratio]{LogoSmallNoBg.png}
-\end{minipage}%
-\begin{minipage}[c]{0.48\textwidth}
-    \footnotesize \quad \documento
-\end{minipage}%
-\begin{minipage}[c]{0.40\textwidth}
-    \raggedleft
-    \footnotesize \ifx\@responsabile\@empty\else Il responsabile: \@responsabile \quad \fi {\small 1}
-\end{minipage}
 \newpage
 }
 \makeatother

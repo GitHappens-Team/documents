@@ -3,6 +3,6 @@
 set -euo pipefail
 root="$(cd "$(dirname "$0")/.." && pwd)"
 doc="$(cd "$1" && pwd)"
-export TEXINPUTS="$root/.latex//:"
+export TEXINPUTS=".:$root/.latex//:"
 cd "$doc"
 latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex

@@ -29,7 +29,7 @@ jobs:
             rel="${d#./}"
             name="$(basename "$rel")"
             docker run --rm -v "$PWD:/work" -w "/work/$d" \
-              -e TEXINPUTS=/work/.latex//: \
+              -e TEXINPUTS=.:/work/.latex//: \
               texlive/texlive:latest \
               latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
             mkdir -p "out/content/$rel"
