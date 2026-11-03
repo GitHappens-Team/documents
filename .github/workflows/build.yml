@@ -12,8 +12,17 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # pull-requests: per leggere approvazioni e merge delle PR (metadata.py)
+    permissions:
+      contents: read
+      pull-requests: read
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          # history completa per ricavare createdAt e l'ultima PR di ogni documento
+          fetch-depth: 0
 
       - name: Find .tex docs
         id: find
@@ -35,7 +44,7 @@ jobs:
             mkdir -p "out/content/$rel"
             cp "$d/main.pdf" "out/content/$rel/$name.pdf"
             if [ -f "$d/metadata.json" ]; then
-              cp "$d/metadata.json" "out/content/$rel/metadata.json"
+              python3 .github/scripts/metadata.py "$d" "out/content/$rel/metadata.json"
             fi
           done
 
@@ -56,7 +65,7 @@ jobs:
             mkdir -p "out/content/$d"
             cp "$pdf" "out/content/$d/$name.pdf"
             if [ -f "$d/metadata.json" ]; then
-              cp "$d/metadata.json" "out/content/$d/metadata.json"
+              python3 .github/scripts/metadata.py "$d" "out/content/$d/metadata.json"
             fi
           done
 
