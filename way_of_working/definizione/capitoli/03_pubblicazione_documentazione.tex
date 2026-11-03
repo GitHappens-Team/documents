@@ -6,13 +6,13 @@ Riferirsi alla procedura alla sezione \ref{mainsec:contrib} per quanto riguarda 
 \newpage
 
 \subsection{Creazione del documento}
-Per pubblicare qualsiasi documento relativo al team git HAPPENS, per prima cosa è necessario trovare (o creare)
+Per pubblicare qualsiasi documento relativo al team Git Happens, per prima cosa è necessario trovare (o creare)
 la cartella di destinazione nel repo \textit{documents} (e.g. \textit{verbali/esterni/yyyy-mm-dd} o \textit{verbali/interni/yyyy-mm-dd}).
 
 
 \paragraph{Intestazione e template}
 Creare nella cartella un file \textit{main.tex} e inserire la direttiva \texttt{\textbackslash documentclass\{gh\}}.
-Questa direttiva importerà in automatico l'intestazione e il template di git HAPPENS.
+Questa direttiva importerà in automatico l'intestazione e il template di Git Happens.
 
 Combinare in modo opportuno questi comandi per riempire i campi comuni del file (omettere i comandi non necessari):
 
@@ -24,6 +24,7 @@ Combinare in modo opportuno questi comandi per riempire i campi comuni del file 
         \midrule
         \texttt{\textbackslash tipodoc\{\dots\}}        & Tipo o titolo del documento, riportato anche nel piè di pagina \\
         \texttt{\textbackslash datadoc\{\dots\}}        & Data del documento                                             \\
+        \texttt{\textbackslash versione\{\dots\}}       & Versione corrente del documento (es.\ 1.0.0)                   \\
         \texttt{\textbackslash modalita\{\dots\}}       & Modalità di svolgimento (es.\ Online - Google Meet)            \\
         \texttt{\textbackslash orario\{\dots\}}         & Orario di inizio e fine                                        \\
         \texttt{\textbackslash redattori\{\dots\}}      & Redattori del documento                                        \\
@@ -31,6 +32,7 @@ Combinare in modo opportuno questi comandi per riempire i campi comuni del file 
         \texttt{\textbackslash amministratore\{\dots\}} & Amministratore del gruppo                                      \\
         \texttt{\textbackslash responsabile\{\dots\}}   & Responsabile, riportato anche nel piè della prima pagina       \\
         \texttt{\textbackslash destinatari\{\dots\}}    & Destinatari del documento                                      \\
+        \texttt{\textbackslash partecipanti\{\dots\}}   & Partecipanti alla riunione (verbali)                           \\
         \bottomrule
     \end{tabularx}
 \end{center}
