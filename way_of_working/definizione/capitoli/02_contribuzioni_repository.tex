@@ -7,7 +7,7 @@ Per contribuire ad un qualsiasi repository git HAPPENS, va seguita la procedura 
     \item Selezionare il branch base da cui effettuare le modifiche (solitamente \textit{main} o il branch default)
     \item Creare un branch a partire dal precedente. Nominarlo \textbf{KEY\_ISSUE-NUMBER\_ISSUE-DESC} dove
           \textit{KEY} è la chiave del progetto Jira di riferimento, \textit{ISSUE\_NUMBER} è il numero della issue nel
-          progetto, \textit{ISSUE\_DESC} è il nome dell'issue separato da trattini alti \textit{"-"} e tutto in minuscolo (e.g. "SWE-37-bootstrap-del-way-of-working"). Vedere ~\ref{contrib_tech} per automatizzare la procedura.
+          progetto, \textit{ISSUE\_DESC} è il nome dell'issue separato da trattini alti \textit{"-"} e tutto in minuscolo (e.g. "SWE-37-bootstrap-del-way-of-working"). Vedere la sez.~\ref{contrib_tech} per automatizzare la procedura.
     \item Transizionare il ticket \textit{Jira} in "In corso".
     \item Lavorare al progetto suddividendo la contribuzione in opportune commit, vedi sez. \ref{contrib_sem_commit_scopes} per la convenzione a riguardo.
     \item Revisionare quanto svolto in autonomia, e successivamente \textbf{aprire una pull request}. Richiedere la revisione dei revisori assegnati e attendere.
@@ -27,7 +27,7 @@ Gli scope di commit sono un'indicazione di ciò che si è fatto in una operazion
     \item \textbf{docs:} aggiornamento / creazione di documentazione.
     \item \textbf{chore:} installazione pacchetti, organizzazione cartelle, pulizia repo, ...
     \item \textbf{refactor:} refactoring di codice \textbf{senza} modifiche di funzionalità.
-    \item \textbf{test:} scrittura,revisione,... di test unitari/di integrazione/...
+    \item \textbf{test:} scrittura, revisione, ... di test unitari/di integrazione/...
 \end{itemize}
 
 È buona prassi dividere le commit che coinvolgono più scope in una commit per ogni scope piuttosto che inventare uno scope o richiedere che venga aggiunto.
