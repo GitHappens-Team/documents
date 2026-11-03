@@ -1,0 +1,159 @@
+\section{Capitolati considerati: C0 AIRA, C1 AURA e C5 RareCare}
+
+I tre capitolati seguenti sono stati approfonditi dal gruppo anche attraverso incontri con le aziende proponenti.
+
+\subsection{C0 AIRA -- Sanmarco Informatica S.p.A.}
+
+\subsubsection*{Descrizione}
+
+AIRA (\emph{AI Requests Automation}) è uno strumento multimodale guidato dall'intelligenza artificiale che riceve le richieste B2B provenienti da canali eterogenei (e-mail con allegati PDF, note vocali e messaggi WhatsApp, cartelle del filesystem, fotografie di etichette e cataloghi), ne interpreta il significato e le converte in dati strutturati (JSON o record di database). In base all'entità rilevata, come ordine, ticket o appuntamento, il sistema avvia automaticamente azioni configurabili: chiamate REST verso portali B2B, ERP, CRM e sistemi di ticketing, oppure l'invio di e-mail.
+
+\subsubsection*{Requisiti principali}
+
+\begin{itemize}
+    \item \textbf{Obbligatori:} monitoraggio continuo dei canali configurati con rilevamento di mittente, testo e allegati; filtro in ingresso contro accessi non autorizzati e commistione di informazioni; elaborazione semantica delle richieste tramite LLM; avvio automatico di azioni di notifica ed esecuzione; interfaccia amministrativa web per configurare i canali, consultare i log e gestire la persistenza.
+    \item \textbf{Opzionali:} dashboard analitica dei flussi e delle azioni eseguite; risposta automatica al mittente in caso di ricezione o di errore.
+    \item \textbf{Raccomandazioni:} architettura scalabile e modulare, configurazione esternalizzata, database relazionale interno, test di unità e di integrazione sull'intera pipeline.
+\end{itemize}
+
+\subsubsection*{Tecnologie}
+
+Suggerite e non vincolanti: Java con Spring Boot per il motore, Angular e TypeScript per l'interfaccia amministrativa, LangChain4j per l'orchestrazione degli LLM, SQLite, MariaDB o PostgreSQL per la persistenza, Whisper o Google Speech per la trascrizione e Tesseract o EasyOCR per il riconoscimento del testo.
+
+\subsubsection*{Vincoli}
+
+Il capitolato richiede diagrammi UML dei casi d'uso, schema della base dati o delle API, documentazione e report dei test, elenco dei bug risolti e codice su GitHub o Bitbucket. Non indica soglie di copertura dei test, licenza né modalità di rilascio.
+
+\subsubsection*{Supporto del proponente}
+
+Sanmarco Informatica affianca il gruppo con figure professionali dedicate per supporto tecnico, configurazione degli ambienti e risoluzione delle criticità, con metodologia Agile. Referenti: Linda Benozzato, Luca Marcon e Alberto Veronese.
+
+\subsubsection*{Aspetti positivi}
+
+\begin{itemize}
+    \item Ottimo equilibrio tra innovazione e solidità: orchestrazione di modelli di IA multimodale su un caso d'uso industriale concreto, appoggiata a uno stack \emph{enterprise} maturo (Java, Spring Boot, Angular).
+    \item Pipeline modulare adatta allo sviluppo in parallelo da parte di sette persone, con interfacce definibili fin dalle prime fasi.
+    \item Nessuna dipendenza da hardware fisico; mock dei dati forniti dall'azienda.
+    \item Perimetro ridimensionato nell'incontro del 2026-10-20: niente accesso ai canali reali né riconoscimento degli articoli di catalogo.
+\end{itemize}
+
+\subsubsection*{Criticità}
+
+\begin{itemize}
+    \item Integrazione di molti canali, con modalità di accesso non dettagliate nel capitolato (in particolare WhatsApp).
+    \item Affidabilità di trascrizione vocale e OCR su input di bassa qualità.
+    \item Azioni automatiche con possibili conseguenze economiche in caso di errore di estrazione.
+    \item Trattamento di dati commerciali sensibili, con le misure di privacy ancora da definire.
+\end{itemize}
+
+\subsubsection*{Valutazione}
+
+C0 AIRA era la \textbf{prima preferenza} del gruppo: l'incontro del 2026-10-20 aveva confermato un perimetro sostenibile e un proponente disponibile. Il capitolato non è stato scelto esclusivamente per l'esaurimento dei posti di candidatura disponibili.
+
+\subsection{C1 AURA -- Vimar S.p.A.}
+
+\subsubsection*{Descrizione}
+
+AURA (\emph{AI for Understanding, Reasoning and Automation}) è un server e un client MCP (\emph{Model Context Protocol}) che collegano i servizi commerciali di IA generativa, come ChatGPT, Claude, Copilot o Gemini, agli impianti domotici Vimar View Wireless tramite le KNX IoT 3rd Party API. L'utente si autentica con il proprio account MyVimar, seleziona un impianto e, in linguaggio naturale, ne legge lo stato o comanda i dispositivi. Lo sviluppo di un'app mobile è escluso dal perimetro.
+
+\subsubsection*{Requisiti principali}
+
+\begin{itemize}
+    \item \textbf{Obbligatori:} infrastruttura \emph{cloud-ready} basata su container e \emph{Infrastructure as Code}, compatibile con AWS; server MCP che supporta gli endpoint Authorization, Datapoint, Function, Information, Location, Subscription e Timeseries delle KNX IoT 3rd Party API v2.1.0, con autenticazione OAuth2 e lettura e scrittura sull'impianto; client MCP collegato al solo server realizzato; collegamento a un servizio di IA commerciale che gestisca i casi di interazione.
+    \item \textbf{Casi di interazione:} 17 esempi base e 21 avanzati, alcuni indicati come \emph{nice-to-have}.
+    \item \textbf{Opzionali:} rilascio su AWS, endpoint Device, client collegato a VSCode o usabile da CLI o TUI, copertura dei test superiore al 90\%.
+\end{itemize}
+
+\subsubsection*{Tecnologie}
+
+Unici vincoli: Docker e docker compose, KNX IoT 3rd Party API con OAuth2, repository Git pubblico con licenza open source. Suggeriti Python con l'SDK FastMCP (in alternativa TypeScript o Java), lo stesso SDK per client e server, MySQL, PostgreSQL o Redis, GitHub Actions e un ambiente di sviluppo comune raggiungibile pubblicamente.
+
+\subsubsection*{Vincoli}
+
+\begin{itemize}
+    \item Infrastruttura avviabile con un solo comando (per esempio docker compose up).
+    \item Aggiornamenti di stato tramite le notifiche push di KNX IoT (Subscription); il polling non è ammesso salvo accordo con Vimar.
+    \item Copertura minima del 75\% per i test di unità e di integrazione e dell'80\% per i test end-to-end.
+    \item Documentazione per integratori accessibile solo dopo la registrazione al portale Vimar.
+\end{itemize}
+
+\subsubsection*{Supporto del proponente}
+
+Kit portatile di impianto View Wireless per ogni gruppo; accesso alle API e un account amministratore; servizi AWS e una chiave LLM su richiesta; SAL bisettimanale di un'ora su Microsoft Teams, che dopo il PoC può diventare settimanale; incontri in presenza per la consegna del kit e per il collaudo; due dimostrazioni al team di Ricerca e Sviluppo. Prima dell'assegnazione Vimar non svolge colloqui individuali, ma una sola sessione Q\&A congiunta.
+
+\subsubsection*{Aspetti positivi}
+
+\begin{itemize}
+    \item Dominio che unisce IA generativa, protocollo MCP e infrastruttura cloud.
+    \item Requisiti chiari, con componenti obbligatori, opzionali e \emph{nice-to-have} distinti e criteri di completamento espliciti.
+    \item Supporto molto completo: kit fisico per testare su dispositivi reali, accesso alle API, risorse AWS su richiesta, SAL regolari.
+    \item Ampia libertà su linguaggio e infrastruttura, pur con l'obbligo di container e \emph{Infrastructure as Code}.
+\end{itemize}
+
+\subsubsection*{Criticità}
+
+\begin{itemize}
+    \item Curva di apprendimento ripida su MCP, KNX IoT e OAuth2; documentazione accessibile solo dopo la registrazione.
+    \item Dipendenza dal kit fisico, che deve restare sempre acceso presso un membro del gruppo, e differenze tra mock e dispositivi reali.
+    \item Risposte dei servizi di IA non deterministiche e quindi difficili da verificare, con la gestione del contesto del dialogo che richiede logiche complesse.
+    \item Soglie di copertura dei test particolarmente severe (75\% e 80\%).
+    \item Nessun colloquio individuale prima dell'assegnazione.
+\end{itemize}
+
+\subsubsection*{Valutazione}
+
+Capitolato di grande interesse e con un supporto eccellente. Il gruppo gli ha preferito C8 perché quest'ultimo è interamente software e non dipende da hardware fisico né dalla documentazione proprietaria di KNX IoT, riducendo i rischi logistici e di avvio.
+
+\subsection{C5 RareCare -- Miriade S.r.l.}
+
+\subsubsection*{Descrizione}
+
+RareCare Navigator è una piattaforma con assistente virtuale basato su IA per supportare le famiglie colpite da malattie rare neurodegenerative, a partire dalla Sindrome di Sanfilippo (mucopolisaccaridosi di tipo III). La piattaforma affianca il Care Navigator, la figura che coordina famiglie, centri clinici, pediatri, terapisti, scuole e servizi sociali, garantendo che ogni attore veda solo le informazioni di propria competenza. Il prototipo va validato sul campo con l'associazione Sanfilippo Fighters.
+
+\subsubsection*{Requisiti principali}
+
+\begin{itemize}
+    \item \textbf{Funzionali:} controllo granulare degli accessi per ruolo (R1); gestione di scadenze e rinnovi con notifiche push ed e-mail (R2); chatbot RAG che risponde solo sulla base di fonti ufficiali verificate (R3).
+    \item \textbf{Opzionali:} assistente vocale (R4), mappatura geospaziale dei servizi (R5), analisi predittiva dei bisogni (R6).
+    \item \textbf{Non funzionali:} conformità GDPR con cifratura in transito (TLS 1.3) e a riposo (AES-256) (R7); autenticazione forte con MFA e OAuth2 (R8); architettura \emph{cloud native} e modulare, con il modello a plugin \emph{Disease Pack} che separa il nucleo dai contenuti specifici della patologia (R9, R10); design empatico e accessibilità WCAG 2.1 AA (R11, R12).
+    \item \textbf{Intelligenza artificiale:} assistente RAG (R15), estrazione di entità cliniche e amministrative da testo e note vocali (R16), checklist personalizzate dai piani PAI e PEI (R17), analisi predittiva (R18).
+    \item \textbf{MVP suggerito:} accesso con MFA, rete di cura con permessi, fascicolo documentale, checklist e scadenze con notifiche, assistente RAG su un insieme ridotto di fonti verificate.
+\end{itemize}
+
+\subsubsection*{Tecnologie}
+
+Frontend cross-platform raccomandato in Flutter o React Native. L'architettura proposta, serverless su AWS (Cognito, API Gateway, Lambda, Aurora con pgvector, S3, Bedrock, EventBridge Scheduler, SES e SNS), è un'ipotesi di partenza e non un vincolo, purché le alternative siano motivate. Per l'IA il capitolato indica Amazon Bedrock, OpenAI o modelli open source su HuggingFace.
+
+\subsubsection*{Vincoli}
+
+\begin{itemize}
+    \item I dati sanitari di minori sono una categoria particolare secondo l'art. 9 del GDPR: residenza dei dati nell'Unione Europea, tracciamento degli accessi e valutazione d'impatto (DPIA) da redigere in fase di analisi.
+    \item L'assistente non fornisce indicazioni diagnostiche o terapeutiche: il perimetro è orientamento, organizzazione e informazione.
+    \item I dati estratti automaticamente da documenti e note vocali non vengono salvati senza una conferma umana.
+    \item Il capitolato non indica licenza, soglie di copertura dei test né modalità di consegna del codice.
+\end{itemize}
+
+\subsubsection*{Supporto del proponente}
+
+Mentorship su architetture cloud e serverless e supporto full-stack e sull'integrazione dell'IA (Emanuele Righetto); supporto UX/UI (Anna Baldo); dominio clinico, relazione con l'associazione e mediazione dei requisiti (Jessica Dalla Fontana); formazione iniziale sul dominio e sulla privacy dei dati sanitari; possibilità di affiancare al gruppo una figura professionale; sale riunioni a Padova o Thiene su richiesta. Miriade si dichiara disponibile a concordare con ciascun gruppo un perimetro adeguato alle energie disponibili.
+
+\subsubsection*{Aspetti positivi}
+
+\begin{itemize}
+    \item Progetto dal fortissimo impatto etico e sociale, con un partner reale per la validazione.
+    \item Architettura modulare a plugin (\emph{Disease Pack}) che rende il sistema estendibile ad altre patologie.
+    \item Supporto ampio e articolato: tecnico, UX/UI e di dominio.
+\end{itemize}
+
+\subsubsection*{Criticità}
+
+\begin{itemize}
+    \item Trattando dati sanitari di minori, il progetto presenta forti criticità sul piano legale e normativo: cifratura, DPIA e un controllo degli accessi granulare e complesso tra genitori, medici e scuole.
+    \item Rischio intrinseco di allucinazioni dell'IA, particolarmente pericoloso in ambito clinico.
+    \item Perimetro molto ampio e funzionalità della dashboard non ancora definite, da precisare in un workshop.
+    \item Risorse AWS inizialmente molto limitate, con tempi di attesa per ampliarle.
+\end{itemize}
+
+\subsubsection*{Valutazione}
+
+Il tema è di grande interesse e il supporto del proponente è ampio, ma i vincoli normativi sui dati sanitari e l'incertezza sul perimetro dell'MVP rendono il progetto più rischioso di C8, i cui requisiti sono già definiti in modo puntuale.

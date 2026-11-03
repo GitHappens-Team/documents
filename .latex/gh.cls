@@ -38,16 +38,16 @@
 \newcommand{\destinatari}[1]{\renewcommand{\@destinatari}{#1}}
 \newcommand{\partecipanti}[1]{\renewcommand{\@partecipanti}{#1}}
 \makeatletter
-\newcommand{\@datadoc}{}
-\newcommand{\@versione}{}
-\newcommand{\@modalita}{}
-\newcommand{\@orario}{}
-\newcommand{\@redattori}{}
-\newcommand{\@verificatori}{}
-\newcommand{\@amministratore}{}
-\newcommand{\@responsabile}{}
-\newcommand{\@destinatari}{}
-\newcommand{\@partecipanti}{}
+\newcommand*{\@datadoc}{}
+\newcommand*{\@versione}{}
+\newcommand*{\@modalita}{}
+\newcommand*{\@orario}{}
+\newcommand*{\@redattori}{}
+\newcommand*{\@verificatori}{}
+\newcommand*{\@amministratore}{}
+\newcommand*{\@responsabile}{}
+\newcommand*{\@destinatari}{}
+\newcommand*{\@partecipanti}{}
 \makeatother
 
 % Elenco su piu' righe dentro una cella: \lista{A. Rossi \\ B. Bianchi}

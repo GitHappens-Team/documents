@@ -1,0 +1,129 @@
+\section{Altri capitolati}
+
+Le schede seguenti riassumono i sei capitolati non considerati dal gruppo.
+
+\Needspace{8\baselineskip}
+\subsection{C2 Concierge -- Eggon S.r.l.}
+
+\begin{longtable}{|>{\raggedright\arraybackslash}p{3.2cm}|>{\raggedright\arraybackslash}p{\dimexpr\textwidth-3.2cm-4\tabcolsep-3\arrayrulewidth\relax}|}
+    \hline
+    \textbf{Proponente} & Eggon S.r.l. \\
+    \hline
+    \textbf{Descrizione} & Assistente conversazionale integrato nella PWA di NEXUM, la piattaforma di Eggon per la comunicazione aziendale e la gestione del personale. Per l'MVP il perimetro è limitato all'area ferie e permessi: l'assistente risponde su regolamenti aziendali e funzioni del prodotto, consulta i dati personali tramite servizi autorizzati e registra le richieste solo dopo una conferma esplicita. \\
+    \hline
+    \textbf{Tecnologie} & Vincolanti solo la chat testuale, le fonti iniziali in PDF e l'interfaccia PWA; stack, modelli e servizi non sono prescritti e vanno concordati con il proponente. \\
+    \hline
+    \textbf{Vincoli} & Separazione dei dati tra aziende; integrazione con servizi NEXUM di prova o con simulatori; consegna in tre fasi, dal PoC con la definizione delle interfacce fino all'MVP end to end. \\
+    \hline
+    \textbf{Aspetti positivi} & Utilità reale ed elevata applicabilità in ambito aziendale; perimetro dell'MVP ben delimitato; esperienza di due gruppi degli anni precedenti disponibile presso Eggon; incontri settimanali o bisettimanali e un gruppo Telegram dedicato. \\
+    \hline
+    \textbf{Criticità} & Gestione rigorosa della riservatezza dei dati personali e delle autorizzazioni; interfacce di integrazione con NEXUM ancora da definire; la pianificazione del proponente assume circa 480 ore per persona, molto più dell'impegno previsto dal progetto didattico; la memoria tra conversazioni diverse non è richiesta per l'MVP, limitando le potenzialità dell'assistente. \\
+    \hline
+    \textbf{Valutazione} & Progetto concreto e ben supportato, ma il dominio delle risorse umane ha suscitato meno interesse nel gruppo rispetto alle alternative. \\
+    \hline
+\end{longtable}
+
+\Needspace{8\baselineskip}
+\subsection{C3 Fossdot -- Uranion EMEA Ltd}
+
+\begin{longtable}{|>{\raggedright\arraybackslash}p{3.2cm}|>{\raggedright\arraybackslash}p{\dimexpr\textwidth-3.2cm-4\tabcolsep-3\arrayrulewidth\relax}|}
+    \hline
+    \textbf{Proponente} & Uranion EMEA Ltd \\
+    \hline
+    \textbf{Descrizione} & Ecosistema open source per uno \emph{smart speaker} vocale estendibile e rispettoso della privacy: hardware di riferimento, firmware, servizio di \emph{bridging} e interfaccia di gestione, con provider di IA configurabile, integrazione MCP, Skills e Agents e cooperazione tra più dispositivi. \\
+    \hline
+    \textbf{Tecnologie} & Firmware preferibilmente in Rust; suggeriti Raspberry Pi, microfoni ReSpeaker e componenti open source per riconoscimento vocale, LLM e sintesi vocale. Licenza open source permissiva. \\
+    \hline
+    \textbf{Vincoli} & MVP con selezione e validazione dell'hardware, firmware per cattura e riproduzione audio e flusso completo dimostrato su dispositivo fisico; copertura dei test almeno dell'80\% per \emph{bridging} e interfaccia, da concordare per il firmware. \\
+    \hline
+    \textbf{Aspetti positivi} & Progetto originale e stimolante, completamente open source e senza \emph{vendor lock-in}; supporto tecnico con incontri di formazione. \\
+    \hline
+    \textbf{Criticità} & Architettura molto frammentata, con molti servizi complessi da integrare; hardware e firmware embedded lontani dalle competenze del gruppo; necessità di testare su hardware fisico o con audio simulato; capienza di un solo gruppo. \\
+    \hline
+    \textbf{Valutazione} & Molto interessante, ma la parte hardware e firmware richiede competenze che il gruppo non possiede e difficilmente acquisibili nei tempi del progetto. \\
+    \hline
+\end{longtable}
+
+\Needspace{8\baselineskip}
+\subsection{C4 Gestione Veicoli e Servizi Post-Vendita -- M31 S.r.l.}
+
+\begin{longtable}{|>{\raggedright\arraybackslash}p{3.2cm}|>{\raggedright\arraybackslash}p{\dimexpr\textwidth-3.2cm-4\tabcolsep-3\arrayrulewidth\relax}|}
+    \hline
+    \textbf{Proponente} & M31 S.r.l. \\
+    \hline
+    \textbf{Descrizione} & Piattaforma distribuita, a gestione logicamente centralizzata, per il ciclo di vita di un autoveicolo: collega su tre livelli casa automobilistica, concessionarie e proprietari per catalogo, vendita, manutenzioni, richiami e notifiche. \\
+    \hline
+    \textbf{Tecnologie} & Proposte e non vincolanti: Node.js, Nest.js e Go, TypeScript, Angular, PostgreSQL, MongoDB, Redis, NATS o Apache Kafka, Kubernetes, architettura a microservizi. \\
+    \hline
+    \textbf{Vincoli} & PoC con un flusso end-to-end (richiesta di un appuntamento di manutenzione) e MVP con interfacce distinte per i tre attori, API sicure e versionate, persistenza e test automatici con copertura da concordare. \\
+    \hline
+    \textbf{Aspetti positivi} & Possibilità di progettare un sistema distribuito e scalabile, con orchestrazione e messaggistica asincrona basata su eventi. \\
+    \hline
+    \textbf{Criticità} & Dominio applicativo molto vasto, con dati fortemente eterogenei; architettura a microservizi e molteplicità di database con una curva di apprendimento ripida, anche per il \emph{deployment}; requisiti senza priorità esplicite. \\
+    \hline
+    \textbf{Valutazione} & Formativo sul piano architetturale, ma l'ampiezza del dominio e dello stack rende difficile contenere il lavoro; il dominio ha suscitato scarso interesse nel gruppo. \\
+    \hline
+\end{longtable}
+
+\Needspace{8\baselineskip}
+\subsection{C6 Sistema AI di caching semantico e dashboard FinOps -- Var Group}
+
+\begin{longtable}{|>{\raggedright\arraybackslash}p{3.2cm}|>{\raggedright\arraybackslash}p{\dimexpr\textwidth-3.2cm-4\tabcolsep-3\arrayrulewidth\relax}|}
+    \hline
+    \textbf{Proponente} & Var Group \\
+    \hline
+    \textbf{Descrizione} & Estensione del proxy open source LiteLLM con un livello di \emph{caching} semantico, che riconosce richieste equivalenti anche se formulate diversamente e riduce le chiamate ai modelli, e una dashboard FinOps che aggrega i consumi, gestisce i budget e calcola i risparmi generati dalla cache. \\
+    \hline
+    \textbf{Tecnologie} & LiteLLM come base del proxy; suggeriti Python, FastAPI o Flask, modelli di \emph{embedding}, Redis, Qdrant o pgvector, PostgreSQL, React o Streamlit, Docker. \\
+    \hline
+    \textbf{Vincoli} & Copertura dei test almeno del 70\%, con i test deterministici separati dalla valutazione probabilistica della cache; documento dei requisiti, ADR e MVP end-to-end. \\
+    \hline
+    \textbf{Aspetti positivi} & Forte rilevanza nel mercato \emph{enterprise} per il controllo dei costi dei modelli linguistici; tecnologie vicine alle competenze del gruppo; piano di formazione definito (LiteLLM, \emph{embedding} e \emph{caching}, FinOps) e Q\&A ogni due settimane. \\
+    \hline
+    \textbf{Criticità} & Trattandosi dell'estensione di un progetto open source esistente, l'attività si concentrerebbe in buona parte sull'analisi e la modifica di un codebase di terze parti, sottraendo risorse alla progettazione di un'architettura propria; qualità della cache non deterministica. \\
+    \hline
+    \textbf{Valutazione} & Tema attuale e tecnologie familiari, ma il gruppo preferisce progettare un prodotto da zero piuttosto che estendere un codebase esistente. \\
+    \hline
+\end{longtable}
+
+\Needspace{8\baselineskip}
+\subsection{C7 SmartDashboard -- Ergon Informatica S.r.l.}
+
+\begin{longtable}{|>{\raggedright\arraybackslash}p{3.2cm}|>{\raggedright\arraybackslash}p{\dimexpr\textwidth-3.2cm-4\tabcolsep-3\arrayrulewidth\relax}|}
+    \hline
+    \textbf{Proponente} & Ergon Informatica S.r.l. \\
+    \hline
+    \textbf{Descrizione} & Piattaforma di \emph{Business Intelligence} end-to-end e \emph{self-service}: estrazione dei dati dal gestionale (ETL), \emph{data warehouse} analitico, applicazione web con dashboard componibili tramite \emph{drag \& drop} e un livello di IA che genera visualizzazioni e interpretazioni dei dati a partire da richieste in linguaggio naturale. \\
+    \hline
+    \textbf{Tecnologie} & Suggerite: DuckDB per il \emph{data warehouse}, un database relazionale per la persistenza, React, Angular o Vue con una libreria di grafici, API di un LLM commerciale; la scelta finale spetta al gruppo. \\
+    \hline
+    \textbf{Vincoli} & Documentazione di architettura, del modello dimensionale e del livello di IA; le query del livello dati non vanno esposte direttamente al frontend. \\
+    \hline
+    \textbf{Aspetti positivi} & Ottime opportunità sul fronte UI e UX per il costruttore di dashboard; architettura a strati che separa i dati grezzi dall'analisi; dataset reale e allineamento ogni quindici giorni. \\
+    \hline
+    \textbf{Criticità} & Difficoltà nel garantire l'accuratezza delle visualizzazioni generate dall'IA; numero elevato di requisiti, dall'ingestione dei dati alla reportistica e alle spiegazioni dell'IA, che impone uno sviluppo strettamente incrementale per completare l'MVP in tempo. \\
+    \hline
+    \textbf{Valutazione} & Interessante sul piano dell'interfaccia, ma il perimetro andrebbe ridotto con decisione per restare nei tempi del progetto. \\
+    \hline
+\end{longtable}
+
+\Needspace{8\baselineskip}
+\subsection{C9 SpecCheck -- Zucchetti S.p.A.}
+
+\begin{longtable}{|>{\raggedright\arraybackslash}p{3.2cm}|>{\raggedright\arraybackslash}p{\dimexpr\textwidth-3.2cm-4\tabcolsep-3\arrayrulewidth\relax}|}
+    \hline
+    \textbf{Proponente} & Zucchetti S.p.A. \\
+    \hline
+    \textbf{Descrizione} & Skill, tool e plugin per l'agente OpenCode che verificano tramite LLM la coerenza e la tracciabilità tra casi d'uso, requisiti e codice sorgente, mostrando lo stato di realizzazione in una dashboard. Il sistema verifica, non scrive codice. \\
+    \hline
+    \textbf{Tecnologie} & OpenCode con un pacchetto di skill e tool, almeno un plugin e un sistema di installazione tramite script. \\
+    \hline
+    \textbf{Vincoli} & Sviluppo in due fasi (PoC, poi MVP con i requisiti obbligatori); test automatici; manuale utente e manuale per estendere skill e tool; requisiti obbligatori non modificabili in corso d'opera. \\
+    \hline
+    \textbf{Aspetti positivi} & Progetto fortemente incentrato sulla qualità del software, con applicazione diretta nei processi di sviluppo professionali; capienza più ampia degli altri capitolati. \\
+    \hline
+    \textbf{Criticità} & Il progetto consiste nel verificare codice e requisiti prodotti da altri, mentre il gruppo preferisce cimentarsi nello sviluppo completo di un prodotto software; verifica semantica non deterministica e difficile da testare. \\
+    \hline
+    \textbf{Valutazione} & Tema vicino ai contenuti dell'insegnamento, ma non in linea con l'obiettivo del gruppo di realizzare un prodotto completo. \\
+    \hline
+\end{longtable}

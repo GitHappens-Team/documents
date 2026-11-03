@@ -1,0 +1,100 @@
+\section{Capitolato scelto: C8 Sonar}
+
+\subsection{Descrizione}
+
+\textbf{Proponente:} Halue S.r.l. Società Benefit, partner Shopify Plus che accompagna aziende ed enti nella trasformazione digitale del commercio (e-commerce B2C e B2B, CRM, system integration, servizi di IA). Referente unico e \emph{product owner}: Valentino Baraldo.
+
+\textbf{Il problema.} Uno store e-commerce \emph{enterprise} su Shopify si stratifica nel tempo: app installate e mai rimosse (alcune ancora fatturate), webhook diretti verso fornitori che non lavorano più con il cliente, campi personalizzati (metafield e metaobject) definiti per funzionalità mai rilasciate o valorizzati ma letti da nessuno, script e automazioni di cui nessuno ricorda l'autore, sezioni e asset del tema non più referenziati. Questa conoscenza non è scritta da nessuna parte e si perde a ogni cambio di fornitore o di referente, con costi concreti: settimane di esplorazione manuale per un nuovo team, passaggi di consegne incompleti, valutazioni di \emph{replatforming} impossibili da stimare, app pagate e non usate, incidenti più lunghi da diagnosticare.
+
+\textbf{La soluzione.} Sonar è un'applicazione web di sola lettura che si collega a uno store Shopify tramite una \emph{custom app}, ne interroga sistematicamente le configurazioni (Admin GraphQL API) e il codice del tema e ricostruisce cosa esiste, cosa dipende da cosa e cosa non serve più. Sonar deve rispondere, in qualunque momento e senza intervento umano, a quattro domande: cosa è installato, cosa ascolta quali eventi, quali campi personalizzati esistono e chi li usa davvero, cosa è orfano.
+
+Il sistema si articola in cinque capacità:
+\begin{itemize}
+    \item \textbf{Acquisizione (scansione):} sequenza orchestrata di interrogazioni verso le API di Shopify e i file del tema (app, webhook, automazioni, Shopify Functions e script tag, metafield e metaobject, canali di vendita, temi, evidenze d'uso tramite campionamento), che produce uno \emph{snapshot} immutabile e datato dello store. La scansione è lunga, soggetta a \emph{rate limiting} e parzialmente fallibile: deve quindi essere durevole, ripartibile e osservabile.
+    \item \textbf{Normalizzazione e modello a grafo:} i dati eterogenei confluiscono in un grafo unico, in cui i nodi sono le entità dello store e gli archi le dipendenze tra di esse; ogni arco riporta la fonte dell'evidenza e un livello di confidenza (accertato, probabile, ipotizzato).
+    \item \textbf{Analisi del codice del tema:} analisi statica di template Liquid, sezioni, snippet, asset e blocchi app per collegare le configurazioni al codice che le usa; ciò che non si riesce ad analizzare va segnalato, mai ignorato.
+    \item \textbf{Motore di rilevamento:} regole estensibili che producono segnalazioni di entità orfane, codice morto e dipendenze fragili, ciascuna con identificativo, severità, motivazione leggibile ed evidenze.
+    \item \textbf{Presentazione:} interfaccia web di navigazione (catalogo, schede di dettaglio, grafo delle dipendenze, cruscotto delle segnalazioni), confronto tra \emph{snapshot} (\emph{diff}) ed esportazione di un pacchetto di documentazione autoconsistente da consegnare a un fornitore subentrante.
+\end{itemize}
+
+Il risultato è duplice: una documentazione \emph{vivente} dello store, che si aggiorna a ogni scansione e sopravvive al cambio di fornitore, e un rapporto di igiene tecnica con una motivazione esplicita per ogni segnalazione.
+
+\subsection{Requisiti principali}
+
+Il capitolato classifica i requisiti in obbligatori, desiderabili e opzionali, ciascuno con un identificativo univoco.
+\begin{itemize}
+    \item \textbf{Funzionali obbligatori (\mbox{RFO-01\ldots{}RFO-20}):} registrazione di uno store con verifica di credenziali e permessi; avvio e monitoraggio in tempo reale della scansione; scansione durevole che riprende dall'ultimo passo completato anche dopo errori, \emph{rate limiting} prolungato o un nuovo deploy; rispetto dinamico dei limiti delle Admin API; acquisizione delle principali famiglie di risorse; analisi statica del tema pubblicato; misura del tasso di valorizzazione dei metafield tramite campionamento, con dimensione del campione e intervallo di incertezza; grafo unico con fonte e confidenza su ogni arco; \emph{snapshot} immutabili; motore di regole estensibile con almeno otto regole su campi personalizzati, webhook, app, tema e script; catalogo con ricerca e filtri, schede di dettaglio, visualizzazione navigabile del grafo; \emph{diff} tra \emph{snapshot}; esportazione in Markdown e/o HTML con diagrammi; accesso esclusivamente con Google; multi-tenancy con isolamento imposto dalla base dati (Row Level Security); ri-scansioni pianificate; degrado controllato in caso di risorse non accessibili.
+    \item \textbf{Funzionali desiderabili (\mbox{RFD-01\ldots{}RFD-07}):} import dei workflow di automazione, descrizioni in linguaggio naturale generate da un modello linguistico (sempre marcate come generate), annotazioni umane persistenti, stima dell'impatto di una rimozione, confronto tra temi, notifiche via e-mail, esportazione del grafo in JSON e JSON-LD.
+    \item \textbf{Funzionali opzionali (\mbox{RFOp-01\ldots{}RFOp-03}):} applicazione integrata in Shopify Admin, interfaccia a riga di comando per l'integrazione continua, cruscotto dell'andamento storico con un indice sintetico di igiene.
+    \item \textbf{Qualità e sicurezza (\mbox{RQS-01\ldots{}RQS-07}):} token cifrati a riposo e mai esposti, isolamento tra organizzazioni verificato da test automatici, TLS e segreti in variabili d'ambiente, minimo privilegio sugli scope Shopify, registro delle azioni, analisi isolata del codice non fidato, resilienza ai fallimenti parziali.
+    \item \textbf{Non funzionali (\mbox{RNF-01\ldots{}RNF-07}):} copertura delle istruzioni almeno del 70\% verificata in CI, \emph{test book}, estensibilità dimostrata delle regole, ambiente riproducibile, versionamento con revisione tra pari, analisi statica senza errori e nessuna dipendenza con vulnerabilità alte o critiche, interfaccia in inglese predisposta ad altre lingue.
+\end{itemize}
+
+\textbf{Criteri di accettazione.} Il prodotto è accettato quando tutti i requisiti obbligatori sono soddisfatti e tracciati nel \emph{test book}; almeno il 95\% dei casi di test ha esito positivo e nessun fallimento riguarda un requisito obbligatorio; la copertura del 70\% è verificata in CI; una scansione completa dello store di sviluppo si conclude con successo e la documentazione generata è giudicata da Halue utilizzabile in un passaggio di consegne reale; i falsi positivi delle segnalazioni ad alta severità non superano il 10\%; l'estensibilità è dimostrata aggiungendo una regola non prevista; il repository ha storia leggibile e nessun segreto in chiaro.
+
+L'elenco degli obbligatori non è rigido: il gruppo può proporre per iscritto una riduzione motivata dell'ambito, da concordare esplicitamente con Halue con un preavviso ragionevole rispetto alla verifica finale.
+
+\subsection{Tecnologie}
+
+\textbf{Vincolanti:} Next.js (App Router) su Vercel; Vercel Workflows e Workflow SDK per l'orchestrazione durevole; Vercel Cron Jobs per le ri-scansioni periodiche; Supabase (PostgreSQL) con Row Level Security; Supabase Auth con il solo provider Google (OAuth 2.0 / OIDC); TypeScript in modalità \emph{strict}; Shopify Admin GraphQL API tramite \emph{custom app}; Git e GitHub con integrazione continua.
+
+\textbf{Fortemente consigliate:} Vercel Blob per gli \emph{snapshot} grezzi e i pacchetti esportati; Vercel Queues per i lavori a \emph{fan-out}; Vercel Sandbox per l'analisi isolata del codice del tema; Vercel AI Gateway e AI SDK per le descrizioni in linguaggio naturale (mai per decidere se un'entità è orfana); Drizzle ORM o Prisma; Tailwind CSS e shadcn/ui; React Flow o Cytoscape.js per il grafo; Vercel Observability e OpenTelemetry; Vitest, Playwright e MSW per i test; GitHub Actions e \emph{preview deployment}.
+
+Le tecnologie consigliate ammettono alternative motivate per iscritto; per quelle vincolanti una richiesta di deroga va presentata e argomentata entro l'analisi dei requisiti. Anche l'architettura di riferimento proposta nel capitolato non è vincolante. Nell'incontro del 2026-10-26 Halue ha garantito al gruppo piena autonomia progettuale sulla persistenza del grafo e ha lasciato al gruppo la scelta del modello linguistico per le descrizioni (RFD-02).
+
+\subsection{Vincoli}
+
+\begin{itemize}
+    \item \textbf{Sola lettura:} Sonar non modifica lo store; al più suggerisce interventi da eseguire a mano. Sono fuori ambito il monitoraggio in tempo reale, l'analisi delle prestazioni dello store, la gestione dei dati di business, l'addestramento di modelli e il supporto di piattaforme diverse da Shopify.
+    \item \textbf{Principi architetturali:} separazione netta tra acquisizione, normalizzazione, analisi e presentazione, la proprietà su cui Halue valuterà più severamente il progetto; \emph{snapshot} immutabili; durabilità dell'orchestrazione; confidenza esplicita, distinguendo sempre ciò che è stato letto da ciò che è stato dedotto; idempotenza delle scansioni.
+    \item \textbf{Decisioni deterministiche:} il modello linguistico può generare testo e normalizzare nomi, ma la decisione che un'entità sia orfana resta deterministica e spiegabile.
+    \item \textbf{Ambiente di lavoro a carico del gruppo:} Halue non fornisce store, dati né infrastruttura. Il gruppo crea uno store di sviluppo tramite Shopify Partners, lo popola deliberatamente con la stratificazione da rilevare e ne documenta la composizione in un artefatto versionato; lo stesso store fornisce l'insieme di controllo per misurare i falsi positivi.
+    \item \textbf{Piani gratuiti:} si usano Vercel Hobby e Supabase Free. Il progetto Supabase viene sospeso dopo una settimana di inattività e il piano Hobby impone soglie mensili modeste su Workflows, Blob, Sandbox e AI Gateway (poche centinaia di richieste al mese), con impatto diretto su ri-scansioni pianificate e descrizioni generate.
+    \item \textbf{Presidio dei consumi:} entro la seconda settimana il gruppo annota i limiti dei piani gratuiti; a ogni incontro quindicinale si esaminano i consumi effettivi; ogni scansione registra chiamate API, step di workflow e richieste al modello linguistico. Se un limite si avvicina, la decisione (ridimensionare, spostare tra i desiderabili o far coprire il costo a Halue) è congiunta.
+    \item \textbf{Comprensione del sistema:} l'uso di strumenti di IA nello sviluppo è incoraggiato, ma ogni parte del sistema deve avere almeno una persona del gruppo in grado di spiegarla a voce e di argomentarne le scelte.
+\end{itemize}
+
+\subsection{Supporto del proponente}
+
+\begin{itemize}
+    \item Incontro di allineamento ogni due settimane, di 45 minuti, in videoconferenza, con dimostrazione dell'incremento e revisione dei consumi.
+    \item Casella di posta dedicata al progetto, presidiata da Halue con risposta entro un giorno lavorativo; non è previsto un canale di messaggistica condiviso.
+    \item Competenze su Shopify Plus e sull'architettura di integrazione, e il punto di vista operativo dell'azienda su come la documentazione viene usata in un passaggio di consegne reale.
+    \item Disponibilità a discutere i risultati dell'analisi dello stato dell'arte.
+    \item Nell'incontro del 2026-10-26 il referente ha inoltre offerto brevi incontri settimanali su richiesta per risolvere dubbi bloccanti e sessioni di consultazione tecnica con sviluppatori esperti di Shopify interni all'azienda.
+    \item Non sono previsti incontri in presenza presso le sedi di Halue.
+\end{itemize}
+
+\subsection{Aspetti positivi}
+
+\begin{itemize}
+    \item \textbf{Requisiti chiari e verificabili:} sono i più chiari tra tutti i capitolati, codificati per priorità e accompagnati da criteri di accettazione numerici, che facilitano il tracciamento tra requisiti e test richiesto dal corso.
+    \item \textbf{Prodotto interamente software:} nessuna dipendenza da componenti hardware fisici, quindi nessun rischio logistico e un ambiente di lavoro riproducibile da ogni membro del gruppo.
+    \item \textbf{Stack moderno e spendibile:} TypeScript, Next.js, Supabase e Vercel sono tecnologie molto diffuse nello sviluppo di applicazioni web; le piattaforme gestite riducono il lavoro infrastrutturale e lasciano il gruppo concentrato sul valore del prodotto.
+    \item \textbf{Architettura che valorizza l'ingegneria del software:} la pipeline a quattro livelli, gli \emph{snapshot} immutabili e il motore di regole estensibile richiedono decisioni di progettazione reali, documentate con ADR.
+    \item \textbf{Impatto pratico concreto:} Sonar risponde a un problema reale e ricorrente degli store e-commerce, sia B2C sia B2B, e trova applicazione nei passaggi di consegne tra fornitori, nell'\emph{onboarding} di un nuovo team, nelle valutazioni di \emph{replatforming} e negli audit di spesa sulle app.
+    \item \textbf{Proponente disponibile e flessibile:} l'incontro del 2026-10-26 ha mostrato apertura tecnica, autonomia progettuale e disponibilità a rinegoziare i requisiti, oltre a supporto aggiuntivo su richiesta.
+    \item \textbf{Uso dell'IA nello sviluppo incoraggiato:} il capitolato è calibrato assumendo l'uso di assistenti di codice, spostando l'apprendimento sulle decisioni di progetto.
+\end{itemize}
+
+\subsection{Competenze da acquisire}
+
+\begin{itemize}
+    \item TypeScript in modalità \emph{strict} e Next.js (App Router, React Server Components).
+    \item Piattaforma Vercel: Workflows, Cron Jobs, Blob, Sandbox, AI Gateway e \emph{preview deployment}.
+    \item Supabase: PostgreSQL, Row Level Security e autenticazione con Google.
+    \item Shopify Admin GraphQL API, modello a punti dei limiti di frequenza e modello dati di Shopify (app, webhook, metafield, metaobject, Functions, temi).
+    \item Struttura dei temi Shopify e analisi statica dei template Liquid.
+    \item Modellazione, persistenza e visualizzazione di grafi; campionamento statistico con intervalli di incertezza.
+    \item Test con Vitest, Playwright e MSW; documentazione con modello C4, UML e ADR.
+\end{itemize}
+
+\subsection{Motivazione della scelta}
+
+Il capitolato C0 AIRA era la prima preferenza del gruppo. In seguito all'esaurimento dei posti di candidatura disponibili per C0, il gruppo ha riconsiderato le alternative alla luce degli incontri svolti e ha individuato nel capitolato \textbf{C8 Sonar} di Halue S.r.l. Società Benefit la proposta più solida e coerente con i propri obiettivi formativi.
+
+La scelta è motivata innanzitutto dalla \textbf{chiarezza dei requisiti}: identificativi univoci, classi di priorità e criteri di accettazione numerici consentono di impostare fin dall'inizio un tracciamento rigoroso tra requisiti, test e codice, in linea con le pratiche di Ingegneria del Software richieste dal corso. Dal punto di vista della progettazione, l'\textbf{architettura a pipeline} descritta dal capitolato e ribadita dal referente nell'incontro del 2026-10-26 si presta all'organizzazione del lavoro di un gruppo di sette persone: ogni livello ha responsabilità e interfacce chiare, favorendo lo sviluppo in parallelo e test di unità e di integrazione ben isolati.
+
+Il progetto è inoltre \textbf{interamente software}: a differenza di C1 AURA, non dipende da un kit fisico da mantenere sempre acceso, e tutto l'ambiente di lavoro è disponibile su piani gratuiti e riproducibile da ogni membro del gruppo. Lo \textbf{stack} basato su TypeScript, Next.js, Supabase e Vercel, pur essendo in gran parte nuovo per il gruppo, è moderno e garantisce un ritorno formativo altamente spendibile.
+
+Infine, l'incontro del 2026-10-26 ha confermato le condizioni per una collaborazione proficua: Halue ha mostrato apertura tecnica, ha lasciato piena autonomia sulle scelte di progetto, si è detta disponibile a rinegoziare la portata dei requisiti se necessario e ha offerto incontri brevi su richiesta e consulenze con i propri esperti di Shopify. I rischi principali, cioè la curva di apprendimento dello stack, il numero di requisiti obbligatori e l'analisi del codice del tema, sono noti e mitigabili.
