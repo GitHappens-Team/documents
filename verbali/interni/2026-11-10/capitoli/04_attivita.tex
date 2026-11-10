@@ -1,0 +1,73 @@
+\newpage
+\vspace{0.8cm}
+
+\section{Ordine del giorno}
+
+\subsection{Assegnazione dei ruoli per lo Sprint 1}
+Il gruppo ha formalizzato la composizione dei ruoli per il primo sprint di lavoro (Sprint 1), della durata di due settimane (dal 10/11/2026 al 24/11/2026). È stato stabilito di mantenere l'ordine stabilito per le figure di Responsabile e Amministratore e di procedere a rotazione ogni due settimane.
+
+I ruoli e le responsabilità assegnate per lo Sprint 1 sono i seguenti:
+\begin{itemize}
+    \item \textbf{Responsabile (Cristiano Antoniazzo)}: creazione degli account con l'e-mail di gruppo per i servizi Vercel, Supabase, Shopify e Google Cloud OAuth; predisposizione di un foglio condiviso per il monitoraggio dei limiti dei piani gratuiti;
+    \item \textbf{Amministratore (Antonio Hai Xu Tang)}: creazione della nuova repository GitHub per il Proof of Concept (PoC) con eventuale boilerplate e allestimento della pipeline di base; configurazione delle regole di protezione del branch \texttt{main};
+    \item \textbf{Verificatore (Tommaso Caon)}: controllo dei verbali e delle Pull Request su GitHub; studio e analisi per l'automazione del Glossario;
+    \item \textbf{Progettista (Filippo Lissandrin)}: collegamento con l'ambiente Shopify, documentazione delle tecnologie, creazione dello space su Jira per Sonar e stesura dell'elenco della documentazione utile;
+    \item \textbf{Analisti (Gabriele Gambarro, Diana Grosselle, Gianmaria Grinovero)}:
+    \begin{itemize}
+        \item G. Gambarro: stesura delle Norme di Progetto secondo la struttura definita nel documento Way of Working;
+        \item D. Grosselle: redazione del Verbale Esterno, impostazione della struttura del Piano di Progetto e avvio della sua stesura;
+        \item G. Grinovero: redazione del Verbale Interno del 10/11/2026, formalizzazione delle convenzioni per i verbali interni (tracciamento decisioni e azioni), redazione della sezione di introduzione ai documenti, definizione della Definition of Done (DoD) e del modello PDCA (Plan, Do, Check, Act).
+    \end{itemize}
+\end{itemize}
+La scadenza interna concordata per la consegna di questa parte documentale è fissata per il \textbf{17 novembre 2026}.
+
+\subsection{Modifiche alle impostazioni del repository GitHub}
+Nel corso dell'incontro sono state discusse e implementate modifiche operative alle impostazioni del repository GitHub:
+\begin{itemize}
+    \item \textbf{Protezione del branch \texttt{main}}: è stata attivata la protezione del branch principale per impedire push diretti e rendere obbligatorio il passaggio attraverso Pull Request approvata;
+    \item \textbf{Convenzione per i branch}: è stato stabilito l'obbligo di adottare una dicitura univoca per la denominazione dei branch, collegata all'identificativo del relativo ticket Jira (\texttt{KEY-NUMBER-DESC}).
+\end{itemize}
+
+\subsection{Creazione del repository PoC e riorganizzazione degli spazi Jira}
+Per quanto concerne l'organizzazione tecnica e operativa:
+\begin{itemize}
+    \item \textbf{Nuovo repository per il PoC}: è stato concordato di istituire un repository GitHub separato e dedicato allo sviluppo del Proof of Concept (PoC);
+    \item \textbf{Suddivisione degli spazi su Jira}: è stata stabilita la gestione su Jira tramite due board separate:
+    \begin{enumerate}
+        \item la board attuale (\texttt{SWE}), dedicata al tracciamento della documentazione e delle attività organizzative del team;
+        \item una nuova board dedicata al capitolato C8 (Sonar), che verrà impiegata per la pianificazione e il tracciamento delle attività di sviluppo software.
+    \end{enumerate}
+\end{itemize}
+
+\subsection{Domande da proporre al proponente Halue (Capitolato C8 - Sonar)}
+La parte finale della riunione è stata dedicata alla definizione e prioritizzazione delle domande da rivolgere all'azienda Halue durante il prossimo incontro esterno, ordinate per urgenza:
+\begin{enumerate}
+    \item \textbf{Token Shopify}: dal 1 gennaio 2026 le vecchie custom app non si creano più; le nuove usano la Dev Dashboard con un token che scade dopo 24 ore. Chiarire se per il proponente sia accettabile che Sonar salvi Client ID e Secret cifrati e rigeneri autonomamente il token.
+    \item \textbf{Organizzazioni}: definire la modalità di associazione di un utente che accede con Google a un'organizzazione (tramite dominio e-mail, invito o inserimento manuale).
+    \item \textbf{Cron su Vercel}: il piano gratuito di Vercel permette al massimo un cron job al giorno. Chiarire se per il requisito RFO-19 (cadenza configurabile per store) sia accettabile una frequenza giornaliera o settimanale, oppure se Halue intenda fornire un piano Pro.
+    \item \textbf{Piano Vercel}: il piano Hobby prevede un solo posto sviluppatore e solo uso non commerciale. Chiarire come intestare il progetto Vercel per consentire il lavoro collaborativo del gruppo.
+    \item \textbf{Prova della ripresa e del rate limit}: considerato che su uno store di sviluppo piccolo il limite di chiamate non si raggiunge, verificare se sia accettabile come dimostrazione un finto server che risponde con errore di throttling e un'interruzione forzata a metà scansione.
+    \item \textbf{Falsi positivi}: richiedere la validazione tempestiva della composizione dello store, delle regole ad alta severità e della formula di calcolo del tasso (Criterio 5).
+    \item \textbf{Notifiche}: il requisito RFD-06 prevede l'invio di e-mail; verificare se per RFO-19 sia sufficiente la sola notifica in interfaccia o se sia necessaria l'e-mail (e con quale servizio di invio gratuito).
+    \item \textbf{Desiderabili per l'MVP}: concordare quanti e quali requisiti desiderabili siano richiesti per la quota concordata dell'MVP.
+    \item \textbf{Analisi del tema}: chiarire il perimetro accettabile di risultato onesto, ovvero cosa debba essere formalmente dichiarato come non analizzato.
+\end{enumerate}
+
+\section{Tabella decisioni prese}
+\renewcommand{\arraystretch}{1.3}
+\noindent
+\begin{tabularx}{\textwidth}{|l|X|}
+    \hline
+    \textbf{Codice} & \textbf{Decisione} \\
+    \hline
+    VI\_2026-11-10\_D01 & Formalizzazione della rotazione bisettimanale dei ruoli a partire dallo Sprint 1 (10/11/2026 - 24/11/2026). \\
+    \hline
+    VI\_2026-11-10\_D02 & Fissata la scadenza interna del 17 novembre 2026 per la stesura della documentazione primaria. \\
+    \hline
+    VI\_2026-11-10\_D03 & Adozione della protezione del branch \texttt{main} su GitHub e obbligo di convenzione sui nomi dei branch. \\
+    \hline
+    VI\_2026-11-10\_D04 & Creazione di una nuova repository GitHub per il PoC e separazione delle board su Jira (board \texttt{SWE} per la documentazione e board dedicata per C8 Sonar). \\
+    \hline
+    VI\_2026-11-10\_D05 & Approvazione dell'elenco delle 9 domande tecniche da sottoporre ad Halue in ordine di urgenza. \\
+    \hline
+\end{tabularx}
