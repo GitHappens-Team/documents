@@ -97,7 +97,7 @@ Aprendo un file `.tex` e salvandolo, il documento viene compilato e la preview P
 _in accordo con il doc. di norme di progetto_
 
 Le cartelle root del repository (eccetto quelle di sistema, quali ".vscode", ".latex", ".github") costituiscono una categoria di documenti e saranno visualizzate nel sito come tali.
-Ogni sotto cartella è considerata una sottocategoria, almeno che non contenga direttamente un documento.
+Ogni sotto cartella è considerata una sottocategoria, a meno che non contenga direttamente un documento.
 
 Ogni documento è costituito da un file `main.tex` contenuto in una cartella il cui nome corrisponde al nome del documento, fatta eccezione per l'uso del carattere underscore "\_" al posto degli spazi.
 L'uso dell'underscore si applica anche a categorie e sottocategorie. Il sito web inverte questa sostituzione in automatico per una miglior visualizzazione.
@@ -258,7 +258,7 @@ Si attiva ad ogni `push`, ad ogni `pull_request` e manualmente (`workflow_dispat
 2. **Ricerca dei documenti**: ogni cartella contenente un file `main.tex` (escluso `.latex`, che contiene solo il template) è considerata un documento.
 3. **Compilazione**: ogni documento viene compilato in un container Docker `texlive/texlive:latest` con `latexmk -pdf -halt-on-error`, con la cartella `.latex` aggiunta al percorso di ricerca (`TEXINPUTS`) per trovare `gh.cls` e le immagini del team. **Un errore di compilazione in un solo documento fa fallire l'intera build.** Il risultato è `out/content/<percorso>/<nome_cartella>.pdf`.
 4. **Metadati**: se la cartella contiene un `metadata.json`, `metadata.py` ne produce la versione finale da pubblicare (vedi sotto).
-5. **PDF precompilati**: i PDF già presenti nel repository (e.g. verbali esterni firmati da enti esterni) vengono copiati così come sono, con il relativo `metadata.json`. Valgono due regole:
+5. **PDF precompilati**: i PDF già presenti nel repository (e.g. verbali firmati da stakeholder esterni al team) vengono copiati così come sono, con il relativo `metadata.json`. Valgono due regole:
    - se la cartella contiene anche un `main.tex`, il PDF è ignorato (con un _warning_), perché prevale il sorgente;
    - in ogni cartella è ammesso **un solo** PDF, altrimenti la build fallisce.
 6. **Artifact**: la cartella `out/content` è caricata come _artifact_ `content`, scaricabile dalla pagina dell'esecuzione della _GitHub Action_ (utile per rivedere i PDF di una PR prima del merge).
@@ -287,6 +287,6 @@ La commit sul repository del sito fa partire il deployment del sito web.
 ##### In caso di problemi
 
 - **La build fallisce su un documento**: aprire il log del job `build` e cercare la prima riga di errore di LaTeX; riprodurre in locale con `.latex/build.sh <cartella-documento>`.
-- **"Piu' di un pdf nella cartella"**: lasciare un solo PDF nella cartella del documento precompilato.
+- **"Più di un pdf nella cartella"**: lasciare un solo PDF nella cartella del documento precompilato.
 - **Il documento non compare nel sito**: verificare che la PR sia stata mergiata su `main` e che il job `publish` sia riuscito; controllare che la cartella contenga `main.tex` (o un unico PDF).
 - **Errori di `publish` su configurazione**: variabile `WEBSITE_REPO` o segreto `WEBSITE_DEPLOY_KEY` mancanti nelle impostazioni del repository (_Settings → Secrets and variables → Actions_); servono permessi di amministrazione.
