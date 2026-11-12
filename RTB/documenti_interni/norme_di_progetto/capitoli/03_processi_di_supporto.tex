@@ -3,25 +3,93 @@
 \subsection{Documentazione}
 
 \subsubsection{Introduzione}
-scopo ecc.. 
+La documentazione costituisce l'insieme di informazioni scritte e strutturate che accompagnano il prodotto software Sonar lungo tutto il suo ciclo di vita, garantendo la tracciabilità delle decisioni e la comprensione del sistema da parte di sviluppatori, committenti e dell'azienda proponente Halue S.r.l. SB. 
+Gli scopi principali della documentazione comprendono l'agevolazione del passaggio di consegne (handover), la trasparenza nei confronti degli stakeholder e la garanzia che i processi produttivi si svolgano con la qualità attesa. 
+Il gruppo \textbf{Git Happens} adotta l'approccio \emph{Documentation as Code}, trattando i documenti al pari del codice sorgente tramite il versionamento e l'automazione della compilazione.
 
 \subsubsection{Struttura dei documenti}
+Tutti i documenti redatti dal gruppo seguono uno schema strutturale rigoroso e uniforme, volto a facilitare la consultazione. Ogni documento è composto da:
+\begin{itemize}
+    \item \textbf{Prima pagina}: contenente le informazioni identificative del gruppo, il titolo del documento, l'elenco dei redattori, dei verificatori e dei destinatari;
+    \item \textbf{Registro delle modifiche}: una tabella di riepilogo storico posta prima dell'indice, recante versione, data, autore, verificatore e una descrizione sintetica della modifica;
+    \item \textbf{Indice}: elenco gerarchico delle sezioni e sottosezioni, completo di indici delle figure ove applicabile;
+    \item \textbf{Corpo del documento}: suddiviso in sezioni numerate progressivamente;
+    \item \textbf{Pié di pagina}: contenente il nome del gruppo, il titolo del documento e la numerazione delle pagine.
+\end{itemize}
 
 \subsubsection{Convenzioni di nomenclatura}
+Al fine di garantire uniformità, tracciabilità e una corretta automazione dei flussi di lavoro all'interno delle repository del gruppo \textbf{Git Happens}, vengono applicate rigorose convenzioni di nomenclatura per la gestione dei branch e dei file di documentazione.
+
+\subsubsection{Nominazione dei branch di lavoro (Git)}
+Il gruppo adotta il modello di sviluppo \emph{GitHub flow}. Per qualsiasi attività o contribuzione all'interno delle repository, il nome del branch deve essere generato seguendo una struttura standard legata al sistema di tracciamento dei ticket. 
+La convenzione di naming ufficiale è la seguente:
+\begin{center}
+    \texttt{KEY-NUMBER-DESC}
+\end{center}
+dove:
+\begin{itemize}
+    \item \textbf{KEY}: rappresenta la chiave del progetto Jira di riferimento (ad esempio \texttt{SWE} per l'amministrazione e la documentazione del team);
+    \item \textbf{NUMBER}: è il numero identificativo progressivo della issue su Jira;
+    \item \textbf{DESC}: è una descrizione sintetica del task in formato minuscolo, con le parole separate da trattini alti (\texttt{-}).
+\end{itemize}
+\emph{Esempio}: \texttt{SWE-37-bootstrap-del-way-of-working}. 
+L'utilizzo dell'estensione ufficiale di Atlassian per VS Code consente di automatizzare la creazione del branch e la corretta applicazione di questa convenzione direttamente dall'interfaccia di sviluppo.
+
+\subsubsection{Nominazione dei file e struttura della documentazione}
+La stesura e la pubblicazione della documentazione seguono uno standard organizzativo basato su cartelle dedicate all'interno della repository di progetto (ad esempio, la suddivisione temporale o tipologica per i verbali in \texttt{verbali/esterni/yyyy-mm-dd} o \texttt{verbali/interni/yyyy-mm-dd}).
+
+Per quanto riguarda i file sorgente e gli asset correlati, valgono le seguenti regole:
+\begin{itemize}
+    \item \textbf{File principale}: ogni documento deve essere strutturato attorno a un file radice denominato \texttt{main.tex};
+    \item \textbf{Capitoli e sezioni}: i file relativi ai singoli capitoli devono essere posizionati all'interno della cartella \texttt{capitoli/} e denominati con un prefisso numerico progressivo seguito da una descrizione chiara in minuscolo (es. \texttt{capitoli/01\_introduzione.tex});
+    \item \textbf{Risorse multimediali}: le immagini e gli elementi grafici di supporto devono essere raccolti all'interno di una cartella denominata \texttt{assets} situata allo stesso livello del file \texttt{main.tex};
+    \item \textbf{Metadati di pubblicazione}: ove previsto per migliorare la visualizzazione all'interno del sito web di documentazione del team, deve essere affiancato un file descrittivo in formato JSON denominato \texttt{metadata.json}.
+\end{itemize}
 
 \subsubsection{Versionamento}
+Il controllo di versione costituisce un caposaldo della gestione della configurazione per il gruppo \textbf{Git Happens}, sia per quanto riguarda la documentazione sia per il codice sorgente del progetto. 
+Il versionamento dei documenti segue la tripla numerica \texttt{X.Y.Z}, dove:
+\begin{itemize}
+    \item \textbf{X} viene incrementato in corrispondenza di rilasci fondamentali o baseline ufficiali concordate con i committenti e il proponente (es. RTB, PB);
+    \item \textbf{Y} viene incrementato in caso di modifiche sostanziali, aggiunta di sezioni rilevanti o riscritture importanti del contenuto;
+    \item \textbf{Z} viene incrementato in presenza di correzioni minori, rifiniture formali o aggiornamenti marginali.
+\end{itemize}
+
+Per quanto concerne il codice sorgente e la contribuzione alle repository, il team adotta la convenzione dei \emph{semantic commit messages} (messaggi di commit semantici scritti in lingua inglese). I messaggi devono esplicitare chiaramente la natura dell'operazione attraverso prefissi standardizzati quali:
+\begin{itemize}
+    \item \texttt{feat}: sviluppo o implementazione di una nuova funzionalità del progetto;
+    \item \texttt{docs}: creazione o aggiornamento della documentazione;
+    \item \texttt{chore}: attività di manutenzione, installazione di pacchetti, pulizia o organizzazione delle cartelle;
+    \item \texttt{refactor}: modifiche strutturali del codice che non alterano le funzionalità esterne;
+    \item \texttt{test}: scrittura, revisione o ampliamento dei test automatici (unitari e di integrazione).
+\end{itemize}
 
 \subsubsection{Procedure di redazione}
-come viene redatto, approvato, pubblicato
+Il ciclo di vita di un documento o di un'attività all'interno del gruppo segue un iter rigoroso e tracciato, incentrato sull'uso di Atlassian Jira come unica fonte di verità per lo stato del progetto e sull'integrazione con GitHub:
+\begin{enumerate}
+    \item \textbf{Pianificazione (Jira)}: le attività vengono censite e gestite all'interno dello spazio Jira del team (identificato dalla chiave \texttt{SWE} per la documentazione o dallo spazio specifico del capitolato).
+    \item \textbf{Apertura del branch}: a partire dal branch principale (\texttt{main}), lo sviluppatore crea un nuovo ramo di lavoro denominato secondo lo standard \texttt{KEY-NUMBER-DESC} (sfruttando eventualmente l'estensione Atlassian per VS Code per automatizzare l'operazione e il passaggio dello stato del ticket a \emph{In corso}).
+    \item \textbf{Redazione e Commit}: si procede allo sviluppo o alla stesura del documento (strutturando i file in LaTeX tramite il file radice \texttt{main.tex} e inserendo i capitoli nella cartella dedicata), applicando la regola dei commit semantici.
+    \item \textbf{Revisione e Pull Request}: completata la stesura, il ticket viene spostato in \emph{In revisione} su Jira, e viene aperta una \emph{Pull Request} (PR) su GitHub richiedendo la revisione dei verificatori assegnati.
+    \item \textbf{Verifica e Build automatica}: i revisori esaminano la PR. Un flusso di Continuous Integration basato su GitHub Actions si attiva automaticamente per verificare la correttezza della build LaTeX.
+    \item \textbf{Merge e Pubblicazione}: a seguito dell'approvazione formale e del superamento dei controlli automatici, viene effettuato il merge della PR nel ramo principale (spostando il ticket Jira in \emph{Completato}). Un ulteriore workflow di automazione provvede alla pubblicazione finale del documento all'interno del sito web di documentazione del gruppo.
+\end{enumerate}
 
 \subsection{Verifica}
-si deciderà una volta che si inizia a scrivere codice.
-comprende analisi, testing e strumenti utilizzati.
+Il processo di verifica garantisce che i prodotti sviluppati (documentazione e codice) siano conformi agli standard di qualità stabiliti. Esso si avvale di:
+\begin{itemize}
+    \item \textbf{Analisi statica}: controllo formale e strutturale eseguito mediante linters, type-check e l'ausilio di flussi automatici in CI per prevenire errori sintattici o violazioni delle norme di codifica.
+    \item \textbf{Analisi dinamica e Testing}: esecuzione di test automatici (unitari, di integrazione e di sistema) per validare il comportamento effettivo del software.
+    \item \textbf{Strumenti a supporto}: integrazione continua tramite GitHub Actions e utilizzo di strumenti di preview e controllo integrati nell'ambiente di sviluppo (es. estensione LaTeX Workshop per VS Code).
+\end{itemize}
 
 \subsection{Validazione}
-come per la verifica, si deciderà una volta che si inizia a scrivere codice.
-comprende la procedura di validazione e strumenti utilizzati.
+La validazione consiste nella dimostrazione oggettiva che il prodotto finale risponda alle esigenze reali del committente e dell'azienda proponente Halue S.r.l. SB. Tale processo si realizza attraverso sessioni di riscontro periodico (come i SAL bisettimanali) e l'esecuzione di test di accettazione mirati a verificare il soddisfacimento dei requisiti funzionali e di qualità definiti nel Piano di Qualifica.
 
 \subsection{Gestione della configurazione}
 \subsubsection{Introduzione}
-come viene strutturata la repository, branching, pr, sal, risoluzione dei problemi e un inizio di gestione qualità (riferimento a Piano di Qualifica)
+La gestione della configurazione disciplina il controllo e la tracciabilità di ogni elemento di configurazione (Configuration Item) del progetto. 
+Le attività di tracciamento operativo si basano sulla sinergia tra l'Issue Tracking System di Jira (fonte di verità per la pianificazione e lo stato dei task) e GitHub (per il controllo di versione del codice e dei documenti). 
+
+La gestione dei flussi di lavoro adotta il modello \emph{GitHub flow}, garantendo che ogni modifica sia isolata in appositi branch, sottoposta a revisione paritaria tramite Pull Request e validata da controlli automatici prima dell'incorporazione nel ramo stabile. 
+Il coordinamento interno del team \textbf{Git Happens} e le comunicazioni esterne con il proponente completano l'infrastruttura di governo del progetto, i cui indicatori di qualità e le metriche di riferimento trovano riscontro puntuale all'interno del documento \textbf{Piano di Qualifica}.
