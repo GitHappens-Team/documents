@@ -1,3 +1,4 @@
+% !TEX root = ../main.tex
 \section{Processi di supporto}
 I processi di supporto includono l'insieme delle attività che sostengono e affiancano i processi primari e organizzativi, assicurando la corretta esecuzione delle operazioni, la tracciabilità delle scelte e la qualità degli artefatti lungo l'intero ciclo di vita del progetto.
 
@@ -15,14 +16,51 @@ Il processo di documentazione ha lo scopo primario di formalizzare, strutturare 
 \noindent Il gruppo adotta la filosofia \textit{Documentation as Code}, trattando i documenti con il medesimo rigore riservato al codice sorgente. Tutti i documenti formali vengono redatti mediante il sistema di composizione tipografica \LaTeX{} e versionati all'interno del repository GitHub del team, assicurando rigore stilistico, controllo di versione e pubblicazione automatizzata. Il ciclo di vita di ciascun documento vede la cooperazione strutturata di tre ruoli distinti: il \textit{Redattore} per la stesura, il \textit{Verificatore} per il controllo di qualità e il \textit{Responsabile} per l'approvazione formale.
 
 \subsubsection{Struttura dei documenti}
-Tutti i documenti redatti dal gruppo seguono uno schema strutturale rigoroso e uniforme, volto a facilitare la consultazione. Ogni documento è composto da:
+Tutti i documenti formali redatti dal gruppo \textit{Git Happens} adottano un'impostazione grafica e strutturale standardizzata, definita dalla classe tipografica di gruppo \texttt{gh.cls}. Tale uniformità garantisce leggibilità, coerenza stilistica e consultabilità delle informazioni.
+
+\paragraph{Componenti comuni dei documenti}~\\
+Ciascun documento formale si articola nelle seguenti parti:
 \begin{itemize}
-    \item \textbf{Prima pagina}: contenente le informazioni identificative del gruppo, il titolo del documento, l'elenco dei redattori, dei verificatori e dei destinatari;
-    \item \textbf{Registro delle modifiche}: una tabella di riepilogo storico posta prima dell'indice, recante versione, data, autore, verificatore e una descrizione sintetica della modifica;
-    \item \textbf{Indice}: elenco gerarchico delle sezioni e sottosezioni, completo di indici delle figure ove applicabile;
-    \item \textbf{Corpo del documento}: suddiviso in sezioni numerate progressivamente;
-    \item \textbf{Pié di pagina}: contenente il nome del gruppo, il titolo del documento e la numerazione delle pagine.
+    \item \textbf{Prima pagina (Frontespizio)}: reca l'intestazione ufficiale con il logo del team, l'indirizzo di posta elettronica, il titolo e la tipologia del documento, la data di redazione e la tabella riassuntiva dei metadati (versione corrente, nominativi di redattori e verificatori, responsabile di progetto approvante e destinatari);
+    \item \textbf{Registro delle modifiche}: posizionato immediatamente dopo il frontespizio, tiene traccia dell'evoluzione del documento. Per ogni modifica approvata riporta in forma tabellare: versione, data dell'intervento (nel formato \texttt{AAAA/MM/GG}), autore della modifica, verificatore e una descrizione sintetica dei cambiamenti apportati. Le righe della tabella sono disposte in ordine cronologico inverso, posizionando in alto la versione più recente e in basso quella iniziale;
+    \item \textbf{Indice dei contenuti}: generato automaticamente tramite il comando \texttt{\textbackslash tableofcontents}, offre la panoramica gerarchica di sezioni, sottosezioni e paragrafi con i rispettivi riferimenti di pagina;
+    \item \textbf{Corpo del testo}: organizzato in sezioni e paragrafi numerati progressivamente, redatto a corpo 11pt con impaginazione standard A4;
+    \item \textbf{Piè di pagina}: presente su ogni pagina, reca il logo ridotto del team, la denominazione del documento, il nome del gruppo e la numerazione progressiva delle pagine.
 \end{itemize}
+
+\paragraph{Struttura della sezione introduttiva}~\\
+Al fine di fornire fin da subito un quadro chiaro e inquadrare correttamente il contesto, ogni documento formale di progetto (ad eccezione dei verbali di riunione, che adottano una struttura propria) deve obbligatoriamente aprirsi con una sezione denominata \textbf{Introduzione}, strutturata nei seguenti paragrafi:
+\begin{itemize}
+    \item \textbf{Scopo e finalità del documento}: chiarimento degli obiettivi primari del testo, identificazione dei destinatari (membri del gruppo, committente Halue S.r.l. SB, docenti di riferimento) e perimetro di applicazione;
+    \item \textbf{Uso del Glossario}: specifica della convenzione adottata per eliminare ogni potenziale ambiguità terminologica. Ogni termine tecnico, acronimo, vocabolo specialistico viene evidenziato con una lettera \textit{G} maiuscola a pedice (tramite la marcatura \texttt{\textbackslash ped\{G\}}). Tale notazione attesta che la definizione formale e condivisa del termine è consultabile all'interno del documento \textit{Glossario};
+    \item \textbf{Riferimenti normativi}: elenco puntuale dei vincoli e delle fonti a cui il documento deve rigidamente conformarsi (tra cui lo standard ISO/IEC 12207:1995, il Capitolato d'appalto C8 e le presenti \textit{Norme di Progetto});
+    \item \textbf{Riferimenti informativi}: catalogo delle fonti di consultazione, documentazione ufficiale dei framework tecnologici adottati (es. Next.js, Supabase, Vercel, Shopify) e materiale didattico fornito dai docenti.
+\end{itemize}
+
+\paragraph{Struttura specifica dei verbali}~\\
+I verbali delle riunioni adottano una struttura mirata a privilegiare la sintesi, la tracciabilità delle decisioni e l'operatività:
+\begin{itemize}
+    \item \textbf{Intestazione della riunione}: integrata nella tabella dei metadati del frontespizio, specifica le coordinate organizzative dell'incontro (data, orario, modalità di svolgimento e partecipanti);
+    \item \textbf{Ordine del giorno e sintesi delle discussioni}: suddiviso in punti numerati che illustrano sinteticamente i temi affrontati e le argomentazioni emerse durante il confronto;
+    \item \textbf{Programmazione del prossimo incontro (se presente)}: formalizza le coordinate (data, orario, canale) dell'incontro successivo in caso di convocazioni straordinarie, incontri esterni con il proponente o variazioni rispetto alla riunione ordinaria a cadenza settimanale (fissata ogni martedì);
+    \item \textbf{Tabella delle decisioni prese}: formalizza in modo univoco ogni decisione scaturita dalla riunione. Ciascuna delibera viene identificata con un codice univoco:
+    \begin{itemize}
+        \item \texttt{VI\_AAAA-MM-GG\_Dxx} per i verbali interni;
+        \item \texttt{VE\_AAAA-MM-GG\_Dxx} per i verbali esterni;
+    \end{itemize}
+    dove \texttt{AAAA-MM-GG} rappresenta la data della riunione e \texttt{xx} è un numero progressivo;
+    \item \textbf{Tabella delle attività da svolgere (ToDo)}: traduce operativamente le decisioni in compiti assegnati ai singoli membri. La tabella contiene i seguenti campi:
+    \begin{itemize}
+        \item \textbf{Codice}: identificativo dell'azione nel formato \texttt{ACT-GG.n} (dove \texttt{GG} è il giorno della riunione e \texttt{n} il progressivo);
+        \item \textbf{Riferimento decisione}: codice della decisione correlata (\texttt{Dxx}), garantendo il legame causale tra delibera e azione;
+        \item \textbf{Descrizione task}: definizione sintetica e non ambigua dell'attività da compiere;
+        \item \textbf{Assegnatario}: nominativo del componente incaricato della presa in carico;
+        \item \textbf{Ticket Jira}: riferimento al relativo ticket di tracciamento sull'Issue Tracker, oppure un trattino (\texttt{-}) per micro-attività organizzative prive di tracciamento;
+        \item \textbf{Scadenza}: data limite concordata per il completamento;
+        \item \textbf{Stato}: stato iniziale dell'attività (generalmente: \textit{Non iniziato} o \textit{In corso}).
+    \end{itemize}
+\end{itemize}
+\noindent Tale meccanismo garantisce la \textbf{tracciabilità operativa}: ogni delibera presa durante una riunione trova un corrispettivo operativo nei ticket di Jira, assicurando che gli impegni concordati dal gruppo vengano formalmente presi in carico, monitorati e portati a compimento entro le scadenze stabilite.
 
 \subsubsection{Convenzioni di nomenclatura}
 Al fine di garantire uniformità, tracciabilità e una corretta automazione dei flussi di lavoro all'interno delle repository del gruppo \textbf{Git Happens}, vengono applicate rigorose convenzioni di nomenclatura per la gestione dei branch e dei file di documentazione.
