@@ -5,16 +5,20 @@ I processi di supporto includono l'insieme delle attività che sostengono e affi
 \subsection{Documentazione}
 
 \subsubsection{Introduzione}
-Il processo di documentazione ha lo scopo primario di formalizzare, strutturare e mantenere tutte le informazioni prodotte dai processi del ciclo di vita del software adottati dal gruppo \textit{Git Happens}. In conformità con lo standard ISO/IEC 12207:1995, ogni attività svolta dal team deve essere adeguatamente pianificata, tracciata e registrata, al fine di garantire trasparenza, continuità operativa, manutenibilità e supporto al processo di valutazione della qualità.
-
-La documentazione costituisce il principale mezzo di comunicazione formale del team, consentendo la piena comprensione delle decisioni e delle soluzioni adottate anche senza richiedere una costante mediazione orale, tracciando un chiaro confine tra creatività progettuale e disciplina metodologica. Gli obiettivi perseguiti da questo processo comprendono:
+Il processo di documentazione ha lo scopo primario di formalizzare, strutturare e mantenere tutte le informazioni prodotte dai processi del ciclo di vita del software adottati dal gruppo \textit{Git Happens}. \\
+In conformità con lo standard ISO/IEC 12207:1995, ogni attività svolta dal team deve essere adeguatamente pianificata, tracciata e registrata, al fine di garantire trasparenza, continuità operativa, manutenibilità e supporto al processo di valutazione della qualità. \\
+\\
+\noindent La documentazione costituisce il principale mezzo di comunicazione formale del team, consentendo la piena comprensione delle decisioni e delle soluzioni adottate anche senza richiedere una costante mediazione orale, tracciando un chiaro confine tra creatività progettuale e disciplina metodologica. \\
+Gli obiettivi perseguiti da questo processo comprendono:
 \begin{itemize}
     \item Definire procedure standardizzate e ripetibili per garantire uniformità strutturale e stilistica a tutta la documentazione di gruppo;
     \item Raccogliere e formalizzare norme operative condivise che agevolino e guidino i membri del team durante la stesura dei testi;
     \item Garantire la trasparenza e la verificabilità dei processi produttivi, attestando il raggiungimento della qualità attesa.
 \end{itemize}
-
-Il gruppo adotta la filosofia \textit{Documentation as Code}, trattando i documenti con il medesimo rigore riservato al codice sorgente. Tutti i documenti formali vengono redatti mediante il sistema di composizione tipografica \LaTeX{} e versionati all'interno del repository GitHub del team, assicurando rigore stilistico, controllo di versione e pubblicazione automatizzata. Il ciclo di vita di ciascun documento vede la cooperazione strutturata di tre ruoli distinti: il \textit{Redattore} per la stesura, il \textit{Verificatore} per il controllo di qualità e il \textit{Responsabile} per l'approvazione formale.
+\noindent Il gruppo adotta la filosofia \textit{Documentation as Code}, trattando i documenti con il medesimo rigore riservato al codice sorgente. \\
+\\
+Tutti i documenti formali vengono redatti mediante il sistema di composizione tipografica \LaTeX{} e versionati all'interno del repository GitHub del team, assicurando rigore stilistico, controllo di versione e pubblicazione automatizzata. \\
+Il ciclo di vita di ciascun documento vede la cooperazione strutturata di tre ruoli distinti: il \textit{Redattore} per la stesura, il \textit{Verificatore} per il controllo di qualità e il \textit{Responsabile} per l'approvazione formale.
 
 \subsubsection{Struttura dei documenti}
 Tutti i documenti formali redatti dal gruppo \textit{Git Happens} adottano un'impostazione grafica e strutturale standardizzata, definita dalla classe tipografica di gruppo \texttt{gh.cls}. Tale uniformità garantisce leggibilità, coerenza stilistica e consultabilità delle informazioni.
@@ -67,10 +71,10 @@ I verbali delle riunioni adottano una struttura mirata a privilegiare la sintesi
 Tale meccanismo garantisce la \textbf{tracciabilità operativa}: ogni delibera presa durante una riunione trova un corrispettivo operativo nei ticket di Jira, assicurando che gli impegni concordati dal gruppo vengano formalmente presi in carico, monitorati e portati a compimento entro le scadenze stabilite.
 
 \subsubsection{Convenzioni di nomenclatura}
-Al fine di garantire uniformità, tracciabilità e una corretta automazione dei flussi di lavoro all'interno delle repository del gruppo \textbf{Git Happens}, vengono applicate rigorose convenzioni di nomenclatura per la gestione dei branch e dei file di documentazione.
+Al fine di garantire uniformità, tracciabilità e una corretta automazione dei flussi di lavoro all'interno delle repository del gruppo \textbf{Git Happens}, vengono applicate rigorose convenzioni di nomenclatura per la gestione dei branch e dei file di documentazione. 
 
 \subsubsection{Nominazione dei branch di lavoro (Git)}
-Il gruppo adotta il modello di sviluppo \emph{GitHub flow}. Per qualsiasi attività o contribuzione all'interno delle repository, il nome del branch deve essere generato seguendo una struttura standard legata al sistema di tracciamento dei ticket. 
+Il gruppo adotta il modello di sviluppo \emph{GitHub flow}. Per qualsiasi attività o contribuzione all'interno delle repository, il nome del branch deve essere generato seguendo una struttura standard legata al sistema di tracciamento dei ticket. \\
 La convenzione di naming ufficiale è la seguente:
 \begin{center}
     \texttt{KEY-NUMBER-DESC}
@@ -81,12 +85,13 @@ dove:
     \item \textbf{NUMBER}: è il numero identificativo progressivo della issue su Jira;
     \item \textbf{DESC}: è una descrizione sintetica del task in formato minuscolo, con le parole separate da trattini alti (\texttt{-}).
 \end{itemize}
-\emph{Esempio}: \texttt{SWE-37-bootstrap-del-way-of-working}. 
+\emph{Esempio}: \texttt{SWE-37-bootstrap-del-way-of-working}. \\
+\\
 L'utilizzo dell'estensione ufficiale di Atlassian per VS Code consente di automatizzare la creazione del branch e la corretta applicazione di questa convenzione direttamente dall'interfaccia di sviluppo.
 
 \subsubsection{Nominazione dei file e struttura della documentazione}
-La stesura e la pubblicazione della documentazione seguono uno standard organizzativo basato su cartelle dedicate all'interno della repository di progetto (ad esempio, la suddivisione temporale o tipologica per i verbali in \texttt{verbali/esterni/yyyy-mm-dd} o \texttt{verbali/interni/yyyy-mm-dd}).
-
+La stesura e la pubblicazione della documentazione seguono uno standard organizzativo basato su cartelle dedicate all'interno della repository di progetto (ad esempio, la suddivisione temporale o tipologica per i verbali in \texttt{verbali/esterni/yyyy-mm-dd} o \texttt{verbali/interni/yyyy-mm-dd}). \\
+\\
 Per quanto riguarda i file sorgente e gli asset correlati, valgono le seguenti regole:
 \begin{itemize}
     \item \textbf{File principale}: ogni documento deve essere strutturato attorno a un file radice denominato \texttt{main.tex};
@@ -96,7 +101,8 @@ Per quanto riguarda i file sorgente e gli asset correlati, valgono le seguenti r
 \end{itemize}
 
 \subsubsection{Versionamento}
-Il gruppo \textbf{Git Happens} adotta regole uniformi per la numerazione delle versioni documentali e per i messaggi di commit sul codice sorgente, con l'obiettivo di garantire tracciabilità e coerenza nell'evoluzione dei manufatti di progetto.
+Il gruppo \textbf{Git Happens} adotta regole uniformi per la numerazione delle versioni documentali e per i messaggi di commit sul codice sorgente, con l'obiettivo di garantire tracciabilità e coerenza nell'evoluzione dei manufatti di progetto. \\
+\\
 Per il \textbf{Registro delle Modifiche} di tutti i documenti di progetto, i numeri di versione seguono il formato a tre cifre \texttt{X.Y.Z}, attribuendo a ciascun campo un significato univoco:
 \begin{itemize}
     \item \textbf{Cifra \textit{Z} (Bozza e modifiche)}: viene incrementata dal Redattore ad ogni stesura, integrazione di contenuto o modifica del documento;
@@ -104,7 +110,8 @@ Per il \textbf{Registro delle Modifiche} di tutti i documenti di progetto, i num
     \item \textbf{Cifra \textit{X} (Approvazione formale e rilascio)}: viene incrementata esclusivamente dal Responsabile di Progetto nel momento dell'approvazione formale e definitiva del documento pronto per il rilascio.
 \end{itemize}
 
-Per quanto concerne il codice sorgente e la contribuzione alle repository, il team adotta la convenzione dei \emph{semantic commit messages} (messaggi di commit semantici scritti in lingua inglese). I messaggi devono esplicitare chiaramente la natura dell'operazione attraverso prefissi standardizzati quali:
+Per quanto concerne il codice sorgente e la contribuzione alle repository, il team adotta la convenzione dei \emph{semantic commit messages} (messaggi di commit semantici scritti in lingua inglese). \\
+I messaggi devono esplicitare chiaramente la natura dell'operazione attraverso prefissi standardizzati quali:
 \begin{itemize}
     \item \texttt{feat}: sviluppo o implementazione di una nuova funzionalità del progetto;
     \item \texttt{docs}: creazione o aggiornamento della documentazione;
@@ -133,12 +140,13 @@ Il processo di verifica garantisce che i prodotti sviluppati (documentazione e c
 \end{itemize}
 
 \subsection{Validazione}
-La validazione consiste nella dimostrazione oggettiva che il prodotto finale risponda alle esigenze reali del committente e dell'azienda proponente Halue S.r.l. SB. Tale processo si realizza attraverso sessioni di riscontro periodico (come i SAL bisettimanali) e l'esecuzione di test di accettazione mirati a verificare il soddisfacimento dei requisiti funzionali e di qualità definiti nel Piano di Qualifica.
+La validazione consiste nella dimostrazione oggettiva che il prodotto finale risponda alle esigenze reali del committente e dell'azienda proponente Halue S.r.l. SB. \\
+Tale processo si realizza attraverso sessioni di riscontro periodico (come i SAL bisettimanali) e l'esecuzione di test di accettazione mirati a verificare il soddisfacimento dei requisiti funzionali e di qualità definiti nel Piano di Qualifica.
 
 \subsection{Gestione della configurazione}
 \subsubsection{Introduzione}
-La gestione della configurazione disciplina il controllo e la tracciabilità di ogni elemento di configurazione (Configuration Item) del progetto. 
-Le attività di tracciamento operativo si basano sulla sinergia tra l'Issue Tracking System di Jira (fonte di verità per la pianificazione e lo stato dei task) e GitHub (per il controllo di versione del codice e dei documenti). 
-
-La gestione dei flussi di lavoro adotta il modello \emph{GitHub flow}, garantendo che ogni modifica sia isolata in appositi branch, sottoposta a revisione paritaria tramite Pull Request e validata da controlli automatici prima dell'incorporazione nel ramo stabile. 
+La gestione della configurazione disciplina il controllo e la tracciabilità di ogni elemento di configurazione (Configuration Item) del progetto. \\
+Le attività di tracciamento operativo si basano sulla sinergia tra l'Issue Tracking System di Jira (fonte di verità per la pianificazione e lo stato dei task) e GitHub (per il controllo di versione del codice e dei documenti). \\
+\\
+La gestione dei flussi di lavoro adotta il modello \emph{GitHub flow}, garantendo che ogni modifica sia isolata in appositi branch, sottoposta a revisione paritaria tramite Pull Request e validata da controlli automatici prima dell'incorporazione nel ramo stabile. \\
 Il coordinamento interno del team \textbf{Git Happens} e le comunicazioni esterne con il proponente completano l'infrastruttura di governo del progetto, i cui indicatori di qualità e le metriche di riferimento trovano riscontro puntuale all'interno del documento \textbf{Piano di Qualifica}.
