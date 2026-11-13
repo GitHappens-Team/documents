@@ -3,17 +3,18 @@
 \subsection{Gestione dei processi}
 
 \subsubsection{Introduzione}
-La gestione dei processi ha il compito di stabilire, implementare e monitorare l'insieme delle attività che guidano la realizzazione del progetto didattico e lo sviluppo del software. L'adozione di processi organizzativi strutturati garantisce l'efficienza operativa, il rispetto delle scadenze e la qualità complessiva del prodotto commissionato, consentendo al gruppo \textbf{Git Happens} di coordinare le risorse in modo ottimale ed equilibrato.
+La gestione dei processi ha il compito di stabilire, implementare e monitorare l'insieme delle attività che guidano la realizzazione del progetto didattico e lo sviluppo del software. \\
+L'adozione di processi organizzativi strutturati garantisce l'efficienza operativa, il rispetto delle scadenze e la qualità complessiva del prodotto commissionato, consentendo al gruppo \textbf{Git Happens} di coordinare le risorse in modo ottimale ed equilibrato.
 
 \subsubsection{Pianificazione attività}
 Le attività di progetto sono organizzate in modo iterativo e incrementale mediante l'utilizzo di sprint della durata bisettimanale. \\
-Ciascuno sprint si apre con una pianificazione condivisa in cui vengono assegnati i task sulla base delle priorità e delle scadenze stabilite, e si conclude con una retrospettiva volta a valutare i risultati conseguiti e a ridefinire le azioni correttive necessarie.
-
+Ciascuno sprint si apre con una pianificazione condivisa in cui vengono assegnati i task sulla base delle priorità e delle scadenze stabilite, e si conclude con una retrospettiva volta a valutare i risultati conseguiti e a ridefinire le azioni correttive necessarie. \\
+\\
 La gestione temporale e il tracciamento dei task si appoggiano interamente sull'utilizzo di Atlassian Jira, organizzato in spazi di lavoro dedicati (come lo spazio \texttt{SWE} per l'amministrazione e la documentazione) strutturati secondo una modalità Kanban che funge da unica fonte di verità sullo stato d'avanzamento del progetto.
 
 \subsubsection{Definition of Done}
-La \emph{Definition of Done} (DoD) stabilisce l'insieme minimo e oggettivo di criteri che un'attività deve soddisfare prima di poter essere dichiarata conclusa, fusa nel ramo principale \texttt{main} e portata nello stato \emph{Completato} su Jira.
-
+La \emph{Definition of Done} (DoD) stabilisce l'insieme minimo e oggettivo di criteri che un'attività deve soddisfare prima di poter essere dichiarata conclusa, fusa nel ramo principale \texttt{main} e portata nello stato \emph{Completato} su Jira. \\
+\\
 Tali criteri vengono mantenuti essenziali nella fase iniziale del progetto ed estesi progressivamente con l'introduzione di nuovi strumenti di verifica.
 
 \needspace{5\baselineskip}
@@ -37,7 +38,10 @@ Un task di sviluppo software è considerato completato quando soddisfa tutti i s
 \end{itemize}
 
 \subsubsection{Ruoli di progetto}
-All'interno del gruppo, i ruoli professionali tipici del ciclo di vita del software sono ricoperti a rotazione da tutti i membri, garantendo una formazione omogenea e una condivisione trasversale delle competenze. Ciascun componente si impegna a dedicare un monte orario complessivo di 93 ore produttive (per un totale di 651 ore distribuite sui sette membri del team). I ruoli previsti sono i seguenti:
+All'interno del gruppo, i ruoli professionali tipici del ciclo di vita del software sono ricoperti a rotazione da tutti i membri, garantendo una formazione omogenea e una condivisione trasversale delle competenze. \\
+Ciascun componente si impegna a dedicare un monte orario complessivo di 93 ore produttive (per un totale di 651 ore distribuite sui sette membri del team). \\
+\\
+I ruoli previsti sono i seguenti:
 \begin{itemize}
     \item \textbf{Responsabile}: coordina il gruppo, gestisce i rapporti con l'esterno, cura la pianificazione temporale delle attività, monitora l'avanzamento complessivo e vigila sul rispetto dei vincoli di budget e di progetto.
     \item \textbf{Amministratore}: gestisce l'infrastruttura di lavoro, la configurazione delle repository GitHub, i flussi di integrazione continua e l'efficienza degli strumenti operativi a supporto del team.
@@ -48,19 +52,19 @@ All'interno del gruppo, i ruoli professionali tipici del ciclo di vita del softw
 \end{itemize}
 
 \subsection{Coordinamento e comunicazioni}
-Il coordinamento delle attività e la comunicazione all'interno del team e con gli stakeholder esterni avvengono attraverso canali dedicati e strutturati.
-
+Il coordinamento delle attività e la comunicazione all'interno del team e con gli stakeholder esterni avvengono attraverso canali dedicati e strutturati.\\
+\\
 La comunicazione sincrona si avvale di riunioni periodiche e di videoconferenze programmate, tra cui spiccano gli incontri bisettimanali di Stato Avanzamento Lavori (SAL) con l'azienda proponente Halue S.r.l. SB, focalizzati sulla verifica dei risultati e sull'analisi dei consumi delle piattaforme cloud. \\
-La comunicazione asincrona e il confronto operativo quotidiano sfruttano canali dedicati di messaggistica e la casella di posta elettronica designata per il progetto.
-
+La comunicazione asincrona e il confronto operativo quotidiano sfruttano canali dedicati di messaggistica e la casella di posta elettronica designata per il progetto. \\
+\\
 Ogni riunione interna o esterna viene formalizzata attraverso la stesura di appositi verbali.
 
 \subsection{Infrastruttura}
 
 \subsubsection{Introduzione}
 L'infrastruttura tecnologica del gruppo si fonda sull'utilizzo integrato di piattaforme per il controllo di versione, l'automazione e la gestione dei task.\\
-Il codice sorgente e i documenti sono ospitati all'interno di repository GitHub dedicate, organizzate separatamente per la documentazione, il prototipo e il prodotto finale.
-
+Il codice sorgente e i documenti sono ospitati all'interno di repository GitHub dedicate, organizzate separatamente per la documentazione, il prototipo e il prodotto finale.\\
+\\
 I flussi operativi beneficiano di automazioni avanzate tramite GitHub Actions, che gestiscono l'integrazione continua (CI), la compilazione automatica dei documenti in formato LaTeX e la pubblicazione dei contenuti all'interno del sito web di documentazione del team.
 
 
@@ -79,13 +83,13 @@ Il gruppo \textbf{Git Happens} applica il ciclo di Deming (PDCA) su base iterati
 \subsubsection{Implementazione del processo}
 L'implementazione delle modifiche e l'introduzione di nuove componenti seguono una procedura rigorosa basata sul modello \emph{GitHub flow}.\\
 Ogni contributo viene sviluppato all'interno di un branch dedicato denominato secondo lo standard \texttt{KEY-NUMBER-DESC} (collegato al ticket Jira corrispondente). Al termine dello sviluppo, l'autore apre una Pull Request (PR) su GitHub. \\
-La PR viene sottoposta a revisione paritaria da parte dei verificatori assegnati e viene validata dai controlli automatici di integrazione continua (build, linter e test).
-
+La PR viene sottoposta a revisione paritaria da parte dei verificatori assegnati e viene validata dai controlli automatici di integrazione continua (build, linter e test).\\
+\\
 Solo dopo l'approvazione formale e il superamento dei controlli, la PR viene fusa nel ramo principale. 
 
 \subsubsection{Valutazione del processo}
-Al termine di ogni sprint, il team si riunisce per condurre una retrospettiva formale.
-
+Al termine di ogni sprint, il team si riunisce per condurre una retrospettiva formale. \\
+\\
 Durante questa fase vengono analizzati i punti di forza e le criticità emerse nel periodo precedente, esaminando gli scostamenti tra la pianificazione e l'effettivo avanzamento dei lavori, al fine di individuare tempestivamente aree di miglioramento e azioni correttive mirate.
 
 \subsubsection{Miglioramento del processo}

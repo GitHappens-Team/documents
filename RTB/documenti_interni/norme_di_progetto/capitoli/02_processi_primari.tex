@@ -5,7 +5,7 @@
 \subsubsection{Introduzione}
 Conformemente allo standard ISO/IEC 12207:1995, il processo di fornitura definisce un insieme strutturato di attività, metodi e procedure orientate a garantire la fornitura del prodotto software richiesto dal proponente Halue S.r.l. Società Benefit. \\
 In particolare, il gruppo \textbf{Git Happens} focalizza questo processo sul monitoraggio e sul coordinamento delle attività necessarie per la realizzazione del progetto ``Sonar'', assicurando che il prodotto finale soddisfi i requisiti specificati e venga consegnato nei tempi e nei costi previsti.
-
+\\ \\
 Il processo prende avvio con l'analisi approfondita del capitolato d'appalto e dei vincoli tecnologici imposti dall'azienda proponente. Successivamente, si procede alla formalizzazione degli accordi e alla pianificazione dettagliata delle risorse e delle attività tramite il documento Piano di Progetto.
 
 \subsubsection{Documentazione fornita}
@@ -22,11 +22,11 @@ Il processo prende avvio con l'analisi approfondita del capitolato d'appalto e d
 \subsection{Sviluppo}
 
 \subsubsection{Introduzione}
-Il processo di sviluppo, in accordo con lo standard ISO/IEC 12207:1995, comprende l'insieme delle attività di analisi, progettazione, codifica, testing e configurazione dell'ambiente. Il gruppo \textbf{Git Happens} adotta un approccio incrementale e iterativo, garantendo la tracciabilità tra i requisiti e l'architettura implementata per il sistema Sonar.
-
+Il processo di sviluppo, in accordo con lo standard ISO/IEC 12207:1995, comprende l'insieme delle attività di analisi, progettazione, codifica, testing e configurazione dell'ambiente. \\
+Il gruppo \textbf{Git Happens} adotta un approccio incrementale e iterativo, garantendo la tracciabilità tra i requisiti e l'architettura implementata per il sistema Sonar.
 \subsubsection{Analisi dei requisiti} 
-L'attività di analisi dei requisiti ha lo scopo di definire in modo esaustivo le esigenze del proponente Halue S.r.l. SB. Il sistema Sonar si propone di analizzare store Shopify enterprise per mappare configurazioni, app, webhook, metafield e codice di tema, individuando elementi orfani e codice morto.
-
+L'attività di analisi dei requisiti ha lo scopo di definire in modo esaustivo le esigenze del proponente Halue S.r.l. SB. Il sistema Sonar si propone di analizzare store Shopify enterprise per mappare configurazioni, app, webhook, metafield e codice di tema, individuando elementi orfani e codice morto. \\
+\\
 Gli analisti del gruppo definiscono:
 \begin{itemize}
     \item \textbf{Casi d'uso}: scenari d'interazione tra l'utente autenticato (tramite Google OAuth su Supabase) e il sistema, focalizzati sulla gestione delle scansioni e sulla navigazione del grafo delle dipendenze;
@@ -35,8 +35,8 @@ Gli analisti del gruppo definiscono:
 \end{itemize}
 
 \subsubsection{Progettazione}
-La fase di progettazione definisce l'architettura logica e di deployment del sistema Sonar, separando nettamente i moduli di acquisizione, normalizzazione, analisi e presentazione.
-
+La fase di progettazione definisce l'architettura logica e di deployment del sistema Sonar, separando nettamente i moduli di acquisizione, normalizzazione, analisi e presentazione. \\
+\\
 I principali aspetti affrontati comprendono:
 \begin{itemize}
     \item \textbf{Modello a Grafo}: strutturazione delle entità Shopify e delle relative dipendenze all'interno di un database relazionale Supabase (PostgreSQL) protetto da Row Level Security (RLS);
