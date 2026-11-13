@@ -7,6 +7,27 @@ La gestione dei processi ha il compito di stabilire, implementare e monitorare l
 \subsubsection{Pianificazione attività}
 Le attività di progetto sono organizzate in modo iterativo e incrementale mediante l'utilizzo di sprint della durata bisettimanale. Ciascuno sprint si apre con una pianificazione condivisa in cui vengono assegnati i task sulla base delle priorità e delle scadenze stabilite, e si conclude con una retrospettiva volta a valutare i risultati conseguiti e a ridefinire le azioni correttive necessarie. La gestione temporale e il tracciamento dei task si appoggiano interamente sull'utilizzo di Atlassian Jira, organizzato in spazi di lavoro dedicati (come lo spazio \texttt{SWE} per l'amministrazione e la documentazione) strutturati secondo una modalità Kanban che funge da unica fonte di verità sullo stato d'avanzamento del progetto.
 
+\subsubsection{Definition of Done}
+La \emph{Definition of Done} (DoD) stabilisce l'insieme minimo e oggettivo di criteri che un'attività deve soddisfare prima di poter essere dichiarata conclusa, fusa nel ramo principale \texttt{main} e portata nello stato \emph{Completato} su Jira. Tali criteri vengono mantenuti essenziali nella fase iniziale del progetto ed estesi progressivamente con l'introduzione di nuovi strumenti di verifica.
+
+\paragraph{Criteri per la documentazione}~\\
+Un task documentale è considerato completato quando soddisfa tutti i seguenti requisiti:
+\begin{itemize}
+    \item \textbf{Compilazione e formato}: il sorgente \LaTeX{} compila senza errori nella pipeline di Continuous Integration su GitHub Actions e rispetta il template \texttt{gh.cls} e le norme tipografiche e terminologiche del gruppo;
+    \item \textbf{Registro modifiche e metadati}: il registro delle modifiche è aggiornato con versione, data, autore, verificatore e descrizione, e l'eventuale file \texttt{metadata.json} risulta coerente;
+    \item \textbf{Verifica e approvazione}: la Pull Request su GitHub ha ottenuto l'approvazione del verificatore designato e, per i rilasci formali, del responsabile;
+    \item \textbf{Integrazione e tracciamento}: la Pull Request è priva di conflitti ed è stata fusa in \texttt{main}, con conseguente chiusura del relativo ticket su Jira.
+\end{itemize}
+
+\paragraph{Criteri per il software}~\\
+Un task di sviluppo software è considerato completato quando soddisfa tutti i seguenti requisiti:
+\begin{itemize}
+    \item \textbf{Funzionalità e compilazione}: la modifica rispetta le specifiche definite per il task e non introduce errori di compilazione o di esecuzione;
+    \item \textbf{Controlli automatici}: risultano superati i controlli previsti dalla pipeline di Continuous Integration configurata sulla repository (build, analisi statica e test ove presenti);
+    \item \textbf{Revisione e integrazione}: la Pull Request su GitHub è stata revisionata e approvata dal verificatore designato ed è stata fusa in \texttt{main};
+    \item \textbf{Allineamento}: l'eventuale documentazione tecnica correlata è aggiornata e il relativo ticket su Jira è stato spostato nello stato \emph{Completato}.
+\end{itemize}
+
 \subsubsection{Ruoli di progetto}
 All'interno del gruppo, i ruoli professionali tipici del ciclo di vita del software sono ricoperti a rotazione da tutti i membri, garantendo una formazione omogenea e una condivisione trasversale delle competenze. Ciascun componente si impegna a dedicare un monte orario complessivo di 93 ore produttive (per un totale di 651 ore distribuite sui sette membri del team). I ruoli previsti sono i seguenti:
 \begin{itemize}
@@ -29,6 +50,15 @@ L'infrastruttura tecnologica del gruppo si fonda sull'utilizzo integrato di piat
 
 \subsection{Miglioramento}
 Il processo di miglioramento continuo del team si ispira al ciclo iterativo PDCA (\emph{Plan, Do, Check, Act}), volto a monitorare e ottimizzare costantemente i processi di lavoro e la qualità dei prodotti realizzati.
+
+\subsubsection{Modello PDCA}
+Il gruppo \textbf{Git Happens} applica il ciclo di Deming (PDCA) su base iterativa e incrementale in corrispondenza degli sprint bisettimanali, articolandolo nelle seguenti quattro fasi operative:
+\begin{itemize}
+    \item \textbf{Plan (Pianificazione)}: all'avvio di ciascuno sprint il team definisce gli obiettivi e le scadenze del periodo, formalizza la rotazione bisettimanale dei ruoli e scompone le attività in ticket e sottotask all'interno dei rispettivi spazi su Jira (\texttt{SWE} per amministrazione e documentazione, \texttt{C8} per lo sviluppo del prodotto Sonar). Le decisioni assunte e le azioni assegnate vengono contestualmente tracciate nei verbali interni mediante le codifiche \texttt{VI\_AAAA-MM-GG\_Dxx} e \texttt{ACT-GG.n}, aggiornando le stime di impegno nel \textit{Piano di Progetto}.
+    \item \textbf{Do (Esecuzione)}: i componenti prendono in carico i ticket assegnati operando su branch dedicati secondo la convenzione \texttt{KEY-NUMBER-DESC} prevista dal modello \emph{GitHub flow}. Durante questa fase vengono applicate le convenzioni tipografiche in \LaTeX{} per la documentazione o le norme di codifica per il software, tracciando ogni avanzamento con messaggi di commit in lingua inglese.
+    \item \textbf{Check (Verifica e controllo)}: completata la redazione o lo sviluppo, l'autore sposta il ticket in \emph{In revisione} e apre una Pull Request su GitHub. Il contributo è sottoposto sia alle verifiche automatiche della pipeline di Continuous Integration, sia alla revisione paritaria da parte del verificatore designato. Al termine dello sprint si svolge inoltre la retrospettiva di gruppo per analizzare gli scostamenti rispetto alla pianificazione iniziale e rilevare eventuali criticità.
+    \item \textbf{Act (Azione correttiva e consolidamento)}: ottenute le approvazioni richieste e superati i controlli automatici, la Pull Request viene fusa in \texttt{main} e il ticket Jira chiuso come \emph{Completato}. Le criticità e gli spunti emersi durante la retrospettiva o negli incontri bisettimanali di SAL con il proponente \textit{Halue S.r.l.} vengono formalizzati come nuove decisioni e azioni correttive nei verbali e su Jira, portando, ove necessario, all'aggiornamento incrementale delle presenti \textit{Norme di Progetto} per gli sprint successivi.
+\end{itemize}
 
 \subsubsection{Implementazione del processo}
 L'implementazione delle modifiche e l'introduzione di nuove componenti seguono una procedura rigorosa basata sul modello \emph{GitHub flow}. Ogni contributo viene sviluppato all'interno di un branch dedicato denominato secondo lo standard \texttt{KEY-NUMBER-DESC} (collegato al ticket Jira corrispondente). Al termine dello sviluppo, l'autore apre una Pull Request (PR) su GitHub. La PR viene sottoposta a revisione paritaria da parte dei verificatori assegnati e viene validata dai controlli automatici di integrazione continua (build, linter e test). Solo dopo l'approvazione formale e il superamento dei controlli, la PR viene fusa nel ramo principale. 
