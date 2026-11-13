@@ -7,18 +7,19 @@ I processi di supporto includono l'insieme delle attività che sostengono e affi
 \subsubsection{Introduzione}
 Il processo di documentazione ha lo scopo primario di formalizzare, strutturare e mantenere tutte le informazioni prodotte dai processi del ciclo di vita del software adottati dal gruppo \textit{Git Happens}. In conformità con lo standard ISO/IEC 12207:1995, ogni attività svolta dal team deve essere adeguatamente pianificata, tracciata e registrata, al fine di garantire trasparenza, continuità operativa, manutenibilità e supporto al processo di valutazione della qualità.
 
-\noindent La documentazione costituisce il principale mezzo di comunicazione formale del team, consentendo la piena comprensione delle decisioni e delle soluzioni adottate anche senza richiedere una costante mediazione orale, tracciando un chiaro confine tra creatività progettuale e disciplina metodologica. Gli obiettivi perseguiti da questo processo comprendono:
+La documentazione costituisce il principale mezzo di comunicazione formale del team, consentendo la piena comprensione delle decisioni e delle soluzioni adottate anche senza richiedere una costante mediazione orale, tracciando un chiaro confine tra creatività progettuale e disciplina metodologica. Gli obiettivi perseguiti da questo processo comprendono:
 \begin{itemize}
     \item Definire procedure standardizzate e ripetibili per garantire uniformità strutturale e stilistica a tutta la documentazione di gruppo;
     \item Raccogliere e formalizzare norme operative condivise che agevolino e guidino i membri del team durante la stesura dei testi;
     \item Garantire la trasparenza e la verificabilità dei processi produttivi, attestando il raggiungimento della qualità attesa.
 \end{itemize}
-\noindent Il gruppo adotta la filosofia \textit{Documentation as Code}, trattando i documenti con il medesimo rigore riservato al codice sorgente. Tutti i documenti formali vengono redatti mediante il sistema di composizione tipografica \LaTeX{} e versionati all'interno del repository GitHub del team, assicurando rigore stilistico, controllo di versione e pubblicazione automatizzata. Il ciclo di vita di ciascun documento vede la cooperazione strutturata di tre ruoli distinti: il \textit{Redattore} per la stesura, il \textit{Verificatore} per il controllo di qualità e il \textit{Responsabile} per l'approvazione formale.
+
+Il gruppo adotta la filosofia \textit{Documentation as Code}, trattando i documenti con il medesimo rigore riservato al codice sorgente. Tutti i documenti formali vengono redatti mediante il sistema di composizione tipografica \LaTeX{} e versionati all'interno del repository GitHub del team, assicurando rigore stilistico, controllo di versione e pubblicazione automatizzata. Il ciclo di vita di ciascun documento vede la cooperazione strutturata di tre ruoli distinti: il \textit{Redattore} per la stesura, il \textit{Verificatore} per il controllo di qualità e il \textit{Responsabile} per l'approvazione formale.
 
 \subsubsection{Struttura dei documenti}
 Tutti i documenti formali redatti dal gruppo \textit{Git Happens} adottano un'impostazione grafica e strutturale standardizzata, definita dalla classe tipografica di gruppo \texttt{gh.cls}. Tale uniformità garantisce leggibilità, coerenza stilistica e consultabilità delle informazioni.
 
-\paragraph{Componenti comuni dei documenti}~\\
+\paragraph{Componenti comuni dei documenti}~\\[0.15cm]
 Ciascun documento formale si articola nelle seguenti parti:
 \begin{itemize}
     \item \textbf{Prima pagina (Frontespizio)}: reca l'intestazione ufficiale con il logo del team, l'indirizzo di posta elettronica, il titolo e la tipologia del documento, la data di redazione e la tabella riassuntiva dei metadati (versione corrente, nominativi di redattori e verificatori, responsabile di progetto approvante e destinatari);
@@ -28,7 +29,7 @@ Ciascun documento formale si articola nelle seguenti parti:
     \item \textbf{Piè di pagina}: presente su ogni pagina, reca il logo ridotto del team, la denominazione del documento, il nome del gruppo e la numerazione progressiva delle pagine.
 \end{itemize}
 
-\paragraph{Struttura della sezione introduttiva}~\\
+\paragraph{Struttura della sezione introduttiva}~\\[0.15cm]
 Al fine di fornire fin da subito un quadro chiaro e inquadrare correttamente il contesto, ogni documento formale di progetto (ad eccezione dei verbali di riunione, che adottano una struttura propria) deve obbligatoriamente aprirsi con una sezione denominata \textbf{Introduzione}, strutturata nei seguenti paragrafi:
 \begin{itemize}
     \item \textbf{Finalità del documento}: chiarimento degli obiettivi primari del testo, identificazione dei destinatari (membri del gruppo, committente Halue S.r.l. SB, docenti di riferimento) e perimetro di applicazione;
@@ -40,18 +41,17 @@ Al fine di fornire fin da subito un quadro chiaro e inquadrare correttamente il 
     \end{itemize}
 \end{itemize}
 
-\paragraph{Struttura specifica dei verbali}~\\
+\paragraph{Struttura specifica dei verbali}~\\[0.15cm]
 I verbali delle riunioni adottano una struttura mirata a privilegiare la sintesi, la tracciabilità delle decisioni e l'operatività:
 \begin{itemize}
     \item \textbf{Intestazione della riunione}: integrata nella tabella dei metadati del frontespizio, specifica le coordinate organizzative dell'incontro (data, orario, modalità di svolgimento e partecipanti);
     \item \textbf{Ordine del giorno e sintesi delle discussioni}: suddiviso in punti numerati che illustrano sinteticamente i temi affrontati e le argomentazioni emerse durante il confronto;
     \item \textbf{Programmazione del prossimo incontro (se presente)}: formalizza le coordinate (data, orario, canale) dell'incontro successivo in caso di convocazioni straordinarie, incontri esterni con il proponente o variazioni rispetto alla riunione ordinaria a cadenza settimanale (fissata ogni martedì);
-    \item \textbf{Tabella delle decisioni prese}: formalizza in modo univoco ogni decisione scaturita dalla riunione. Ciascuna delibera viene identificata con un codice univoco:
+    \item \textbf{Tabella delle decisioni prese}: formalizza in modo univoco ogni decisione scaturita dalla riunione, identificando ciascuna delibera con un codice univoco (dove \texttt{AAAA-MM-GG} rappresenta la data della riunione e \texttt{xx} è un numero progressivo):
     \begin{itemize}
         \item \texttt{VI\_AAAA-MM-GG\_Dxx} per i verbali interni;
         \item \texttt{VE\_AAAA-MM-GG\_Dxx} per i verbali esterni;
     \end{itemize}
-    dove \texttt{AAAA-MM-GG} rappresenta la data della riunione e \texttt{xx} è un numero progressivo;
     \item \textbf{Tabella delle attività da svolgere (ToDo)}: traduce operativamente le decisioni in compiti assegnati ai singoli membri. La tabella contiene i seguenti campi:
     \begin{itemize}
         \item \textbf{Codice}: identificativo dell'azione nel formato \texttt{ACT-GG.n} (dove \texttt{GG} è il giorno della riunione e \texttt{n} il progressivo);
@@ -63,7 +63,8 @@ I verbali delle riunioni adottano una struttura mirata a privilegiare la sintesi
         \item \textbf{Stato}: stato iniziale dell'attività (generalmente: \textit{Non iniziato} o \textit{In corso}).
     \end{itemize}
 \end{itemize}
-\noindent Tale meccanismo garantisce la \textbf{tracciabilità operativa}: ogni delibera presa durante una riunione trova un corrispettivo operativo nei ticket di Jira, assicurando che gli impegni concordati dal gruppo vengano formalmente presi in carico, monitorati e portati a compimento entro le scadenze stabilite.
+
+Tale meccanismo garantisce la \textbf{tracciabilità operativa}: ogni delibera presa durante una riunione trova un corrispettivo operativo nei ticket di Jira, assicurando che gli impegni concordati dal gruppo vengano formalmente presi in carico, monitorati e portati a compimento entro le scadenze stabilite.
 
 \subsubsection{Convenzioni di nomenclatura}
 Al fine di garantire uniformità, tracciabilità e una corretta automazione dei flussi di lavoro all'interno delle repository del gruppo \textbf{Git Happens}, vengono applicate rigorose convenzioni di nomenclatura per la gestione dei branch e dei file di documentazione.
@@ -95,12 +96,12 @@ Per quanto riguarda i file sorgente e gli asset correlati, valgono le seguenti r
 \end{itemize}
 
 \subsubsection{Versionamento}
-Il controllo di versione costituisce un caposaldo della gestione della configurazione per il gruppo \textbf{Git Happens}, sia per quanto riguarda la documentazione sia per il codice sorgente del progetto. 
-Il versionamento dei documenti segue la tripla numerica \texttt{X.Y.Z}, dove:
+Il gruppo \textbf{Git Happens} adotta regole uniformi per la numerazione delle versioni documentali e per i messaggi di commit sul codice sorgente, con l'obiettivo di garantire tracciabilità e coerenza nell'evoluzione dei manufatti di progetto.
+Per il \textbf{Registro delle Modifiche} di tutti i documenti di progetto, i numeri di versione seguono il formato a tre cifre \texttt{X.Y.Z}, attribuendo a ciascun campo un significato univoco:
 \begin{itemize}
-    \item \textbf{X} viene incrementato in corrispondenza di rilasci fondamentali o baseline ufficiali concordate con i committenti e il proponente (es. RTB, PB);
-    \item \textbf{Y} viene incrementato in caso di modifiche sostanziali, aggiunta di sezioni rilevanti o riscritture importanti del contenuto;
-    \item \textbf{Z} viene incrementato in presenza di correzioni minori, rifiniture formali o aggiornamenti marginali.
+    \item \textbf{Cifra \textit{Z} (Bozza e modifiche)}: viene incrementata dal Redattore ad ogni stesura, integrazione di contenuto o modifica del documento;
+    \item \textbf{Cifra \textit{Y} (Consolidamento e modifiche sostanziali)}: viene incrementata a seguito di ogni avvenuta verifica con esito positivo, ovvero senza necessità di modifiche da parte del Verificatore;
+    \item \textbf{Cifra \textit{X} (Approvazione formale e rilascio)}: viene incrementata esclusivamente dal Responsabile di Progetto nel momento dell'approvazione formale e definitiva del documento pronto per il rilascio.
 \end{itemize}
 
 Per quanto concerne il codice sorgente e la contribuzione alle repository, il team adotta la convenzione dei \emph{semantic commit messages} (messaggi di commit semantici scritti in lingua inglese). I messaggi devono esplicitare chiaramente la natura dell'operazione attraverso prefissi standardizzati quali:
