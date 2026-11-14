@@ -7,24 +7,235 @@
 \section{Analisi dei rischi}
 
 \subsection{Introduzione}
+Durante il ciclo di vita del progetto possono emergere imprevisti di natura tecnica, organizzativa o legata all'interpretazione dei requisiti, con potenziali ripercussioni su tempi, costi e qualità del prodotto finale. \\
+In conformità con lo standard ISO/IEC 12207:1995 e con le procedure stabilite nelle \textit{Norme di Progetto}, il gruppo \textbf{Git Happens} adotta un processo continuo articolato in quattro fasi:
+\begin{enumerate}
+    \item \textbf{Identificazione:} individuazione preventiva delle possibili fonti di rischio legate sia al dominio applicativo di \textbf{Sonar} (stack tecnologico, vincoli delle piattaforme cloud, complessità del dominio Shopify), sia all'organizzazione interna del team;
+    \item \textbf{Analisi:} valutazione di ciascun rischio in termini di \textit{probabilità di occorrenza} (Bassa, Media, Alta) e \textit{impatto} sul progetto (Basso, Medio, Alto, Molto Alto), accompagnata dalla definizione dei segnali di rilevamento precoce;
+    \item \textbf{Pianificazione della mitigazione:} definizione delle azioni preventive volte a ridurre la probabilità che il rischio si verifichi e delle misure di contingenza da attuare qualora l'evento si manifesti;
+    \item \textbf{Controllo e aggiornamento:} monitoraggio sistematico al termine di ogni sprint e durante gli incontri periodici (SAL) con l'azienda proponente \textbf{Halue S.r.l. SB}, aggiornando il registro dei rischi qualora emergano nuove criticità.
+\end{enumerate}
+
+Ogni rischio censito è identificato da un codice univoco nel formato \texttt{[Categoria]-[Numero]}, dove la categoria assume uno dei seguenti valori:
+\begin{itemize}
+    \item \textbf{RT (Rischi Tecnologici):} legati all'adozione delle tecnologie previste, ai limiti infrastrutturali dei servizi cloud e alla complessità algoritmica del sistema;
+    \item \textbf{RO (Rischi Organizzativi):} legati alla pianificazione delle risorse, alla stima dei tempi e alla disponibilità dei membri del gruppo;
+    \item \textbf{RC (Rischi di Comunicazione e Requisiti):} legati all'allineamento con l'azienda proponente e alla stabilità dei requisiti.
+\end{itemize}
 
 \subsection{Rischi previsti}
-\subsubsection{Rischi tecnologici}
 
-\subsubsection{Rischi del personale}
+\subsubsection{Rischi tecnologici (RT)}
+\noindent
+\begin{tabularx}{\textwidth}{|l X c c|}
+\hline
+\textbf{Codice} & \textbf{Denominazione del rischio} & \textbf{Probabilità} & \textbf{Impatto} \\
+\textbf{RT-01} & Curva di apprendimento dello stack e instabilità \textit{beta} di Vercel Workflows & Alta & Alto \\
+\hline
+\textbf{RT-02} & Superamento dei limiti dei piani gratuiti (Vercel Hobby e Supabase Free) & Media & Medio  \\
+\hline
+\textbf{RT-03} & Sospensione automatica del database Supabase per inattività prima delle demo & Media & Alto  \\
+\hline
+\textbf{RT-04} & Falsi positivi nel motore di rilevamento orfani superiori alla soglia del 10\% & Media & Alto  \\
+\hline
+\textbf{RT-05} & Fallimento del parser Liquid su file di tema reali o sintatticamente complessi & Media & Medio  \\
+\hline
+\textbf{RT-06} & Omissione delle policy di isolamento multi-tenant (Row Level Security) & Media & Molto Alto  \\
+\hline
+\textbf{RT-07} & Scadenza del token Shopify (24h), rate limiting API e fallimenti parziali & Media & Medio  \\
+\hline
+\textbf{RT-08} & Codice generato non comprensibile dal team e perdita di artefatti & Media & Alto \\
+\hline
+\end{tabularx}
 
-\subsubsection{Rischi organizzativi}
+\subsubsection{Rischi organizzativi e gestionali (RO)}
+\vspace{2mm}
+\noindent
+\begin{tabularx}{\textwidth}{|l X c c|}
+\hline
+\textbf{Codice} & \textbf{Denominazione del rischio} & \textbf{Probabilità} & \textbf{Impatto} \\
+\hline
+\textbf{RO-01} & Sottostima delle ore necessarie e ritardi rispetto alle milestone & Media & Alto \\
+\hline
+\textbf{RO-02} & Concentrazione delle competenze tecniche su un singolo membro (\textit{Knowledge Silos}) & Alta & Alto \\
+\hline
+\textbf{RO-03} & Ridotta disponibilità del gruppo nei periodi d'esame e festività & Alta & Medio \\
+\hline
+\end{tabularx}
 
-\subsubsection{Rischi dei requisiti}
-
-\subsubsection{Rischi strumentali}
-
+\subsubsection{Rischi di comunicazione e requisiti (RC)}
+\vspace{2mm}
+\noindent
+\begin{tabularx}{\textwidth}{|l X c c|}
+\hline
+\textbf{Codice} & \textbf{Denominazione del rischio} & \textbf{Probabilità} & \textbf{Impatto} \\
+\hline
+\textbf{RC-01} & Incomprensione o ambiguità nell'interpretazione dei requisiti di capitolato & Media & Alto \\
+\hline
+\textbf{RC-02} & Ampiezza d'ambito eccessiva rispetto al monte ore disponibile & Media & Alto \\
+\hline
+\end{tabularx}
 
 \subsection{Piano di mitigazione}
-\subsubsection{Identificazione}
+\subsubsection{RT-01: Curva di apprendimento dello stack e instabilità \textit{beta} di Vercel Workflows}
+\begin{itemize}
+    \item \textbf{Descrizione:} Il team non possiede esperienza pregressa con l'intero stack richiesto (in particolare \textit{Vercel Workflows} per l'esecuzione durevole tramite replay, \textit{Shopify Admin GraphQL API} e \textit{Supabase}). Inoltre, \textit{Vercel Workflows} è rilasciato in stato \textit{beta} su tutti i piani, esponendo il progetto a possibili variazioni delle API o a difficoltà di ragionamento sull'idempotenza dei passi.
+    \item \textbf{Indicatori di rilevamento:} Blocchi tecnici superiori a 4 ore durante gli spike iniziali, errori di non-determinismo nel replay o duplicazione di dati a seguito di riprese.
+    \item \textbf{Azioni preventive:}
+    \begin{enumerate}
+        \item Adozione del principio \textit{``prima il rischio, poi il resto''}: esecuzione anticipata di spike tecnici isolati nella prima fase, prima del consolidamento architetturale;
+        \item Progettazione dei workflow con passi (\textit{step}) grossi, semplici e strettamente idempotenti per ridurre la complessità di replay;
+        \item Formalizzazione immediata delle scelte tecniche tramite \textit{Architecture Decision Records (ADR)}.
+    \end{enumerate}
+    \item \textbf{Piano di contingenza:} Richiesta di supporto tecnico agli sviluppatori esperti di Halue S.r.l. SB durante gli incontri periodici e, in caso di instabilità critica delle funzionalità beta, ripiegamento su un modello di orchestrazione a passi più granulari con stato persistito esplicitamente su database.
+\end{itemize}
 
-\subsubsection{Analisi}
+\subsubsection{RT-02: Superamento dei limiti dei piani gratuiti (Vercel Hobby e Supabase Free)}
+\begin{itemize}
+    \item \textbf{Descrizione:} I piani gratuiti presentano soglie stringenti (\textit{Vercel Hobby}: 50.000 eventi workflow/mese, 1 cron job/giorno, circa 500 richieste AI Gateway/mese; \textit{Supabase Free}: 500 MB di spazio database). Un consumo eccessivo scoperto tardi potrebbe bloccare le scansioni o le funzionalità AI.
+    \item \textbf{Indicatori di rilevamento:} Superamento del 70\% delle quote mensili nella telemetria interna o avvisi dalle dashboard dei provider cloud.
+    \item \textbf{Azioni preventive:}
+    \begin{enumerate}
+        \item Censimento scritto di tutti i limiti dei piani gratuiti in un foglio condiviso fin dalla seconda settimana;
+        \item Implementazione fin dal PoC di una tabella applicativa di telemetria per contabilizzare chiamate API, passi eseguiti e richieste al modello linguistico;
+        \item Inserimento della verifica dei consumi come voce fissa all'ordine del giorno di ogni SAL con Halue;
+        \item Conservazione su PostgreSQL del solo snapshot attivo, archiviando gli snapshot storici su \textit{Vercel Blob}.
+    \end{enumerate}
+    \item \textbf{Piano di contingenza:} Disattivazione immediata delle funzionalità opzionali ad alto consumo (generazione descrizioni tramite AI Gateway) e attivazione della procedura prevista dal capitolato per concordare con Halue il ridimensionamento della funzione o la copertura dei costi di piano.
+\end{itemize}
 
-\subsubsection{Pianificazione}
+\subsubsection{RT-03: Sospensione automatica del database Supabase per inattività prima delle demo}
+\begin{itemize}
+    \item \textbf{Descrizione:} Il piano gratuito di Supabase mette automaticamente in pausa i progetti dopo 7 giorni consecutivi di inattività. Una sospensione improvvisa in prossimità di una revisione (RTB o PB) o di una demo comprometterebbe l'operatività dell'intero sistema.
+    \item \textbf{Indicatori di rilevamento:} Assenza di traffico sul database di produzione/sviluppo per più di 4 giorni o notifiche e-mail di preavviso da Supabase.
+    \item \textbf{Azioni preventive:}
+    \begin{enumerate}
+        \item Configurazione di un \textit{Vercel Cron Job} giornaliero che esegue una query di lettura leggera (\textit{keep-alive}) sul database Supabase;
+        \item Verifica esplicita dello stato attivo di tutti i servizi cloud nella checklist pre-consegna prima di ogni demo e revisione.
+    \end{enumerate}
+    \item \textbf{Piano di contingenza:} Riattivazione manuale immediata dalla console di Supabase (tempo stimato di ripristino: pochi minuti) ed esecuzione della suite di smoke test end-to-end prima della presentazione.
+\end{itemize}
 
-\subsubsection{Controllo e aggiornamento}
+\subsubsection{RT-04: Falsi positivi nel motore di rilevamento orfani superiori alla soglia del 10\%}
+\begin{itemize}
+    \item \textbf{Descrizione:} Una calibrazione troppo aggressiva delle regole statiche (es. metafield valorizzati ma letti dinamicamente da app esterne o script non visibili) può portare il tasso di falsi positivi sulle segnalazioni ad alta severità oltre il limite massimo tollerato del 10\%.
+    \item \textbf{Indicatori di rilevamento:} Misurazione empirica del tasso di falsi positivi superiore all'8\% al termine di un'iterazione di sviluppo.
+    \item \textbf{Azioni preventive:}
+    \begin{enumerate}
+        \item Sviluppo di regole prudenti e puramente deterministiche, mantenendo l'intelligenza artificiale completamente separata dal motore decisionale;
+        \item Esplicitazione per ogni arco del grafo della fonte e del livello di confidenza (\textit{accertato, probabile, ipotizzato}) e visualizzazione obbligatoria delle evidenze a supporto di ogni segnalazione;
+        \item Costruzione di uno store di sviluppo stratificato con casi noti concordati con Halue per misurare precisione e falsi positivi ad ogni iterazione.
+    \end{enumerate}
+    \item \textbf{Piano di contingenza:} Declassamento della severità per i pattern con evidenza parziale (da \textit{orfano certo} a \textit{richiede verifica manuale}) e raffinamento delle euristiche prima del rilascio della baseline.
+\end{itemize}
+
+\subsubsection{RT-05: Fallimento del parser Liquid su file di tema reali o sintatticamente complessi}
+\begin{itemize}
+    \item \textbf{Descrizione:} I temi Shopify reali contengono spesso codice Liquid disordinato, costrutti dinamici o file parzialmente malformati che potrebbero mandare in errore un parser rigido e interrompere l'analisi del tema.
+    \item \textbf{Indicatori di rilevamento:} Eccezioni di parsing durante l'analisi degli asset del tema o mancata estrazione dei riferimenti ai metafield.
+    \item \textbf{Azioni preventive:}
+    \begin{enumerate}
+        \item Adozione di una libreria di parsing Liquid esistente e consolidata, evitando la scrittura di parser artigianali da zero;
+        \item Inclusione nella suite di test automatici di file Liquid volutamente malformati o contenenti sintassi non standard;
+        \item Gestione controllata degli errori per singolo file: il sistema segnala esplicitamente ciò che non riesce a leggere senza bloccare la scansione complessiva.
+    \end{enumerate}
+    \item \textbf{Piano di contingenza:} Isolamento del file non parsabile con generazione di un apposito avviso di \textit{copertura parziale} nello snapshot, garantendo il completamento della pipeline sulle restanti risorse del tema.
+\end{itemize}
+
+\subsubsection{RT-06: Omissione delle policy di isolamento multi-tenant (Row Level Security)}
+\begin{itemize}
+    \item \textbf{Descrizione:} Dimenticare di attivare o configurare correttamente una policy \textit{Row Level Security (RLS)} su una tabella di PostgreSQL esporrebbe i dati degli store tra organizzazioni diverse, violando un requisito critico di sicurezza.
+    \item \textbf{Indicatori di rilevamento:} Presenza di tabelle nello schema pubblico prive di RLS abilitata o fallimento dei test di isolamento tra due utenti di organizzazioni distinte.
+    \item \textbf{Azioni preventive:}
+    \begin{enumerate}
+        \item Definizione obbligatoria delle policy RLS contestualmente allo script SQL di creazione di ogni singola tabella fin dal primo schema;
+        \item Scrittura di un test automatico in CI che interroga i metadati del database per verificare che nessuna tabella sia priva di policy RLS attiva e che due utenti di organizzazioni diverse non possano accedere ai rispettivi dati.
+    \end{enumerate}
+    \item \textbf{Piano di contingenza:} Blocco automatico della pipeline di integrazione continua (CI) e del deploy in produzione fino al ripristino della policy mancante e al superamento del test di isolamento.
+\end{itemize}
+
+\subsubsection{RT-07: Scadenza del token Shopify (24h), rate limiting API e fallimenti parziali}
+\begin{itemize}
+    \item \textbf{Descrizione:} Con il nuovo flusso \textit{client credentials} di Shopify, i token di accesso scadono dopo 24 ore (rischiando di invalidare scansioni lunghe). Inoltre, le API GraphQL applicano limiti a punti (100 punti/s) e singole famiglie di risorse possono risultare inaccessibili per permessi mancanti.
+    \item \textbf{Indicatori di rilevamento:} Risposte HTTP 401 (\textit{Unauthorized}), HTTP 429 (\textit{Throttled}) o errori di permessi insufficienti nei log di esecuzione del workflow.
+    \item \textbf{Azioni preventive:}
+    \begin{enumerate}
+        \item Cifratura di \textit{Client ID} e \textit{Client Secret} su database e rigenerazione automatica di un nuovo token di sessione all'inizio di ogni passo del workflow che interroga Shopify;
+        \item Lettura dell'header \texttt{extensions.cost} ad ogni risposta GraphQL con introduzione di pause adattive (\texttt{sleep}) prima dell'esaurimento del credito;
+        \item Implementazione della degradazione controllata: se una famiglia di risorse non è accessibile, la lacuna viene registrata come \textit{copertura parziale} senza interrompere la scansione.
+    \end{enumerate}
+    \item \textbf{Piano di contingenza:} Ripresa automatica del workflow dall'ultimo passo completato tramite il meccanismo durevole di Vercel Workflows dopo la rigenerazione del token o la ricarica del bucket API.
+\end{itemize}
+
+\subsubsection{RT-08: Codice generato non comprensibile dal team e perdita di artefatti}
+\begin{itemize}
+    \item \textbf{Descrizione:} L'uso intenso di strumenti di generazione del codice può produrre moduli che nessuno nel gruppo sa spiegare o manutenere, compromettendo la qualità e la valutazione orale in sede di revisione. Inoltre, errori locali possono causare la perdita di file.
+    \item \textbf{Indicatori di rilevamento:} Pull Request eccessivamente estese prive di adeguata documentazione o difficoltà degli autori nell'illustrare il funzionamento di un modulo durante le revisioni interne.
+    \item \textbf{Azioni preventive:}
+    \begin{enumerate}
+        \item Applicazione rigorosa della regola dell'alterità tra autore e revisore: ogni Pull Request deve essere approvata da un Verificatore diverso da chi ha scritto il codice;
+        \item Organizzazione periodica di sessioni interne di spiegazione a voce (\textit{``spiega senza guardare il codice''}) sui moduli critici;
+        \item Versionamento integrale di codice e documentazione su GitHub con branch protection su \texttt{main} e verifica automatica di linter, tipi e copertura test ($\ge 70\%$).
+    \end{enumerate}
+    \item \textbf{Piano di contingenza:} Rifiuto della Pull Request non comprensibile o priva di test, con richiesta di refactoring guidato in \textit{pair programming} prima dell'integrazione.
+\end{itemize}
+
+\subsubsection{RO-01: Sottostima delle ore necessarie e ritardi rispetto alle milestone}
+\begin{itemize}
+    \item \textbf{Descrizione:} L'inesperienza nella stima dei tempi di sviluppo, verifica e stesura documentale in \LaTeX\ (a fronte di un budget stretto di 651 ore complessive, pari a circa 5 ore di codifica per requisito obbligatorio) può generare scostamenti rispetto alla pianificazione.
+    \item \textbf{Indicatori di rilevamento:} Scostamento negativo superiore al 15\% tra ore preventivate e consuntivate rilevato tramite Jira e fogli di rendicontazione a fine sprint.
+    \item \textbf{Azioni preventive:}
+    \begin{enumerate}
+        \item Scomposizione delle attività in micro-task atomici della durata massima di 2--3 ore, ciascuno dotato di una chiara \textit{Definition of Done};
+        \item Consuntivo puntuale al termine di ogni sprint bisettimanale con analisi immediata degli scostamenti.
+    \end{enumerate}
+    \item \textbf{Piano di contingenza:} Riallocazione dinamica dei compiti da parte del Responsabile, affiancando in \textit{pair programming} le risorse in difficoltà o assegnando loro attività guidate a minore rischio architetturale per sbloccare i moduli critici.
+\end{itemize}
+
+\subsubsection{RO-02: Concentrazione delle competenze tecniche su un singolo membro (\textit{Knowledge Silos})}
+\begin{itemize}
+    \item \textbf{Descrizione:} Se un solo componente del gruppo approfondisce una tecnologia chiave (es. Vercel Workflows, GraphQL Shopify o parser Liquid), una sua eventuale assenza o rallentamento bloccherebbe l'avanzamento dell'intero team su quell'area.
+    \item \textbf{Indicatori di rilevamento:} Assegnazione ricorrente di tutte le issue di un modulo sempre allo stesso sviluppatore.
+    \item \textbf{Azioni preventive:}
+    \begin{enumerate}
+        \item Presentazione obbligatoria dei risultati di ogni spike tecnico a tutto il gruppo nelle prime settimane;
+        \item Rotazione periodica dei ruoli ad ogni sprint e sessioni interne di condivisione a voce per diffondere la conoscenza architetturale tra tutti e 7 i membri.
+    \end{enumerate}
+    \item \textbf{Piano di contingenza:} Affiancamento immediato di un secondo membro sul modulo critico, supportato dagli ADR e dalla documentazione tecnica già redatta.
+\end{itemize}
+
+\subsubsection{RO-03: Ridotta disponibilità del gruppo nei periodi d'esame e festività}
+\begin{itemize}
+    \item \textbf{Descrizione:} La concomitanza con la pausa natalizia (24/12/2026--06/01/2027) e la sessione invernale degli esami universitari (18/01/2027--19/02/2027) riduce fisiologicamente la capacità produttiva complessiva del gruppo.
+    \item \textbf{Indicatori di rilevamento:} Raccolta preventiva del calendario delle indisponibilità individuali prima dell'avvio di ciascuno sprint.
+    \item \textbf{Azioni preventive:}
+    \begin{enumerate}
+        \item Pianificazione di sprint a carico ridotto nelle settimane coincidenti con le festività e gli appelli d'esame, evitando di fissare scadenze critiche in tali finestre;
+        \item Anticipo degli spike tecnici e dello sviluppo del PoC prima della pausa natalizia.
+    \end{enumerate}
+    \item \textbf{Piano di contingenza:} Rimodulazione dei task non urgenti sugli sprint successivi e bilanciamento temporaneo del carico tra i membri liberi da esami nella settimana corrente.
+\end{itemize}
+
+\subsubsection{RC-01: Incomprensione o ambiguità nell'interpretazione dei requisiti di capitolato}
+\begin{itemize}
+    \item \textbf{Descrizione:} Dubbi interpretativi su vincoli specifici (es. gestione del nuovo modello token Shopify, assegnazione degli store alle organizzazioni, significato di cadenza configurabile con cron giornaliero) possono portare a implementazioni non allineate alle attese del proponente.
+    \item \textbf{Indicatori di rilevamento:} Quesiti irrisolti durante l'analisi dei casi d'uso o feedback correttivi ricevuti in sede di demo.
+    \item \textbf{Azioni preventive:}
+    \begin{enumerate}
+        \item Incontri settimanali (SAL) con Halue S.r.l. SB e utilizzo della casella dedicata (risposta entro 1 giorno lavorativo) per chiarimenti asincroni;
+        \item Redazione di verbali esterni formali per ogni incontro, validati dal proponente, e adozione di un \textit{Glossario} condiviso per eliminare ambiguità terminologiche.
+    \end{enumerate}
+    \item \textbf{Piano di contingenza:} Apertura tempestiva di un confronto tecnico con gli esperti di Halue e aggiornamento immediato dei documenti \textit{Analisi dei Requisiti} e \textit{Specifica Tecnica} prima di procedere con lo sviluppo.
+\end{itemize}
+
+\subsubsection{RC-02: Ampiezza d'ambito eccessiva rispetto al monte ore disponibile}
+\begin{itemize}
+    \item \textbf{Descrizione:} L'elevato numero di requisiti (20 funzionali obbligatori, 7 di qualità/sicurezza, 7 non funzionali e 10 desiderabili/opzionali) potrebbe risultare eccessivo rispetto al monte ore preventivato, mettendo a rischio la qualità della consegna finale PB.
+    \item \textbf{Indicatori di rilevamento:} Velocità di completamento degli sprint inferiore al previsto al termine della fase di spike e analisi (metà dicembre 2026).
+    \item \textbf{Azioni preventive:}
+    \begin{enumerate}
+        \item Sviluppo incrementale a partire da uno \textit{scheletro che cammina} (\textit{Walking Skeleton}) che copra fin da subito il nucleo architetturale irrinunciabile (scansione durevole, rate limit, grafo, snapshot immutabili, motore regole e RLS);
+        \item Definizione di una scala di priorità dei requisiti prima della revisione RTB.
+    \end{enumerate}
+    \item \textbf{Piano di contingenza:} Presentazione formale e motivata per iscritto ad Halue (con congruo anticipo rispetto alla RTB, come previsto dal capitolato) di una proposta di riduzione d'ambito, negoziando la rimozione o il declassamento dei requisiti desiderabili o a minor valore (es. ri-scansioni pianificate \texttt{RFO-19} o riduzione del numero di famiglie/regole secondarie).
+\end{itemize}
