@@ -17,7 +17,7 @@ Gli obiettivi perseguiti da questo processo comprendono:
 \end{itemize}
 \noindent Il gruppo adotta la filosofia \textit{Documentation as Code}, trattando i documenti con il medesimo rigore riservato al codice sorgente. \\
 \\
-Tutti i documenti formali vengono redatti mediante il sistema di composizione tipografica \LaTeX{} e versionati all'interno del repository GitHub del team, assicurando rigore stilistico, controllo di versione e pubblicazione automatizzata. \\
+Tutti i documenti formali vengono redatti mediante il sistema di composizione tipografica \term{\LaTeX}{} e versionati all'interno del repository GitHub del team, assicurando rigore stilistico, controllo di versione e pubblicazione automatizzata. \\
 Il ciclo di vita di ciascun documento vede la cooperazione strutturata di tre ruoli distinti: il \textit{Redattore} per la stesura, il \textit{Verificatore} per il controllo di qualità e il \textit{Responsabile} per l'approvazione formale.
 
 \subsubsection{Struttura dei documenti}
@@ -63,13 +63,13 @@ I verbali delle riunioni adottano una struttura mirata a privilegiare la sintesi
         \item \textbf{Riferimento decisione}: codice della decisione correlata (\texttt{Dxx}), garantendo il legame causale tra delibera e azione;
         \item \textbf{Descrizione task}: definizione sintetica e non ambigua dell'attività da compiere;
         \item \textbf{Assegnatario}: nominativo del componente incaricato della presa in carico;
-        \item \textbf{Ticket Jira}: riferimento al relativo ticket di tracciamento sull'Issue Tracker, oppure un trattino (\texttt{-}) per micro-attività organizzative prive di tracciamento;
+        \item \textbf{Ticket \term{Jira}}: riferimento al relativo ticket di tracciamento sull'Issue Tracker, oppure un trattino (\texttt{-}) per micro-attività organizzative prive di tracciamento;
         \item \textbf{Scadenza}: data limite concordata per il completamento;
         \item \textbf{Stato}: stato iniziale dell'attività (generalmente: \textit{Non iniziato} o \textit{In corso}).
     \end{itemize}
 \end{itemize}
 
-\noindent Tale meccanismo garantisce la \textbf{tracciabilità operativa}: ogni delibera presa durante una riunione trova un corrispettivo operativo nei ticket di Jira, assicurando che gli impegni concordati dal gruppo vengano formalmente presi in carico, monitorati e portati a compimento entro le scadenze stabilite.
+\noindent Tale meccanismo garantisce la \textbf{tracciabilità operativa}: ogni delibera presa durante una riunione trova un corrispettivo operativo nei ticket di \term{Jira}, assicurando che gli impegni concordati dal gruppo vengano formalmente presi in carico, monitorati e portati a compimento entro le scadenze stabilite.
 
 \subsubsection{Convenzioni di nomenclatura}
 Al fine di garantire uniformità, tracciabilità e una corretta automazione dei flussi di lavoro all'interno delle repository del gruppo \textbf{Git Happens}, vengono applicate rigorose convenzioni di nomenclatura per la gestione dei branch e dei file di documentazione. 
@@ -82,8 +82,8 @@ La convenzione di naming ufficiale è la seguente:
 \end{center}
 dove:
 \begin{itemize}
-    \item \textbf{KEY}: rappresenta la chiave del progetto Jira di riferimento (ad esempio \texttt{SWE} per l'amministrazione e la documentazione del team);
-    \item \textbf{NUMBER}: è il numero identificativo progressivo della issue su Jira;
+    \item \textbf{KEY}: rappresenta la chiave del progetto \term{Jira} di riferimento (ad esempio \texttt{SWE} per l'amministrazione e la documentazione del team);
+    \item \textbf{NUMBER}: è il numero identificativo progressivo della issue su \term{Jira};
     \item \textbf{DESC}: è una descrizione sintetica del task in formato minuscolo, con le parole separate da trattini alti (\texttt{-}).
 \end{itemize}
 \emph{Esempio}: \texttt{SWE-37-bootstrap-del-way-of-working}. \\
@@ -122,23 +122,23 @@ I messaggi devono esplicitare chiaramente la natura dell'operazione attraverso p
 \end{itemize}
 
 \subsubsection{Procedure di redazione}
-Il ciclo di vita di un documento o di un'attività all'interno del gruppo segue un iter rigoroso e tracciato, incentrato sull'uso di Atlassian Jira come unica fonte di verità per lo stato del progetto e sull'integrazione con GitHub:
+Il ciclo di vita di un documento o di un'attività all'interno del gruppo segue un iter rigoroso e tracciato, incentrato sull'uso di Atlassian Jira come unica fonte di verità per lo stato del progetto e sull'integrazione con \term{GitHub}:
 \begin{enumerate}
-    \item \textbf{Pianificazione (Jira)}: le attività vengono censite e gestite all'interno dello spazio Jira del team (identificato dalla chiave \texttt{SWE} per la documentazione o dallo spazio specifico del capitolato).
+    \item \textbf{Pianificazione (\term{Jira})}: le attività vengono censite e gestite all'interno dello spazio \term{Jira} del team (identificato dalla chiave \texttt{SWE} per la documentazione o dallo spazio specifico del capitolato).
     \item \textbf{Apertura del branch}: a partire dal branch principale (\texttt{main}), lo sviluppatore crea un nuovo ramo di lavoro denominato secondo lo standard \texttt{KEY-NUMBER-DESC} (sfruttando eventualmente l'estensione Atlassian per VS Code per automatizzare l'operazione e il passaggio dello stato del ticket a \emph{In corso}).
     \item \textbf{Redazione e Commit}: si procede allo sviluppo o alla stesura del documento (strutturando i file in LaTeX tramite il file radice \texttt{main.tex} e inserendo i capitoli nella cartella dedicata), applicando la regola dei commit semantici.
-    \item \textbf{Revisione e Pull Request}: completata la stesura, il ticket viene spostato in \emph{In revisione} su Jira, e viene aperta una \emph{Pull Request} (PR) su GitHub richiedendo la revisione dei verificatori assegnati.
-    \item \textbf{Verifica e Build automatica}: i revisori esaminano la PR. Un flusso di Continuous Integration basato su GitHub Actions si attiva automaticamente per verificare la correttezza della build LaTeX.
-    \item \textbf{Merge e Pubblicazione}: a seguito dell'approvazione formale e del superamento dei controlli automatici, viene effettuato il merge della PR nel ramo principale (spostando il ticket Jira in \emph{Completato}). Un ulteriore workflow di automazione provvede alla pubblicazione finale del documento all'interno del sito web di documentazione del gruppo.
+    \item \textbf{Revisione e Pull Request}: completata la stesura, il ticket viene spostato in \emph{In revisione} su \term{Jira}, e viene aperta una \emph{Pull Request} (PR) su \term{GitHub} richiedendo la revisione dei verificatori assegnati.
+    \item \textbf{Verifica e Build automatica}: i revisori esaminano la PR. Un flusso di Continuous Integration basato su \term{GitHub} Actions si attiva automaticamente per verificare la correttezza della build LaTeX.
+    \item \textbf{Merge e Pubblicazione}: a seguito dell'approvazione formale e del superamento dei controlli automatici, viene effettuato il merge della PR nel ramo principale (spostando il ticket \term{Jira} in \emph{Completato}). Un ulteriore workflow di automazione provvede alla pubblicazione finale del documento all'interno del sito web di documentazione del gruppo.
 \end{enumerate}
 
 \subsection{Verifica}
 Il processo di verifica garantisce che i prodotti sviluppati (documentazione e codice) siano conformi agli standard di qualità stabiliti. \\
 Esso si avvale di:
 \begin{itemize}
-    \item \textbf{Analisi statica}: controllo formale e strutturale eseguito mediante linters, type-check e l'ausilio di flussi automatici in CI per prevenire errori sintattici o violazioni delle norme di codifica.
+    \item \textbf{Analisi statica}: controllo formale e strutturale eseguito mediante linters, type-check e l'ausilio di flussi automatici in \term{CI} per prevenire errori sintattici o violazioni delle norme di codifica.
     \item \textbf{Analisi dinamica e Testing}: esecuzione di test automatici (unitari, di integrazione e di sistema) per validare il comportamento effettivo del software.
-    \item \textbf{Strumenti a supporto}: integrazione continua tramite GitHub Actions e utilizzo di strumenti di preview e controllo integrati nell'ambiente di sviluppo (es. estensione LaTeX Workshop per VS Code).
+    \item \textbf{Strumenti a supporto}: integrazione continua tramite \term{GitHub} Actions e utilizzo di strumenti di preview e controllo integrati nell'ambiente di sviluppo (es. estensione LaTeX Workshop per VS Code).
 \end{itemize}
 
 \subsection{Validazione}
@@ -148,7 +148,7 @@ Tale processo si realizza attraverso sessioni di riscontro periodico (come i SAL
 \subsection{Gestione della configurazione}
 \subsubsection{Introduzione}
 La gestione della configurazione disciplina il controllo e la tracciabilità di ogni elemento di configurazione (Configuration Item) del progetto. \\
-Le attività di tracciamento operativo si basano sulla sinergia tra l'Issue Tracking System di Jira (fonte di verità per la pianificazione e lo stato dei task) e GitHub (per il controllo di versione del codice e dei documenti). \\
+Le attività di tracciamento operativo si basano sulla sinergia tra l'Issue Tracking System di \term{Jira} (fonte di verità per la pianificazione e lo stato dei task) e \term{GitHub} (per il controllo di versione del codice e dei documenti). \\
 \\
 La gestione dei flussi di lavoro adotta il modello \emph{GitHub flow}, garantendo che ogni modifica sia isolata in appositi branch, sottoposta a revisione paritaria tramite Pull Request e validata da controlli automatici prima dell'incorporazione nel ramo stabile. \\
 Il coordinamento interno del team \textbf{Git Happens} e le comunicazioni esterne con il proponente completano l'infrastruttura di governo del progetto, i cui indicatori di qualità e le metriche di riferimento trovano riscontro puntuale all'interno del documento \textbf{Piano di Qualifica}.
