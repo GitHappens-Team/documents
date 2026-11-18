@@ -3,19 +3,19 @@
 
 \section{Ordine del giorno}
 
-\subsection{Allineamento tecnico sul boilerplate del PoC}
-Nel corso della riunione è stato presentato e discusso il codice del boilerplate predisposto per il Proof of Concept (PoC), illustrando il relativo \texttt{README} e lo stack adottato (Next.js con App Router, \texttt{pnpm}, TypeScript, Drizzle ORM e Supabase):
+\subsection{Esperimento didattico-tecnologico e allineamento sullo stack}
+Nel corso della riunione è stato condiviso l'esperimento didattico di esplorazione tecnologica concordato con l'azienda proponente nell'incontro dell'11/11/2026 (prototipo \emph{Hello World} autenticato a fini di apprendimento dello stack individuato: Next.js con App Router, \texttt{pnpm}, TypeScript, Drizzle ORM e Supabase):
 \begin{itemize}
-    \item \textbf{Ambiente locale con Supabase e Docker}: il backend Supabase viene avviato in locale tramite Docker per lavorare in ambiente isolato senza dipendere dall'istanza online; è stata inoltre segnalata la mancanza del file \texttt{.env.example} in \texttt{apps/web}, da aggiungere al repository;
-    \item \textbf{Autenticazione Google OAuth}: il login con Google è gestito tramite Supabase; le credenziali di sviluppo configurate su account personale non dovranno essere impiegate in produzione e la protezione delle rotte avviene tramite middleware applicativo;
-    \item \textbf{Database e Row-Level Security (RLS)}: gli schemi e le migrazioni sono gestiti con Drizzle ORM, mentre per tutte le query applicative è richiesto l'utilizzo del wrapper dedicato (\texttt{withRLS}) al fine di garantire il rispetto delle policy di Row-Level Security;
-    \item \textbf{Video walkthrough}: la registrazione della presentazione tecnica del boilerplate verrà caricata sul canale YouTube del gruppo (ad uso esclusivamente interno e accessibile solo tramite link diretto) a cura di F. Lissandrin e condivisa con i membri del team.
+    \item \textbf{Ambiente locale con Supabase e Docker}: il backend Supabase viene avviato in locale tramite Docker per lavorare in ambiente isolato senza dipendere dall'istanza online; è stata inoltre segnalata la mancanza del file \texttt{.env.example} in \texttt{apps/web}, da aggiungere al repository di sperimentazione;
+    \item \textbf{Autenticazione Google OAuth}: il login con Google è stato sperimentato tramite Supabase; trattandosi di un prototipo locale a scopo di apprendimento, le credenziali di sviluppo sono configurate su account personale a solo uso di test, mentre la protezione delle rotte è stata verificata tramite middleware applicativo;
+    \item \textbf{Database e Row-Level Security (RLS)}: gli schemi di prova e le migrazioni sono stati esplorati con Drizzle ORM, verificando l'utilizzo del wrapper dedicato (\texttt{withRLS}) al fine di garantire il rispetto delle policy di Row-Level Security;
+    \item \textbf{Video dimostrativo}: la registrazione della sessione tecnica sull'esperimento verrà caricata sul canale YouTube del gruppo (ad uso esclusivamente interno e accessibile solo tramite link diretto) a cura di F. Lissandrin per agevolare l'apprendimento di tutto il team.
 \end{itemize}
 
 \subsection{Account Vercel Pro, pipeline CI/CD e gestione degli account GitHub}
 Il gruppo ha ottenuto l'accesso all'account Vercel Pro messo a disposizione dall'azienda, riscontrando tuttavia alcune criticità tecniche nella configurazione della pipeline:
 \begin{itemize}
-    \item \textbf{Fallimento del deploy}: manca il file di configurazione (\texttt{vercel.config.js} oppure \texttt{vercel.config.ts}) all'interno del repository, necessario per mantenere la configurazione allineata alla codebase ad ogni push;
+    \item \textbf{Fallimento del deploy}: manca il file di configurazione (\texttt{vercel.config.js} oppure \texttt{vercel.config.ts}) all'interno del repository, necessario per mantenere la configurazione sincronizzata con il repository di sperimentazione ad ogni push;
     \item \textbf{Problematica legata agli account GitHub}: i push effettuati verso il repository collegato a Vercel da account GitHub personali potrebbero comportare il conteggio di membri aggiuntivi a pagamento sul piano team. Come possibile soluzione tecnica alternativa è stato ipotizzato un repository mirror; il tema verrà comunque chiarito direttamente con il referente aziendale nell'incontro di domani o verificato tramite test mirato;
     \item \textbf{Completamento pipeline}: la sistemazione della pipeline Vercel e dell'integrazione con GitHub è stata affidata congiuntamente a F. Lissandrin e A. Tang, con obiettivo di completamento entro la fine dello Sprint 1 (24/11/2026).
 \end{itemize}
@@ -33,14 +33,14 @@ Il gruppo ha ottenuto l'accesso all'account Vercel Pro messo a disposizione dall
 \subsection{Preparazione dell'incontro esterno con Halue (18 novembre 2026)}
 In vista dell'incontro esterno con il proponente Halue fissato per il 18/11/2026 alle ore 13:30, il team ha definito l'agenda operativa della demo e le domande chiave da sottoporre:
 \begin{itemize}
-    \item presentare il PoC relativo alla pagina di login;
+    \item presentare il prototipo sperimentale relativo alla pagina di login;
     \item chiarire se per i push su GitHub e le Pull Request verso la pipeline Vercel sia necessario utilizzare un account condiviso oppure se possano essere impiegati gli account personali dei membri del team;
     \item definire con precisione quali visualizzazioni, pagine, statistiche, elementi da escludere e pulsanti con azioni specifiche siano attesi nella dashboard, così da derivare correttamente i casi d'uso.
 \end{itemize}
 La redazione del Verbale Esterno dell'incontro del 18/11/2026 è stata assegnata a G. Gambarro, con consegna prevista entro due giorni (scadenza 20/11/2026).
 
 \section{Programmazione prossimo incontro}
-L'incontro esterno con l'azienda proponente Halue è programmato per il giorno \textbf{18/11/2026 alle ore 13:30}, occasione in cui verrà mostrato il PoC di login e verranno discussi i chiarimenti sui casi d'uso della dashboard e sulla gestione GitHub/Vercel.
+L'incontro esterno con l'azienda proponente Halue è programmato per il giorno \textbf{18/11/2026 alle ore 13:30}, occasione in cui verrà mostrato il prototipo didattico di login e verranno discussi i chiarimenti sui casi d'uso della dashboard e sulla gestione GitHub/Vercel.
 
 \section{Tabella decisioni prese}
 \renewcommand{\arraystretch}{1.3}
@@ -49,7 +49,7 @@ L'incontro esterno con l'azienda proponente Halue è programmato per il giorno \
     \hline
     \textbf{Codice} & \textbf{Decisione} \\
     \hline
-    VI\_2026-11-17\_D01 & Allineamento e adozione del boilerplate del PoC (Next.js, Drizzle ORM, Supabase locale via Docker) con utilizzo del wrapper \texttt{withRLS} e condivisione interna del video walkthrough. \\
+    VI\_2026-11-17\_D01 & Condivisione dell'esperimento didattico-tecnologico sullo stack individuato (Next.js, Drizzle ORM, Supabase locale via Docker, wrapper \texttt{withRLS}) e pubblicazione interna del video dimostrativo per l'allineamento del team. \\
     \hline
     VI\_2026-11-17\_D02 & Adozione dell'account Vercel Pro fornito da Halue e pianificazione dell'inserimento di \texttt{vercel.config.js/ts} e \texttt{.env.example} per completare la pipeline entro il 24/11/2026. \\
     \hline
@@ -59,6 +59,6 @@ L'incontro esterno con l'azienda proponente Halue è programmato per il giorno \
     \hline
     VI\_2026-11-17\_D05 & Avvio dell'Analisi dei Requisiti (struttura, introduzione, definizioni dalle slide del Prof. Cardin e primi casi d'uso) e prosecuzione del Piano di Progetto (sezioni 3, 4 e ore preventivate Sprint 1) con scadenza 24/11/2026. \\
     \hline
-    VI\_2026-11-17\_D06 & Definizione della scaletta e delle domande da porre ad Halue nell'incontro del 18/11/2026 alle ore 13:30 (demo PoC login, account GitHub/Vercel e visualizzazioni della dashboard per i casi d'uso), con verbalizzazione della riunione interna odierna e dell'incontro esterno entro il 20/11/2026. \\
+    VI\_2026-11-17\_D06 & Definizione della scaletta e delle domande da porre ad Halue nell'incontro del 18/11/2026 alle ore 13:30 (demo del prototipo didattico di login, account GitHub/Vercel e visualizzazioni della dashboard per i casi d'uso), con verbalizzazione della riunione interna odierna e dell'incontro esterno entro il 20/11/2026. \\
     \hline
 \end{tabularx}
