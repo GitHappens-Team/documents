@@ -57,8 +57,10 @@
 % \term[slug]{...} is inserted by .github/scripts/glossary.py right before the build.
 % \term{text} without a slug only prints the G, \noterm{text} excludes one occurrence.
 \newcommand{\glossaryurl}{https://githappens-team.github.io/content/RTB/documenti_interni/glossario/glossario.pdf}
-\newcommand{\glossarylink}[2]{\href{\glossaryurl\#nameddest=gl-#1}{#2}}
-\newcommand{\term}[2][]{\ifx\relax#1\relax#2\else\glossarylink{#1}{#2}\fi\textsubscript{G}}
+% black text, so marked terms don't stand out like regular links
+\newcommand{\glossarylink}[2]{{\hypersetup{urlcolor=black}\href{\glossaryurl\#nameddest=gl-#1}{#2}}}
+\newcommand{\glossarymark}{\textsubscript{\textcolor{gray}{\textnormal{G}}}}
+\newcommand{\term}[2][]{\ifx\relax#1\relax#2\glossarymark\else\glossarylink{#1}{#2\glossarymark}\fi}
 \newcommand{\noterm}[1]{#1}
 % Glossary entry: \glossentry{Title}{comma-separated aliases}
 \newcommand{\glossentry}[3][]{%
