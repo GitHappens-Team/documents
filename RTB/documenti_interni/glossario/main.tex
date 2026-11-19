@@ -1,6 +1,7 @@
 \documentclass{gh}
 
-\newcommand{\term}[1]{#1\textsubscript{G}}
+% inside the glossary, terms link to its own entries
+\renewcommand{\glossarylink}[2]{\hyperlink{gl-#1}{#2}}
 
 \usepackage{array}
 \usepackage{longtable}

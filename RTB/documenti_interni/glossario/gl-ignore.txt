@@ -1,0 +1,11 @@
+# Terms never suggested for the glossary, one per line (case-insensitive).
+# company legal form (Halue S.r.l. SB)
+SB
+# Jira space key and branch name placeholders
+SWE
+KEY
+NUMBER
+DESC
+# table headers
+TOTALE
+ToDo
