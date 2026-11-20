@@ -70,6 +70,8 @@ I verbali delle riunioni adottano una struttura mirata a privilegiare la sintesi
 \end{itemize}
 
 \noindent Tale meccanismo garantisce la \textbf{tracciabilità operativa}: ogni delibera presa durante una riunione trova un corrispettivo operativo nei ticket di \term{Jira}, assicurando che gli impegni concordati dal gruppo vengano formalmente presi in carico, monitorati e portati a compimento entro le scadenze stabilite.
+\subsection{Utilizzo dello strumento Granola}
+Per la generazione e la strutturazione preliminare dei verbali di riunione (sia interni che esterni con il proponente Halue S.r.l. SB), il team adotta lo strumento di supporto \textbf{Granola}. Tale applicativo consente di trascrivere e sintetizzare i contenuti degli incontri, agevolando la successiva stesura formale e la compilazione dei punti dell'ordine del giorno e delle tabelle delle decisioni, garantendo la totale coerenza con i dati registrati.
 
 \subsubsection{Convenzioni di nomenclatura}
 Al fine di garantire uniformità, tracciabilità e una corretta automazione dei flussi di lavoro all'interno delle repository del gruppo \textbf{Git Happens}, vengono applicate rigorose convenzioni di nomenclatura per la gestione dei branch e dei file di documentazione. 
@@ -90,6 +92,14 @@ dove:
 \\
 L'utilizzo dell'estensione ufficiale di Atlassian per VS Code consente di automatizzare la creazione del branch e la corretta applicazione di questa convenzione direttamente dall'interfaccia di sviluppo.
 
+\subsection{Struttura della repository e convenzione delle cartelle}
+La repository ufficiale della documentazione (\url{https://github.com/GitHappens-Team/documents}) adotta una struttura a directory rigidamente normata per separare i materiali di candidatura, i verbali, le norme di gruppo e i manufatti relativi alle milestone di progetto:
+\begin{itemize}
+    \item \texttt{candidatura/}: raccoglie la documentazione prodotta nella fase iniziale di valutazione e presentazione dei capitolati;
+    \item \texttt{verbali/}: suddivisa nelle sottocartelle \texttt{esterni/} e \texttt{interni/}, archivia i verbali ufficiali delle riunioni denominati secondo il formato standard \texttt{AAAA-MM-DD.tex};
+    \item \texttt{WOW/}: contiene i documenti relativi al \emph{Way of Working} e all'organizzazione metodologica del team;
+    \item \texttt{RTB/}: cartella dedicata ai documenti della fase di \emph{Requirements and Technology Baseline} (Analisi dei Requisiti, Specifica Tecnica, Piano di Qualifica, Glossario), i cui contenuti evolvono e vengono integrati all'interno dei rispettivi branch di sviluppo dedicati prima del merge sul ramo principale.
+\end{itemize}
 \subsubsection{Nominazione dei file e struttura della documentazione}
 La stesura e la pubblicazione della documentazione seguono uno standard organizzativo basato su cartelle dedicate all'interno della repository di progetto (ad esempio, la suddivisione temporale o tipologica per i verbali in \texttt{verbali/esterni/yyyy-mm-dd} o \texttt{verbali/interni/yyyy-mm-dd}). \\
 \\
