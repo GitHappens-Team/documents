@@ -1,0 +1,65 @@
+\section{Descrizione del prodotto}
+
+\subsection{Obiettivi}
+Il progetto \textbf{Sonar} nasce dall'esigenza dell'azienda proponente \textit{Halue S.r.l. Società Benefit} di realizzare una piattaforma web per la generazione automatica e ripetibile della documentazione vivente di store \textit{Shopify} di dimensioni \textit{enterprise}. \\
+Nel corso del loro ciclo di vita, gli store di grandi dimensioni tendono a trasformarsi in sistemi stratificati, accumulando applicazioni di terze parti, \textit{webhook}, definizioni di \textit{metafield}, \textit{metaobject} e frammenti di codice di tema di cui si perde progressivamente traccia. \\
+\\
+Il principio cardine del sistema è che l'unica documentazione affidabile nel tempo non può dipendere dalla disciplina manuale degli sviluppatori, bensì deve essere ricostruita automaticamente dal sistema stesso a ogni scansione. L'obiettivo di \textbf{Sonar} non si limita a fornire un inventario statico di ciò che esiste nello store, ma mira a ricostruire l'intera rete delle dipendenze reciproche per rispondere a quesiti architetturali critici (es. valutare l'impatto della rimozione di una risorsa) e identificare componenti orfani o codice morto.
+
+\subsection{Funzionalità}
+L'architettura funzionale di \textbf{Sonar} si articola in cinque fasi sequenziali, progettate per mantenere una netta separazione delle responsabilità (\textit{separation of concerns}):
+\begin{enumerate}
+    \item \textbf{Acquisizione (Scansione)}\\
+    Esecuzione di interrogazioni durevoli e resilienti verso le API di Shopify (GraphQL e REST) e lettura dei file del tema, finalizzate a produrre uno \textit{snapshot}, ovvero una fotografia immutabile e datata dello stato dello store. \\
+    Per superare i limiti strutturali delle API di Shopify su store di grandi dimensioni, il processo gestisce nativamente:
+    \begin{itemize}
+        \item \textbf{Paginazione tramite cursori:} per l'estrazione incrementale di elenchi molto estesi senza superare i limiti di \textit{rate limiting};
+        \item \textbf{Triangolazione delle fonti:} poiché alcune entità non sono visibili da un unico endpoint (ad esempio, webhook registrati da app terze), il sistema incrocia fonti eterogenee per massimizzare la copertura dell'inventario;
+        \item \textbf{Telemetria interna:} registrazione puntuale delle risorse consumate per ogni singola scansione (chiamate API, passi di workflow, token LLM).
+    \end{itemize}
+    \item \textbf{Normalizzazione e modello a grafo} \\
+    Trasformazione dei dati grezzi raccolti in un modello a grafo unificato. I \textbf{nodi} rappresentano le entità strutturali dello store (applicazioni, webhook, definizioni di metafield, file di tema, funzioni, canali di vendita), mentre gli \textbf{archi} codificano le dipendenze dirette e indirette tra di essi. \\
+    Ogni arco è corredato dalla fonte dell'evidenza e da un \textbf{livello di confidenza} esplicito (\textit{accertato}, \textit{probabile} o \textit{ipotizzato});
+    \item \textbf{Analisi statica del codice del tema}\\
+    Ispezione isolata e sicura dei file del tema (in particolare template, sezioni e snippet scritti in linguaggio \textit{Liquid}) volta a rilevare i riferimenti ai metafield e a ricostruire il grafo di inclusione tra i file;
+    \item \textbf{Rilevamento degli orfani e del codice morto}\\
+    Applicazione di un motore di regole estensibile sul grafo normalizzato e sui risultati dell'analisi statica per individuare entità scollegate, definizioni di metafield mai referenziate né popolate, file di tema non inclusi e configurazioni obsolete;
+    \item \textbf{Visualizzazione ed esportazione}\\
+    Presentazione dei risultati tramite un'interfaccia web interattiva che consente di esplorare l'inventario, navigare visivamente il grafo delle dipendenze, filtrare le anomalie per livello di confidenza ed esportare la documentazione generata.
+\end{enumerate}
+
+\subsubsection{Vincoli e limiti di dominio}
+Al fine di delimitare con precisione i confini operativi del sistema ed evitare ambiguità progettuali, sono stabiliti i seguenti vincoli di esclusione:
+\begin{itemize}
+    \item \textbf{Operatività strettamente in sola lettura}\\
+    Sonar non apporta alcuna modifica agli store analizzati: non disinstalla applicazioni, non rimuove metafield, non altera il codice del tema. Il sistema si limita a segnalare le anomalie e a produrre istruzioni operative per eventuali interventi manuali da parte dei tecnici, richiedendo esclusivamente permessi (\textit{scope}) di sola lettura;
+    \item \textbf{Assenza di monitoraggio in tempo reale}\\
+    L'acquisizione dello stato dello store avviene unicamente tramite scansioni avviate manualmente su richiesta o secondo pianificazione periodica, senza flussi continui in tempo reale;
+    \item \textbf{Esclusione dell'analisi prestazionale}\\
+    Il sistema non rileva né valuta metriche di performance dello store o dello storefront;
+    \item \textbf{Nessuna gestione dei dati di business}\\
+    Entità commerciali quali prodotti, ordini e anagrafiche clienti non rientrano nel dominio applicativo di Sonar. Tali risorse vengono consultate unicamente in forma aggregata e statistica come evidenza per verificare l'effettivo utilizzo dei metafield configurati.
+\end{itemize}
+
+\subsection{Caratteristiche dell'utente}
+Il prodotto si rivolge a figure professionali con competenze tecniche che operano nella gestione, manutenzione ed evoluzione di ecosistemi e-commerce complessi, quali:
+\begin{itemize}
+    \item \textbf{Sviluppatori Shopify e Full-Stack:} incaricati di intervenire sul codice del tema, integrare nuove applicazioni o effettuare attività di refactoring e pulizia del debito tecnico;
+    \item \textbf{Architetti Software e Tech Lead:} responsabili della supervisione architetturale dello store, dell'audit tecnico e della valutazione dei rischi prima di rilasci evolutivi o migrazioni;
+    \item \textbf{Project Manager tecnici e Solution Architect:} interessati a ottenere rapidamente una mappatura oggettiva e documentata dello stato di salute di uno store in fase di presa in carico (\textit{onboarding}) o consulenza.
+\end{itemize}
+Tali utenti possiedono familiarità con le architetture web e con i concetti base di Shopify, ma necessitano di uno strumento automatizzato che riduca i tempi di ispezione manuale e prevenga errori derivanti da dipendenze nascoste.
+
+\subsection{Tecnologie}
+In conformità con i vincoli architetturali imposti dal capitolato d'appalto, l'ecosistema tecnologico del prodotto si fonda sulle seguenti componenti:
+\begin{itemize}
+    \item \textbf{Framework applicativo:} \textbf{Next.js} per lo sviluppo dell'interfaccia web e delle API interne;
+    \item \textbf{Infrastruttura di esecuzione e orchestrazione:} ecosistema \textbf{Vercel}, articolato in:
+    \begin{itemize}
+        \item \textit{Vercel Workflows} e \textit{Queues} per garantire l'esecuzione durevole delle scansioni e la ripresa automatica in caso di rate limiting o interruzioni;
+        \item \textit{Vercel Sandbox} per l'esecuzione isolata e sicura dell'analisi statica sui file del tema;
+        \item \textit{Vercel Blob} (per l'archiviazione degli snapshot grezzi).
+    \end{itemize}
+    \item \textbf{Persistenza e sicurezza dei dati:} \textbf{Supabase} (PostgreSQL) per la memorizzazione relazionale delle entità, del grafo delle dipendenze e delle metriche di scansione, protetto tramite politiche di \textit{Row Level Security (RLS)} per garantire l'isolamento multi-tenant dei dati;
+    \item \textbf{Autenticazione verso Shopify:} gestione sicura delle credenziali di connessione agli store, inclusa l'archiviazione cifrata e il rinnovo automatico dei token di accesso generati tramite flusso \textit{client credentials}, soggetti a scadenza ogni 24 ore secondo le policy Shopify introdotte dal 2026.
+\end{itemize}
