@@ -1,0 +1,164 @@
+% !TEX root = ../main.tex
+\section{Processi di supporto}
+I processi di supporto includono l'insieme delle attività che sostengono e affiancano i processi primari e organizzativi, assicurando la corretta esecuzione delle operazioni, la tracciabilità delle scelte e la qualità degli artefatti lungo l'intero ciclo di vita del progetto.
+
+\subsection{Documentazione}
+
+\subsubsection{Introduzione}
+Il processo di documentazione ha lo scopo primario di formalizzare, strutturare e mantenere tutte le informazioni prodotte dai processi del ciclo di vita del software adottati dal gruppo \textit{Git Happens}. \\
+In conformità con lo standard ISO/IEC 12207:1995, ogni attività svolta dal team deve essere adeguatamente pianificata, tracciata e registrata, al fine di garantire trasparenza, continuità operativa, manutenibilità e supporto al processo di valutazione della qualità. \\
+\\
+\noindent La documentazione costituisce il principale mezzo di comunicazione formale del team, consentendo la piena comprensione delle decisioni e delle soluzioni adottate anche senza richiedere una costante mediazione orale, tracciando un chiaro confine tra creatività progettuale e disciplina metodologica. \\
+Gli obiettivi perseguiti da questo processo comprendono:
+\begin{itemize}
+    \item Definire procedure standardizzate e ripetibili per garantire uniformità strutturale e stilistica a tutta la documentazione di gruppo;
+    \item Raccogliere e formalizzare norme operative condivise che agevolino e guidino i membri del team durante la stesura dei testi;
+    \item Garantire la trasparenza e la verificabilità dei processi produttivi, attestando il raggiungimento della qualità attesa.
+\end{itemize}
+\noindent Il gruppo adotta la filosofia \textit{Documentation as Code}, trattando i documenti con il medesimo rigore riservato al codice sorgente. \\
+\\
+Tutti i documenti formali vengono redatti mediante il sistema di composizione tipografica \term{\LaTeX}{} e versionati all'interno del repository GitHub del team, assicurando rigore stilistico, controllo di versione e pubblicazione automatizzata. \\
+Il ciclo di vita di ciascun documento vede la cooperazione strutturata di tre ruoli distinti: il \textit{Redattore} per la stesura, il \textit{Verificatore} per il controllo di qualità e il \textit{Responsabile} per l'approvazione formale.
+
+\subsubsection{Struttura dei documenti}
+Tutti i documenti formali redatti dal gruppo \textit{Git Happens} adottano un'impostazione grafica e strutturale standardizzata, definita dalla classe tipografica di gruppo \texttt{gh.cls}. \\
+Tale uniformità garantisce leggibilità, coerenza stilistica e consultabilità delle informazioni.
+
+\paragraph{Componenti comuni dei documenti}~\\[0.15cm]
+Ciascun documento formale si articola nelle seguenti parti:
+\begin{itemize}
+    \item \textbf{Prima pagina (Frontespizio)}: reca l'intestazione ufficiale con il logo del team, l'indirizzo di posta elettronica, il titolo e la tipologia del documento, la data di redazione e la tabella riassuntiva dei metadati (versione corrente, nominativi di redattori e verificatori, responsabile di progetto approvante e destinatari);
+    \item \textbf{Registro delle modifiche}: posizionato immediatamente dopo il frontespizio, tiene traccia dell'evoluzione del documento. Per ogni modifica approvata riporta in forma tabellare: versione, data dell'intervento (nel formato \texttt{AAAA/MM/GG}), autore della modifica, verificatore e una descrizione sintetica dei cambiamenti apportati. Le righe della tabella sono disposte in ordine cronologico inverso, posizionando in alto la versione più recente e in basso quella iniziale;
+    \item \textbf{Indice dei contenuti}: generato automaticamente tramite il comando \texttt{\textbackslash tableofcontents}, offre la panoramica gerarchica di sezioni, sottosezioni e paragrafi con i rispettivi riferimenti di pagina;
+    \item \textbf{Corpo del testo}: organizzato in sezioni e paragrafi numerati progressivamente, redatto a corpo 11pt con impaginazione standard A4;
+    \item \textbf{Piè di pagina}: presente su ogni pagina, reca il logo ridotto del team, la denominazione del documento, il nome del gruppo e la numerazione progressiva delle pagine.
+\end{itemize}
+
+\paragraph{Struttura della sezione introduttiva}~\\[0.15cm]
+Al fine di fornire fin da subito un quadro chiaro e inquadrare correttamente il contesto, ogni documento formale di progetto (ad eccezione dei verbali di riunione, che adottano una struttura propria) deve obbligatoriamente aprirsi con una sezione denominata \textbf{Introduzione}, strutturata nei seguenti paragrafi:
+\begin{itemize}
+    \item \textbf{Finalità del documento}: chiarimento degli obiettivi primari del testo, identificazione dei destinatari (membri del gruppo, committente Halue S.r.l. SB, docenti di riferimento) e perimetro di applicazione;
+    \item \textbf{Glossario}: specifica della convenzione adottata per eliminare ogni potenziale ambiguità terminologica. Ogni termine tecnico, acronimo o vocabolo specialistico viene evidenziato con una lettera \textit{G} maiuscola a pedice mediante apposita macro. Tale notazione attesta che la definizione formale e condivisa del termine è consultabile all'interno del documento \textit{Glossario};
+    \item \textbf{Riferimenti}: raccolta ordinata delle fonti utilizzate nella stesura, suddivisa in:
+    \begin{itemize}
+        \item \textbf{Riferimenti normativi}: elenco puntuale dei vincoli e delle fonti a cui il documento deve rigidamente conformarsi (tra cui lo standard ISO/IEC 12207:1995, il Capitolato d'appalto C8 e le presenti \textit{Norme di Progetto});
+        \item \textbf{Riferimenti informativi}: catalogo delle fonti di consultazione, documentazione ufficiale dei framework tecnologici adottati (es. Next.js, Supabase, Vercel, Shopify) e materiale didattico fornito dai docenti.
+    \end{itemize}
+\end{itemize}
+
+\paragraph{Struttura specifica dei verbali}~\\[0.15cm]
+I verbali delle riunioni adottano una struttura mirata a privilegiare la sintesi, la tracciabilità delle decisioni e l'operatività:
+\begin{itemize}
+    \item \textbf{Intestazione della riunione}: integrata nella tabella dei metadati del frontespizio, specifica le coordinate organizzative dell'incontro (data, orario, modalità di svolgimento e partecipanti);
+    \item \textbf{Ordine del giorno e sintesi delle discussioni}: suddiviso in punti numerati che illustrano sinteticamente i temi affrontati e le argomentazioni emerse durante il confronto;
+    \item \textbf{Programmazione del prossimo incontro (se presente)}: formalizza le coordinate (data, orario, canale) dell'incontro successivo in caso di convocazioni straordinarie, incontri esterni con il proponente o variazioni rispetto alla riunione ordinaria a cadenza settimanale (fissata ogni martedì);
+    \item \textbf{Tabella delle decisioni prese}: formalizza in modo univoco ogni decisione scaturita dalla riunione, identificando ciascuna delibera con un codice univoco (dove \texttt{AAAA-MM-GG} rappresenta la data della riunione e \texttt{xx} è un numero progressivo):
+    \begin{itemize}
+        \item \texttt{VI\_AAAA-MM-GG\_Dxx} per i verbali interni;
+        \item \texttt{VE\_AAAA-MM-GG\_Dxx} per i verbali esterni;
+    \end{itemize}
+    \item \textbf{Tabella delle attività da svolgere (ToDo)}: traduce operativamente le decisioni in compiti assegnati ai singoli membri. La tabella contiene i seguenti campi:
+    \begin{itemize}
+        \item \textbf{Codice}: identificativo dell'azione nel formato \texttt{ACT-GG.n} (dove \texttt{GG} è il giorno della riunione e \texttt{n} il progressivo);
+        \item \textbf{Riferimento decisione}: codice della decisione correlata (\texttt{Dxx}), garantendo il legame causale tra delibera e azione;
+        \item \textbf{Descrizione task}: definizione sintetica e non ambigua dell'attività da compiere;
+        \item \textbf{Assegnatario}: nominativo del componente incaricato della presa in carico;
+        \item \textbf{Ticket \term{Jira}}: riferimento al relativo ticket di tracciamento sull'Issue Tracker, oppure un trattino (\texttt{-}) per micro-attività organizzative prive di tracciamento;
+        \item \textbf{Scadenza}: data limite concordata per il completamento;
+        \item \textbf{Stato}: stato iniziale dell'attività (generalmente: \textit{Non iniziato} o \textit{In corso}).
+    \end{itemize}
+\end{itemize}
+
+\noindent Tale meccanismo garantisce la \textbf{tracciabilità operativa}: ogni delibera presa durante una riunione trova un corrispettivo operativo nei ticket di \term{Jira}, assicurando che gli impegni concordati dal gruppo vengano formalmente presi in carico, monitorati e portati a compimento entro le scadenze stabilite.
+\subsection{Utilizzo dello strumento Granola}
+Per la generazione e la strutturazione preliminare dei verbali di riunione (sia interni che esterni con il proponente Halue S.r.l. SB), il team adotta lo strumento di supporto \textbf{Granola}. Tale applicativo consente di trascrivere e sintetizzare i contenuti degli incontri, agevolando la successiva stesura formale e la compilazione dei punti dell'ordine del giorno e delle tabelle delle decisioni, garantendo la totale coerenza con i dati registrati.
+
+\subsubsection{Convenzioni di nomenclatura}
+Al fine di garantire uniformità, tracciabilità e una corretta automazione dei flussi di lavoro all'interno delle repository del gruppo \textbf{Git Happens}, vengono applicate rigorose convenzioni di nomenclatura per la gestione dei branch e dei file di documentazione. 
+
+\subsubsection{Nominazione dei branch di lavoro (Git)}
+Il gruppo adotta il modello di sviluppo \emph{GitHub flow}. Per qualsiasi attività o contribuzione all'interno delle repository, il nome del branch deve essere generato seguendo una struttura standard legata al sistema di tracciamento dei ticket. \\
+La convenzione di naming ufficiale è la seguente:
+\begin{center}
+    \texttt{KEY-NUMBER-DESC}
+\end{center}
+dove:
+\begin{itemize}
+    \item \textbf{KEY}: rappresenta la chiave del progetto \term{Jira} di riferimento (ad esempio \texttt{SWE} per l'amministrazione e la documentazione del team);
+    \item \textbf{NUMBER}: è il numero identificativo progressivo della issue su \term{Jira};
+    \item \textbf{DESC}: è una descrizione sintetica del task in formato minuscolo, con le parole separate da trattini alti (\texttt{-}).
+\end{itemize}
+\emph{Esempio}: \texttt{SWE-37-bootstrap-del-way-of-working}. \\
+\\
+L'utilizzo dell'estensione ufficiale di Atlassian per VS Code consente di automatizzare la creazione del branch e la corretta applicazione di questa convenzione direttamente dall'interfaccia di sviluppo.
+
+\subsection{Struttura della repository e convenzione delle cartelle}
+La repository ufficiale della documentazione (\url{https://github.com/GitHappens-Team/documents}) adotta una struttura a directory rigidamente normata per separare i materiali di candidatura, i verbali, le norme di gruppo e i manufatti relativi alle milestone di progetto:
+\begin{itemize}
+    \item \texttt{candidatura/}: raccoglie la documentazione prodotta nella fase iniziale di valutazione e presentazione dei capitolati;
+    \item \texttt{verbali/}: suddivisa nelle sottocartelle \texttt{esterni/} e \texttt{interni/}, archivia i verbali ufficiali delle riunioni denominati secondo il formato standard \texttt{AAAA-MM-DD.tex};
+    \item \texttt{WOW/}: contiene i documenti relativi al \emph{Way of Working} e all'organizzazione metodologica del team;
+    \item \texttt{RTB/}: cartella dedicata ai documenti della fase di \emph{Requirements and Technology Baseline} (Analisi dei Requisiti, Specifica Tecnica, Piano di Qualifica, Glossario), i cui contenuti evolvono e vengono integrati all'interno dei rispettivi branch di sviluppo dedicati prima del merge sul ramo principale.
+\end{itemize}
+\subsubsection{Nominazione dei file e struttura della documentazione}
+La stesura e la pubblicazione della documentazione seguono uno standard organizzativo basato su cartelle dedicate all'interno della repository di progetto (ad esempio, la suddivisione temporale o tipologica per i verbali in \texttt{verbali/esterni/yyyy-mm-dd} o \texttt{verbali/interni/yyyy-mm-dd}). \\
+\\
+Per quanto riguarda i file sorgente e gli asset correlati, valgono le seguenti regole:
+\begin{itemize}
+    \item \textbf{File principale}: ogni documento deve essere strutturato attorno a un file radice denominato \texttt{main.tex};
+    \item \textbf{Capitoli e sezioni}: i file relativi ai singoli capitoli devono essere posizionati all'interno della cartella \texttt{capitoli/} e denominati con un prefisso numerico progressivo seguito da una descrizione chiara in minuscolo (es. \texttt{capitoli/01\_introduzione.tex});
+    \item \textbf{Risorse multimediali}: le immagini e gli elementi grafici di supporto devono essere raccolti all'interno di una cartella denominata \texttt{assets} situata allo stesso livello del file \texttt{main.tex};
+    \item \textbf{Metadati di pubblicazione}: ove previsto per migliorare la visualizzazione all'interno del sito web di documentazione del team, deve essere affiancato un file descrittivo in formato JSON denominato \texttt{metadata.json}.
+\end{itemize}
+
+\subsubsection{Versionamento}
+Il gruppo \textbf{Git Happens} adotta regole uniformi per la numerazione delle versioni documentali e per i messaggi di commit sul codice sorgente, con l'obiettivo di garantire tracciabilità e coerenza nell'evoluzione dei manufatti di progetto. \\
+\\
+Per il \textbf{Registro delle Modifiche} di tutti i documenti di progetto, i numeri di versione seguono il formato a tre cifre \texttt{X.Y.Z}, attribuendo a ciascun campo un significato univoco:
+\begin{itemize}
+    \item \textbf{Cifra \textit{Z} (Bozza e modifiche)}: viene incrementata dal Redattore ad ogni stesura, integrazione di contenuto o modifica del documento;
+    \item \textbf{Cifra \textit{Y} (Consolidamento e modifiche sostanziali)}: viene incrementata a seguito di ogni avvenuta verifica con esito positivo, ovvero senza necessità di modifiche da parte del Verificatore;
+    \item \textbf{Cifra \textit{X} (Approvazione formale e rilascio)}: viene incrementata esclusivamente dal Responsabile di Progetto nel momento dell'approvazione formale e definitiva del documento pronto per il rilascio.
+\end{itemize}
+
+\noindent Per quanto concerne il codice sorgente e la contribuzione alle repository, il team adotta la convenzione dei \emph{semantic commit messages} (messaggi di commit semantici scritti in lingua inglese). \\
+I messaggi devono esplicitare chiaramente la natura dell'operazione attraverso prefissi standardizzati quali:
+\begin{itemize}
+    \item \texttt{feat}: sviluppo o implementazione di una nuova funzionalità del progetto;
+    \item \texttt{docs}: creazione o aggiornamento della documentazione;
+    \item \texttt{chore}: attività di manutenzione, installazione di pacchetti, pulizia o organizzazione delle cartelle;
+    \item \texttt{refactor}: modifiche strutturali del codice che non alterano le funzionalità esterne;
+    \item \texttt{test}: scrittura, revisione o ampliamento dei test automatici (unitari e di integrazione).
+\end{itemize}
+
+\subsubsection{Procedure di redazione}
+Il ciclo di vita di un documento o di un'attività all'interno del gruppo segue un iter rigoroso e tracciato, incentrato sull'uso di Atlassian Jira come unica fonte di verità per lo stato del progetto e sull'integrazione con \term{GitHub}:
+\begin{enumerate}
+    \item \textbf{Pianificazione (\term{Jira})}: le attività vengono censite e gestite all'interno dello spazio \term{Jira} del team (identificato dalla chiave \texttt{SWE} per la documentazione o dallo spazio specifico del capitolato).
+    \item \textbf{Apertura del branch}: a partire dal branch principale (\texttt{main}), lo sviluppatore crea un nuovo ramo di lavoro denominato secondo lo standard \texttt{KEY-NUMBER-DESC} (sfruttando eventualmente l'estensione Atlassian per VS Code per automatizzare l'operazione e il passaggio dello stato del ticket a \emph{In corso}).
+    \item \textbf{Redazione e Commit}: si procede allo sviluppo o alla stesura del documento (strutturando i file in LaTeX tramite il file radice \texttt{main.tex} e inserendo i capitoli nella cartella dedicata), applicando la regola dei commit semantici.
+    \item \textbf{Revisione e Pull Request}: completata la stesura, il ticket viene spostato in \emph{In revisione} su \term{Jira}, e viene aperta una \emph{Pull Request} (PR) su \term{GitHub} richiedendo la revisione dei verificatori assegnati.
+    \item \textbf{Verifica e Build automatica}: i revisori esaminano la PR. Un flusso di Continuous Integration basato su \term{GitHub} Actions si attiva automaticamente per verificare la correttezza della build LaTeX.
+    \item \textbf{Merge e Pubblicazione}: a seguito dell'approvazione formale e del superamento dei controlli automatici, viene effettuato il merge della PR nel ramo principale (spostando il ticket \term{Jira} in \emph{Completato}). Un ulteriore workflow di automazione provvede alla pubblicazione finale del documento all'interno del sito web di documentazione del gruppo.
+\end{enumerate}
+
+\subsection{Verifica}
+Il processo di verifica garantisce che i prodotti sviluppati (documentazione e codice) siano conformi agli standard di qualità stabiliti. \\
+Esso si avvale di:
+\begin{itemize}
+    \item \textbf{Analisi statica}: controllo formale e strutturale eseguito mediante linters, type-check e l'ausilio di flussi automatici in \term{CI} per prevenire errori sintattici o violazioni delle norme di codifica.
+    \item \textbf{Analisi dinamica e Testing}: esecuzione di test automatici (unitari, di integrazione e di sistema) per validare il comportamento effettivo del software.
+    \item \textbf{Strumenti a supporto}: integrazione continua tramite \term{GitHub} Actions e utilizzo di strumenti di preview e controllo integrati nell'ambiente di sviluppo (es. estensione LaTeX Workshop per VS Code).
+\end{itemize}
+
+\subsection{Validazione}
+La validazione consiste nella dimostrazione oggettiva che il prodotto finale risponda alle esigenze reali del committente e dell'azienda proponente Halue S.r.l. SB. \\
+Tale processo si realizza attraverso sessioni di riscontro periodico (come i SAL bisettimanali) e l'esecuzione di test di accettazione mirati a verificare il soddisfacimento dei requisiti funzionali e di qualità definiti nel Piano di Qualifica.
+
+\subsection{Gestione della configurazione}
+\subsubsection{Introduzione}
+La gestione della configurazione disciplina il controllo e la tracciabilità di ogni elemento di configurazione (Configuration Item) del progetto. \\
+Le attività di tracciamento operativo si basano sulla sinergia tra l'Issue Tracking System di \term{Jira} (fonte di verità per la pianificazione e lo stato dei task) e \term{GitHub} (per il controllo di versione del codice e dei documenti). \\
+\\
+La gestione dei flussi di lavoro adotta il modello \emph{GitHub flow}, garantendo che ogni modifica sia isolata in appositi branch, sottoposta a revisione paritaria tramite Pull Request e validata da controlli automatici prima dell'incorporazione nel ramo stabile. \\
+Il coordinamento interno del team \textbf{Git Happens} e le comunicazioni esterne con il proponente completano l'infrastruttura di governo del progetto, i cui indicatori di qualità e le metriche di riferimento trovano riscontro puntuale all'interno del documento \textbf{Piano di Qualifica}.
