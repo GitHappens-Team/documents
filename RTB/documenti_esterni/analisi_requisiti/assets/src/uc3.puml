@@ -1,0 +1,13 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "Utente autenticato" as AuthUser
+
+rectangle "Sonar" {
+    usecase "UC3 - Disconnessione dal\nsistema (Logout)" as UC3
+}
+
+AuthUser -- UC3
+@enduml

@@ -1,0 +1,32 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+actor "Utente non autenticato" as User
+
+rectangle "Sonar" {
+    usecase "UC1 - Autenticazione\ntramite Google" as UC1
+    usecase "UC1.1 - Autorizzazione\ntramite provider esterno" as UC1_1
+    usecase "UC1.2 - Creazione sessione e\nverifica appartenenza organizzazione" as UC1_2
+
+    usecase "UC2 - Visualizzazione\nerrore di autenticazione" as UC2
+    usecase "UC2.1 - Visualizzazione\nerrore autenticazione OAuth" as UC2_1
+    usecase "UC2.2 - Visualizzazione\nerrore utente non autorizzato" as UC2_2
+
+    UC1 ..> UC1_1 : <<include>>
+    UC1 ..> UC1_2 : <<include>>
+
+    UC2 ..> UC1 : <<extend>>
+    note on link
+      Punti di estensione:
+      - Autenticazione OAuth fallita/annullata
+      - Account non associato ad alcun tenant
+    end note
+
+    UC2_1 -|> UC2
+    UC2_2 -|> UC2
+}
+
+User -- UC1
+@enduml
