@@ -1,0 +1,53 @@
+\newpage
+
+\section{Modello di sviluppo}
+
+\subsection{Scelta del modello}
+Per la realizzazione del progetto \textbf{Sonar}, il gruppo \textbf{Git Happens} adotta un modello di sviluppo \textbf{iterativo e incrementale} di ispirazione \textbf{Agile}, basato su pratiche mutuate dal framework \textbf{Scrum} e integrato con il ciclo di miglioramento continuo \textbf{PDCA} (\textit{Plan, Do, Check, Act}) definito nelle \textit{Norme di Progetto}. \\
+\\
+Il lavoro viene suddiviso in iterazioni a durata prefissata di due settimane (\textbf{sprint bisettimanali}), al termine di ciascuna delle quali il team produce un incremento verificato di documentazione o di software e conduce una retrospettiva interna per analizzare l'andamento del periodo. \\
+\\
+A supporto della gestione operativa degli sprint, il gruppo affianca al modello iterativo l'utilizzo di spazi dedicati su Atlassian \textbf{Jira} strutturati in modalità \textbf{Kanban} come unica fonte di verità sullo stato delle attività, insieme al flusso di contribuzione \textbf{GitHub flow} per la gestione dei branch, delle Pull Request e della revisione paritaria dei contributi.
+
+\subsection{Motivazioni}
+La scelta del modello iterativo e incrementale deriva dalle caratteristiche specifiche del capitolato \textbf{C8 - Sonar}, dalla struttura del team e dai vincoli temporali del progetto didattico. In particolare, tale approccio consente di ottenere i seguenti vantaggi:
+\begin{itemize}
+    \item \textbf{Gestione progressiva dei requisiti e allineamento con il proponente:} l'ampiezza dell'ambito di progetto richiede un confronto costante con l'azienda proponente \textbf{Halue S.r.l. SB}. La scansione in sprint, affiancata dagli incontri periodici di Stato Avanzamento Lavori (SAL), permette di validare tempestivamente l'analisi dei casi d'uso, definire la priorità dei requisiti e soprattutto raccogliere feedback frequenti, riducendo il rischio di incomprensioni o deviazioni tardive in linea con il principio \textit{fail as soon as possible};
+    \item \textbf{Riduzione del rischio tecnologico tramite validazione anticipata:} lo stack individuato (tra cui Next.js, Drizzle ORM, Supabase con policy RLS e Vercel Workflows) introduce tecnologie nuove per il gruppo o ancora in fase evolutiva. L'organizzazione iterativa consente di dedicare gli sprint iniziali ad attività esplorative e al \textit{Proof of Concept} (PoC), verificando la fattibilità architetturale prima di avviare lo sviluppo completo verso la \textit{Product Baseline};
+    \item \textbf{Controllo puntuale di risorse e costi:} la pianificazione per iterazioni brevi consente al Responsabile di redigere preventivi a inizio sprint e consuntivi al termine di ciascun periodo, monitorando costantemente l'impegno orario dei sette componenti entro il limite complessivo di 651 ore produttive e il budget massimo di \texteuro{} 12.845,00;
+    \item \textbf{Miglioramento continuo dei processi:} attraverso le retrospettive di fine sprint e il ciclo PDCA, il team può individuare rapidamente eventuali criticità organizzative o ritardi, analizzarne le cause e tradurre quanto appreso in azioni correttive e aggiornamenti incrementali delle \textit{Norme di Progetto};
+    \item \textbf{Modulazione flessibile del carico di lavoro:} la struttura a sprint consente inoltre di adattare la quantità di attività pianificate alla reale disponibilità del team, bilanciando i periodi a carico ridotto (quali le festività natalizie e la sessione d'esami invernale) con le finestre di maggiore operatività.
+\end{itemize}
+
+\subsection{Applicazione al progetto}
+Nel contesto operativo del progetto \textbf{Sonar}, il modello di sviluppo viene declinato attraverso pratiche organizzative e scadenze definite dal gruppo nelle \textit{Norme di Progetto} e nella \textit{Dichiarazione impegni}.
+
+\paragraph{Ciclo operativo degli sprint (PDCA)}~\\[0.15cm]
+Ciascuno sprint ha durata bisettimanale e segue le quattro fasi del ciclo \textbf{PDCA}:
+\begin{itemize}
+    \item \textbf{Pianificazione (\textit{Plan}):} all'apertura dello sprint il team definisce obiettivi e scadenze, assegna la rotazione dei ruoli e scompone il lavoro in ticket all'interno degli spazi \textbf{Jira} (\texttt{SWE} per amministrazione e documentazione, \texttt{C8} per lo sviluppo applicativo). Decisioni e attività vengono tracciate nei verbali interni (codifiche \texttt{VI\_AAAA-MM-GG\_Dxx} e \texttt{ACT-GG.n}) e il Responsabile redige il preventivo orario di periodo;
+    \item \textbf{Esecuzione (\textit{Do}):} ogni membro prende in carico i ticket assegnati lavorando su branch dedicati denominati \texttt{KEY-NUMBER-DESC} secondo il modello \textit{GitHub flow}, registrando i progressi con commit semantici in lingua inglese;
+    \item \textbf{Verifica e controllo (\textit{Check}):} al termine dell'attività il contributo viene sottoposto sia ai controlli automatici della pipeline CI su GitHub Actions, sia alla revisione paritaria tramite Pull Request da parte del Verificatore designato, nel rispetto della \textit{Definition of Done}. A chiusura dello sprint il Responsabile compila il consuntivo di periodo e guida la retrospettiva di gruppo;
+    \item \textbf{Consolidamento (\textit{Act}):} superate le verifiche, la Pull Request viene fusa in \texttt{main} e il relativo ticket chiuso su Jira. Le azioni correttive emerse dalla retrospettiva o dal confronto con il proponente vengono integrate nelle \textit{Norme di Progetto} per gli sprint successivi e il Responsabile uscente effettua il passaggio di consegne.
+\end{itemize}
+
+\paragraph{Rotazione dei ruoli}~\\[0.15cm]
+I sette componenti del team ricoprono a rotazione i sei ruoli di progetto (\textit{Responsabile}, \textit{Amministratore}, \textit{Analista}, \textit{Progettista}, \textit{Programmatore}, \textit{Verificatore}) con cadenza bisettimanale sincronizzata con gli sprint, così da garantire a ciascun membro un'esperienza trasversale e il rispetto del monte orario massimo individuale di 93 ore produttive. \\
+\\
+L'allocazione dei ruoli in ciascuno sprint viene definita in modo flessibile in base alle necessità reali della fase di lavoro:
+\begin{itemize}
+    \item \textbf{Assegnazione orientata alle esigenze dello sprint:} il numero di persone assegnate a ciascun ruolo varia in funzione delle priorità del periodo e del carico di lavoro stimato;
+    \item \textbf{Presenza dei ruoli chiave e condivisione dei ruoli operativi:} la figura del Responsabile è sempre ricoperta da un singolo componente per assicurare un coordinamento chiaro, ed è sempre previsto almeno un Verificatore per garantire il controllo qualità richiesto dalla \textit{Definition of Done}; i restanti ruoli operativi possono essere suddivisi tra più membri con compiti distinti in base alle necessità dello sprint;
+    \item \textbf{Indipendenza della verifica:} per garantire l'oggettività del controllo qualità, nessun componente verifica artefatti (documenti o codice) prodotti da sé stesso;
+    \item \textbf{Passaggio di consegne:} al termine di ogni sprint il Responsabile uscente aggiorna il consuntivo orario ed effettua il passaggio di consegne al Responsabile subentrante.
+\end{itemize}
+
+\paragraph{Milestone e incontri con il proponente}~\\[0.15cm]
+L'avanzamento iterativo del progetto è scandito dalle due milestone principali del percorso didattico:
+\begin{itemize}
+    \item \textbf{Requirements and Technology Baseline (RTB), prevista entro il 15/01/2027:} focalizzata sul consolidamento dei processi, sull'analisi dei requisiti e sulla realizzazione del \textit{Proof of Concept} (PoC), volto a validare concretamente lo stack tecnologico individuato e la fattibilità architetturale delle componenti chiave concordate con il proponente;
+    \item \textbf{Product Baseline (PB), prevista entro il 26/03/2027:} dedicata alla progettazione di dettaglio, allo sviluppo del \textit{Minimum Viable Product} (MVP) e alla verifica e validazione finale prima della consegna.
+\end{itemize}
+La collocazione della revisione RTB prima della sessione d'esami invernale consente di concentrare le attività architetturali e di analisi in una fase di piena operatività, pianificando poi lo sviluppo della PB tenendo conto degli impegni accademici del gruppo. \\
+\\
+Come concordato nell'incontro esterno dell'11/11/2026 (\texttt{VE\_2026-11-11\_D03}), l'allineamento con \textbf{Halue S.r.l. SB} avviene tramite incontri di avanzamento a \textbf{cadenza settimanale} (di norma il mercoledì su Google Meet dalle 14:00 alle 15:00), ciascuno formalizzato con un verbale esterno firmato dall'azienda, oltre a comunicazioni asincrone via email per chiarimenti puntuali.
