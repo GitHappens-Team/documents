@@ -28,6 +28,10 @@ jobs:
         id: find
         run: |
           echo "dirs=$(find . -name main.tex -not -path './.latex/*' -printf '%h\n' | sort | tr '\n' ' ')" >> "$GITHUB_OUTPUT"
+      # only edits the CI checkout: the sources in the repo stay unchanged
+      - name: Mark glossary terms
+        run: python3 .github/scripts/glossary.py RTB/documenti_interni/glossario ${{ steps.find.outputs.dirs }}
+
       - name: Compila
         run: |
           mkdir -p out/content

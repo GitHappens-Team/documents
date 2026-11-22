@@ -53,6 +53,20 @@
 % Elenco su piu' righe dentro una cella: \lista{A. Rossi \\ B. Bianchi}
 \newcommand{\lista}[1]{\begin{tabular}[t]{@{}l@{}}#1\end{tabular}}
 
+% --- GLOSSARY ---
+% \term[slug]{...} is inserted by .github/scripts/glossary.py right before the build.
+% \term{text} without a slug only prints the G, \noterm{text} excludes one occurrence.
+\newcommand{\glossaryurl}{https://githappens-team.github.io/content/RTB/documenti_interni/glossario/glossario.pdf}
+% black text, so marked terms don't stand out like regular links
+\newcommand{\glossarylink}[2]{{\hypersetup{urlcolor=black}\href{\glossaryurl\#nameddest=gl-#1}{#2}}}
+\newcommand{\glossarymark}{\textsubscript{\textcolor{gray}{\textnormal{G}}}}
+\newcommand{\term}[2][]{\ifx\relax#1\relax#2\glossarymark\else\glossarylink{#1}{#2\glossarymark}\fi}
+\newcommand{\noterm}[1]{#1}
+% Glossary entry: \glossentry{Title}{comma-separated aliases}
+\newcommand{\glossentry}[3][]{%
+    \ifx\relax#1\relax\else\hypertarget{gl-#1}{}\fi
+    \subsection*{#2}}
+
 % Campi opzionali: la riga (o la data) compare solo se il campo e' stato impostato
 \makeatletter
 \newcommand{\inforow}[2]{%

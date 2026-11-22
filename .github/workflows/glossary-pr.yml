@@ -1,0 +1,38 @@
+name: Glossary PR
+
+# Comments on the PR with the terms missing from the glossary, only for the
+# lines the PR adds. One comment per push, the previous ones are minimized.
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - '**.tex'
+
+concurrency:
+  group: glossary-pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  suggestions:
+    # PRs from forks don't get secrets
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Glossary suggestions
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+        run: >
+          python3 .github/scripts/glossary_suggestions.py pr
+          --base ${{ github.event.pull_request.base.sha }}
+          --head ${{ github.event.pull_request.head.sha }}
