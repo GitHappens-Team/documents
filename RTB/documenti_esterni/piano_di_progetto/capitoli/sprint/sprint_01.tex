@@ -25,26 +25,53 @@ Verificatore & Tommaso Caon \\
 \end{tabularx}
 
 \paragraph{Attività svolte}~\\[0.15cm]
+La tabella seguente riporta le attività svolte nello sprint, con le ore previste a inizio sprint e quelle effettivamente rendicontate. Per ciascun componente la somma delle ore coincide con le tabelle di preventivo e consuntivo riportate più avanti.
+
 {\small
 \renewcommand{\arraystretch}{1.3}
+\setlength{\tabcolsep}{4pt}
+\setlength{\LTpre}{2mm}
 \noindent
-\begin{tabularx}{\textwidth}{|>{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{2.6cm} >{\raggedright\arraybackslash}p{1.6cm} c|}
+\begin{xltabular}{\textwidth}{|>{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{2.3cm} >{\raggedright\arraybackslash}p{1.6cm} c c c|}
 \hline
-\textbf{Attività} & \textbf{Assegnatario} & \textbf{Ticket} & \textbf{Stato} \\
+\textbf{Attività} & \textbf{Assegnatario} & \textbf{Ticket} & \textbf{Ore prev.} & \textbf{Ore eff.} & \textbf{Stato} \\
 \hline
-Registrazione degli account condivisi (Vercel, Supabase, Shopify, Google OAuth) e foglio dei limiti dei piani gratuiti & C. Antoniazzo & -- & Completata \\
-Repository del PoC, pipeline CI di base e protezione del branch \texttt{main} & A. Tang & -- & Completata \\
-Configurazione della pipeline Vercel Pro e integrazione con GitHub & F. Lissandrin, A. Tang & C8-11 & Completata \\
-Space Jira per C8 e documentazione delle tecnologie & F. Lissandrin & -- & Completata \\
-Collegamento dello Space Jira a Shopify & F. Lissandrin & -- & Non svolta \\
-Esperimento didattico sullo stack e video dimostrativo per il team & F. Lissandrin & -- & Completata \\
-Struttura del Glossario e script di automazione & G. Gambarro, A. Tang, F. Lissandrin, T. Caon & SWE-91, SWE-106 & Completata \\
-Stesura e aggiornamento delle \textit{Norme di Progetto} & G. Gambarro, G. Grinovero & SWE-84, SWE-104 & In corso \\
-Stesura del \textit{Piano di Progetto} & D. Grosselle, G. Grinovero, C. Antoniazzo & SWE-86, SWE-102, SWE-105 & In corso \\
-Avvio dell'\textit{Analisi dei Requisiti} & D. Grosselle & SWE-103 & In corso \\
-Verbali interni (10/11, 17/11) ed esterni (11/11, 18/11) & G. Grinovero, D. Grosselle, G. Gambarro & SWE-92, SWE-93, SWE-101, SWE-107 & Completata \\
+\endfirsthead
 \hline
-\end{tabularx}}
+\textbf{Attività} & \textbf{Assegnatario} & \textbf{Ticket} & \textbf{Ore prev.} & \textbf{Ore eff.} & \textbf{Stato} \\
+\hline
+\endhead
+\hline
+\endfoot
+Creazione degli account condivisi (Google Cloud/OAuth, Supabase, Shopify, Vercel) & C. Antoniazzo & -- & 1 & 1 & Completata \\
+Foglio condiviso dei limiti di utilizzo dei piani gratuiti & C. Antoniazzo & -- & 1 & 1 & Completata \\
+Diari di bordo del 16/11 e del 23/11 & C. Antoniazzo & -- & 1 & 1 & Completata \\
+\textit{Piano di Progetto}: preventivo e consuntivo dello Sprint 1 (Sezione~5) & C. Antoniazzo & SWE-105 & 2 & 1,5 & Completata \\
+Protezione del branch \texttt{main} del repository del PoC & A. Tang & -- & 1 & 0,5 & Completata \\
+Sistemazione della pipeline Vercel e dell'integrazione con GitHub; correzione dello script del Glossario & A. Tang, F. Lissandrin & C8-11 & 4 & 3 & Completata \\
+Scaffolding del PoC (esperimento didattico concordato con il proponente) e video dimostrativo per il team & F. Lissandrin & -- & 2 & 2 & Completata \\
+Space Jira per C8 e documentazione delle tecnologie & F. Lissandrin & -- & 1 & 0,5 & Completata \\
+Collegamento allo store Shopify & F. Lissandrin & -- & 1 & 0 & Rimandata \\
+\textit{Norme di Progetto}: introduzione e prima stesura; Sezioni 3.2 (Granola) e 3.3 (Struttura della repository) & G. Gambarro & SWE-84, SWE-104 & 2 & 2 & Completata \\
+\textit{Glossario}: struttura e prima stesura dei termini & G. Gambarro & SWE-91 & 2 & 1,5 & Completata \\
+Verbale esterno del 18/11 & G. Gambarro & SWE-107 & 1 & 1 & Completata \\
+Verbale esterno dell'11/11 & D. Grosselle & SWE-93 & 1 & 1 & Completata \\
+\textit{Piano di Progetto}: struttura e Sezione~1 (Introduzione); \textit{Norme di Progetto}: revisione della formattazione (v0.0.5) & D. Grosselle & SWE-86 & 1 & 1,5 & Completata \\
+\textit{Piano di Progetto}: Sezione~2 (Analisi dei rischi) & D. Grosselle & SWE-86 & 1,5 & 1,5 & Completata \\
+\textit{Analisi dei Requisiti}: Sezioni 1 (Introduzione) e 2 (Descrizione del prodotto) & D. Grosselle & SWE-103 & 1 & 1 & Completata \\
+\textit{Analisi dei Requisiti}: casi d'uso UC1, UC2 e UC3 & D. Grosselle & SWE-103 & 1,5 & 2 & Completata \\
+Verbali interni del 10/11 e del 17/11 & G. Grinovero & SWE-92, SWE-101 & 2 & 2 & Completata \\
+\textit{Norme di Progetto}: Sezioni 3.1.1, 3.1.2, 4.1.3, 4.4.1 e aggiornamento della 3.1.6 & G. Grinovero & SWE-84 & 1 & 1,5 & Completata \\
+\textit{Piano di Progetto}: Sezioni 3 (Modello di sviluppo) e 4 (Preventivo) & G. Grinovero & SWE-102 & 1 & 1 & Completata \\
+Verifica dei verbali del 10/11, 11/11, 17/11 e 18/11 & T. Caon & -- & 2,5 & 2,5 & Completata \\
+Verifica delle \textit{Norme di Progetto} & T. Caon & -- & 1,5 & 1 & Completata \\
+Verifica dello script di automazione del \textit{Glossario} & T. Caon & SWE-106 & 1 & 1 & Completata \\
+\hline
+\textbf{TOTALE} & & & \textbf{34} & \textbf{31} & \\
+\end{xltabular}}
+
+\noindent
+Il collegamento allo store Shopify è stato \textbf{rimandato allo Sprint 2}. La modalità di collegamento tramite token (SDK TypeScript di Shopify, con rinnovo del token ogni 24 ore) è stata definita solo nella riunione interna del 24/11/2026 (decisione \texttt{VI\_2026-11-24\_D04}). L'attività proseguirà come boilerplate di collegamento allo store, assegnato a G. Grinovero e F. Lissandrin.
 
 \paragraph{Rischi attesi}~\\[0.15cm]
 \begin{itemize}
@@ -120,9 +147,46 @@ Verificatore & 5 & 4,5 & $-$0,5 & 75,00 & 67,50 \\
 \hline
 \end{tabularx}
 
+\vspace{4mm}
+\noindent
+La ripartizione di ore e costi per ruolo è riportata nei grafici seguenti.
+
+\vspace{2mm}
+\begin{center}
+\pgfplotsset{
+    sprintbar/.style={
+        ybar, bar width=7pt, width=0.5\textwidth, height=5.5cm,
+        ymin=0, enlarge x limits=0.15, xtick pos=bottom, ytick pos=left,
+        symbolic x coords={Resp.,Amm.,Progett.,Anal.,Verif.}, xtick=data,
+        x tick label style={font=\footnotesize},
+        y tick label style={font=\footnotesize},
+        ylabel style={font=\footnotesize},
+        title style={font=\small\bfseries},
+        ymajorgrids, grid style={gray!25},
+        legend style={font=\footnotesize, at={(0.5,-0.18)}, anchor=north, legend columns=2, draw=none},
+        /pgf/number format/use comma,
+    }
+}
+\begin{tikzpicture}
+\begin{axis}[sprintbar, title={Ore per ruolo}, ylabel={Ore}, ymax=18]
+\addplot[fill=primaryDark, draw=primaryDark] coordinates {(Resp.,5) (Amm.,4) (Progett.,5) (Anal.,15) (Verif.,5)};
+\addplot[fill=primaryDark!35, draw=primaryDark!60] coordinates {(Resp.,4.5) (Amm.,2) (Progett.,4) (Anal.,16) (Verif.,4.5)};
+\legend{Preventivo, Consuntivo}
+\end{axis}
+\end{tikzpicture}%
+\hfill
+\begin{tikzpicture}
+\begin{axis}[sprintbar, title={Costi per ruolo}, ylabel={Costo (\texteuro{})}, ymax=450]
+\addplot[fill=primaryDark, draw=primaryDark] coordinates {(Resp.,150) (Amm.,80) (Progett.,125) (Anal.,375) (Verif.,75)};
+\addplot[fill=primaryDark!35, draw=primaryDark!60] coordinates {(Resp.,135) (Amm.,40) (Progett.,100) (Anal.,400) (Verif.,67.5)};
+\legend{Preventivo, Consuntivo}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
 \vspace{3mm}
 \noindent
-Lo sprint si chiude con 3 ore in meno rispetto al preventivo ($-$8,8\%) e un risparmio di \texteuro{} 62,50. Lo scostamento resta entro la soglia di allarme del 15\% (RO-01). Lo scarto maggiore riguarda l'Amministratore ($-$2 ore): le attività infrastrutturali (protezione del branch \texttt{main}, sistemazione di Vercel e del Glossario) hanno richiesto meno tempo del previsto. Il minor impegno del Progettista dipende dal collegamento a Shopify, che non è stato svolto ed è riportato allo sprint successivo. L'unico ruolo oltre la stima è l'Analista (+1 ora), che ha lavorato in parallelo su \textit{Norme di Progetto}, \textit{Piano di Progetto}, \textit{Analisi dei Requisiti} e verbali. \\
+Lo sprint si chiude con 3 ore in meno rispetto al preventivo ($-$8,8\%) e un risparmio di \texteuro{} 62,50. Lo scostamento resta entro la soglia di allarme del 15\% (RO-01). Lo scarto maggiore riguarda l'Amministratore ($-$2 ore): le attività infrastrutturali (protezione del branch \texttt{main}, sistemazione di Vercel e del Glossario) hanno richiesto meno tempo del previsto. Il minor impegno del Progettista dipende dal collegamento a Shopify, rimandato allo sprint successivo. L'unico ruolo oltre la stima è l'Analista (+1 ora), che ha lavorato in parallelo su \textit{Norme di Progetto}, \textit{Piano di Progetto}, \textit{Analisi dei Requisiti} e verbali. \\
 \\
 Al termine dello sprint risultano rendicontate 31 ore su 651, per un costo di \texteuro{} 742,50 su \texteuro{} 12.845,00. Restano disponibili 620 ore e un budget residuo di \texteuro{} 12.102,50.
 
