@@ -90,12 +90,12 @@ Le ore effettive sono ricavate dal registro ore giornaliero compilato dai compon
 Cristiano Antoniazzo & Responsabile & 4,5 & 135,00 \\
 Antonio Hai Xu Tang & Amministratore & 2 & 40,00 \\
 Filippo Lissandrin & Progettista & 4 & 100,00 \\
-Gabriele Gambarro & Analista & 4 & 100,00 \\
+Gabriele Gambarro & Analista & 4,5 & 112,50 \\
 Diana Grosselle & Analista & 7 & 175,00 \\
 Gianmaria Grinovero & Analista & 4,5 & 112,50 \\
 Tommaso Caon & Verificatore & 4,5 & 67,50 \\
 \hline
-\textbf{TOTALE} & & \textbf{30,5} & \textbf{730,00} \\
+\textbf{TOTALE} & & \textbf{31} & \textbf{742,50} \\
 \hline
 \end{tabularx}
 
@@ -113,31 +113,65 @@ Il confronto per ruolo tra preventivo e consuntivo è riportato nella tabella se
 Responsabile & 5 & 4,5 & $-$0,5 & 150,00 & 135,00 \\
 Amministratore & 4 & 2 & $-$2 & 80,00 & 40,00 \\
 Progettista & 5 & 4 & $-$1 & 125,00 & 100,00 \\
-Analista & 15 & 15,5 & +0,5 & 375,00 & 387,50 \\
+Analista & 15 & 16 & +1 & 375,00 & 400,00 \\
 Verificatore & 5 & 4,5 & $-$0,5 & 75,00 & 67,50 \\
 \hline
-\textbf{TOTALE} & \textbf{34} & \textbf{30,5} & \textbf{$-$3,5} & \textbf{805,00} & \textbf{730,00} \\
+\textbf{TOTALE} & \textbf{34} & \textbf{31} & \textbf{$-$3} & \textbf{805,00} & \textbf{742,50} \\
 \hline
 \end{tabularx}
 
 \vspace{3mm}
 \noindent
-Lo sprint si chiude con 3,5 ore in meno rispetto al preventivo ($-$10,3\%) e un risparmio di \texteuro{} 75,00. Lo scostamento resta entro la soglia di allarme del 15\% (RO-01). Lo scarto maggiore riguarda l'Amministratore ($-$2 ore): le attività infrastrutturali (protezione del branch \texttt{main}, sistemazione di Vercel e del Glossario) hanno richiesto meno tempo del previsto. Il minor impegno del Progettista dipende dal collegamento a Shopify, che non è stato svolto ed è riportato allo sprint successivo. L'unico ruolo oltre la stima è l'Analista (+0,5 ore), che ha lavorato in parallelo su \textit{Norme di Progetto}, \textit{Piano di Progetto}, \textit{Analisi dei Requisiti} e verbali. \\
+Lo sprint si chiude con 3 ore in meno rispetto al preventivo ($-$8,8\%) e un risparmio di \texteuro{} 62,50. Lo scostamento resta entro la soglia di allarme del 15\% (RO-01). Lo scarto maggiore riguarda l'Amministratore ($-$2 ore): le attività infrastrutturali (protezione del branch \texttt{main}, sistemazione di Vercel e del Glossario) hanno richiesto meno tempo del previsto. Il minor impegno del Progettista dipende dal collegamento a Shopify, che non è stato svolto ed è riportato allo sprint successivo. L'unico ruolo oltre la stima è l'Analista (+1 ora), che ha lavorato in parallelo su \textit{Norme di Progetto}, \textit{Piano di Progetto}, \textit{Analisi dei Requisiti} e verbali. \\
 \\
-Al termine dello sprint risultano rendicontate 30,5 ore su 651, per un costo di \texteuro{} 730,00 su \texteuro{} 12.845,00. Restano disponibili 620,5 ore e un budget residuo di \texteuro{} 12.115,00.
+Al termine dello sprint risultano rendicontate 31 ore su 651, per un costo di \texteuro{} 742,50 su \texteuro{} 12.845,00. Restano disponibili 620 ore e un budget residuo di \texteuro{} 12.102,50.
 
 \paragraph{Retrospettiva}~\\[0.15cm]
-% TODO: aspetti positivi e negativi emersi nella riunione di chiusura
-\textit{Da compilare nella riunione di chiusura dello sprint.}
+Nella riunione di chiusura il gruppo ha individuato i seguenti aspetti.
+
+\vspace{1mm}
+\noindent\textbf{Aspetti positivi}
+\begin{itemize}
+    \item \textbf{Disponibilità del proponente:} Halue S.r.l. SB si è dimostrata disponibile e reattiva, sia negli incontri dell'11/11/2026 e del 18/11/2026 sia nelle risposte ai dubbi sul capitolato;
+    \item \textbf{Way of working:} il gruppo ha compreso meglio il proprio modo di lavorare, in particolare la suddivisione delle attività in ticket e la loro presa in carico da parte dei singoli componenti;
+    \item \textbf{Rispetto dei tempi:} le attività pianificate sono state completate o avviate entro la fine dello sprint, con la sola eccezione del collegamento a Shopify;
+    \item \textbf{Equa distribuzione del lavoro:} il carico è stato ripartito in modo equilibrato tra i componenti, in coerenza con i ruoli assegnati.
+\end{itemize}
+
+\noindent\textbf{Aspetti negativi}
+\begin{itemize}
+    \item \textbf{Configurazione di Vercel con GitHub:} l'integrazione ha richiesto più tentativi del previsto a causa della conoscenza ancora limitata della piattaforma;
+    \item \textbf{Ruoli poco impegnati:} in questa fase iniziale, incentrata sulla documentazione, alcuni ruoli (in particolare Amministratore e Progettista) hanno avuto poche attività da svolgere.
+\end{itemize}
 
 \paragraph{Rischi incontrati}~\\[0.15cm]
-% TODO
-\textit{Da compilare nella riunione di chiusura dello sprint.}
+\noindent\textbf{Rischi tecnologici}
+\begin{itemize}
+    \item \textbf{RT-01} -- Curva di apprendimento dello stack: si è manifestato nella configurazione della pipeline Vercel e della sua integrazione con GitHub e nello scaffolding del PoC, primi contatti del gruppo con queste tecnologie;
+    \item \textbf{RT-06} -- Omissione delle policy RLS: con la creazione del progetto Supabase è emersa la necessità di stabilire fin da subito come gestire l'isolamento tra organizzazioni, prima che vengano create le prime tabelle.
+\end{itemize}
+
+\noindent\textbf{Rischi organizzativi}
+\begin{itemize}
+    \item \textbf{RO-02} -- Concentrazione delle competenze: lo scaffolding del PoC, il codice di base (\textit{boilerplate}) e l'esperimento sullo stack sono stati svolti principalmente da F. Lissandrin, che è diventato il principale riferimento tecnico del gruppo.
+\end{itemize}
+
+\noindent\textbf{Rischi di comunicazione e requisiti}
+\begin{itemize}
+    \item \textbf{RC-01} -- Ambiguità dei requisiti: l'avvio dell'\textit{Analisi dei Requisiti} ha fatto emergere diversi dubbi interpretativi sul capitolato (gestione dei token Shopify, assegnazione degli store alle organizzazioni, cadenza delle scansioni, piano Vercel).
+\end{itemize}
 
 \paragraph{Strategia di mitigazione adottata}~\\[0.15cm]
-% TODO
-\textit{Da compilare nella riunione di chiusura dello sprint.}
+\begin{itemize}
+    \item \textbf{RT-01:} la configurazione della pipeline Vercel è stata svolta in affiancamento da F. Lissandrin e A. Tang; l'esperimento didattico sullo stack è stato condotto come \textit{spike} isolato, prima di qualsiasi scelta architetturale;
+    \item \textbf{RT-06:} il gruppo ha stabilito di definire le policy RLS contestualmente allo script di creazione di ciascuna tabella, come previsto dalle azioni preventive del rischio;
+    \item \textbf{RO-02:} i risultati dell'esperimento sono stati condivisi con tutto il gruppo tramite un video dimostrativo e la documentazione delle tecnologie, così da ridurre la dipendenza da un singolo componente;
+    \item \textbf{RC-01:} i dubbi sono stati raccolti e portati agli incontri con il proponente dell'11/11/2026 e del 18/11/2026; le risposte sono state formalizzate nei verbali esterni e i termini ambigui nel \textit{Glossario}.
+\end{itemize}
 
 \paragraph{Migliorie da attuare}~\\[0.15cm]
-% TODO
-\textit{Da compilare nella riunione di chiusura dello sprint.}
+\begin{itemize}
+    \item \textbf{Riunione settimanale tra analisti:} un breve incontro dedicato ai soli analisti per chiarire i dubbi sui requisiti e allineare la stesura dell'\textit{Analisi dei Requisiti}, senza coinvolgere l'intero gruppo;
+    \item \textbf{Attività per i ruoli tecnici:} assegnare a Progettista e Amministratore attività preparatorie (\textit{spike} tecnici, studio dello stack, automazioni) per evitare tempi morti nelle fasi a prevalenza documentale;
+    \item \textbf{Condivisione delle conoscenze su Vercel e GitHub:} una sessione interna sulla configurazione della pipeline, così che la conoscenza non resti limitata ai componenti che l'hanno svolta.
+\end{itemize}
