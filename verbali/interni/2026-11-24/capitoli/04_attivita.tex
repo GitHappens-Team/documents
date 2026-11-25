@@ -44,7 +44,7 @@ Il gruppo ha definito i ruoli per lo Sprint 2 come segue:
 \noindent Sono state inoltre prese le seguenti decisioni organizzative:
 \begin{itemize}
     \item \textbf{Assenza dell'Amministratore}: per lo Sprint 2 il ruolo di Amministratore non viene assegnato. La pipeline è già stata impostata, i compiti tipici del ruolo (configurazione degli ambienti e degli strumenti operativi) sono già svolti da quasi tutti i membri e l'osservanza del \emph{Way of Working} viene già controllata da tutto il gruppo. La creazione dello sprint e delle issue su Jira passa al Responsabile. Il ruolo potrà essere reintrodotto nel prossimo sprint, se necessario;
-    \item \textbf{Ripetizione del ruolo di Progettista}: è stata rimossa la regola che impediva di ricoprire lo stesso ruolo per due sprint consecutivi, poiché il gruppo conta sette membri a fronte di sei ruoli. Ciò consente a F. Lissandrin di ricoprire nuovamente il ruolo di Progettista, affiancando G. Grinovero;
+    \item \textbf{Ripetizione del ruolo di Progettista}: F. Lissandrin ricopre nuovamente il ruolo di Progettista, affiancando G. Grinovero, così da garantire continuità nella fase iniziale del progetto;
     \item \textbf{Scelta del Verificatore}: il ruolo di Verificatore è stato assegnato tenendo conto delle preferenze espresse e della disponibilità dei membri.
 \end{itemize}
 
@@ -64,7 +64,7 @@ Le Norme di Progetto verranno aggiornate con la nomenclatura dei casi d'uso, le 
 È stato discusso il funzionamento del collegamento allo store Shopify tramite token:
 \begin{itemize}
     \item \textbf{Modalità di collegamento}: il collegamento verrà realizzato probabilmente tramite l'SDK TypeScript di Shopify. Verrà predisposto un breve boilerplate il cui risultato atteso è un collegamento funzionante allo store;
-    \item \textbf{Rinnovo del token}: il token ha validità di 24 ore. In una prima fase il rinnovo avverrà manualmente, per poi essere automatizzato tramite un'esecuzione periodica pianificata con \emph{Vercel Cron};
+    \item \textbf{Rinnovo del token}: il token ha validità di 24 ore. In una prima fase il rinnovo avverrà manualmente, per poi essere automatizzato tramite un'esecuzione periodica pianificata con \emph{Vercel Schedules};
     \item \textbf{Multi-tenancy}: per il POC è sufficiente un singolo tenant, ma la struttura verrà comunque impostata correttamente fin da subito per supportarne più di uno.
 \end{itemize}
 Contestualmente è stata avviata la stesura della Specifica Tecnica in versione preliminare (0.x), che conterrà:
@@ -77,8 +77,8 @@ Contestualmente è stata avviata la stesura della Specifica Tecnica in versione 
 \subsection{Documentazione, repository e strumenti}
 Sono stati infine trattati alcuni aspetti relativi alla documentazione e all'organizzazione del repository:
 \begin{itemize}
-    \item \textbf{Piano di Qualifica}: l'avvio della stesura (struttura e contenuti generali) è stato rinviato alla settimana prossima. Il documento conterrà obiettivi quantitativi, metriche con relative soglie, andamento per periodo e azioni correttive;
-    \item \textbf{Elenco delle tabelle}: nei documenti principali verrà aggiunto l'elenco delle tabelle, oltre all'indice dei contenuti;
+    \item \textbf{Piano di Qualifica}: l'avvio della stesura (struttura e contenuti generali) è stato rinviato alla settimana prossima, così da concentrare l'impegno del gruppo sull'Analisi dei Requisiti. Il documento conterrà obiettivi quantitativi, metriche con relative soglie, andamento per periodo e azioni correttive;
+    \item \textbf{Elenco delle tabelle e delle immagini}: nei documenti principali verranno aggiunti l'elenco delle tabelle e l'elenco delle immagini, oltre all'indice dei contenuti;
     \item \textbf{Sito web e repository}: verrà rimossa la sezione \emph{Way of Working}, i cui contenuti sono già presenti nelle Norme di Progetto. La cartella RTB verrà posizionata sopra quella della candidatura, che potrà essere nascosta tramite un menu a tendina. I verbali relativi alla RTB verranno spostati in una sottocartella dedicata;
     \item \textbf{Jira}: il Responsabile creerà su Jira lo Sprint 2 e le relative issue.
 \end{itemize}
@@ -95,13 +95,13 @@ La prossima riunione interna è prevista per \textbf{martedì 01/12/2026}. L'inc
     \hline
     VI\_2026-11-24\_D01 & Svolgimento della retrospettiva dello Sprint 1 e introduzione di riunioni tra analisti per ridurre la concentrazione delle competenze tecniche; completamento del primo periodo del Piano di Progetto. \\
     \hline
-    VI\_2026-11-24\_D02 & Assegnazione dei ruoli per lo Sprint 2, sospensione del ruolo di Amministratore e rimozione del vincolo di non ripetizione dello stesso ruolo in sprint consecutivi. \\
+    VI\_2026-11-24\_D02 & Assegnazione dei ruoli per lo Sprint 2, sospensione del ruolo di Amministratore e conferma di F. Lissandrin come Progettista per garantire continuità nella fase iniziale del progetto. \\
     \hline
     VI\_2026-11-24\_D03 & Adozione della convenzione \texttt{UC[numero].[sottocaso] - [titolo]} con tabella descrittiva per ogni caso d'uso, uso di PlantUML per i diagrammi UML e aggiornamento conseguente delle Norme di Progetto. \\
     \hline
-    VI\_2026-11-24\_D04 & Realizzazione di un boilerplate per il collegamento allo store Shopify tramite token, con rinnovo inizialmente manuale e poi automatizzato tramite Vercel Cron, e avvio della bozza della Specifica Tecnica con technology baseline. \\
+    VI\_2026-11-24\_D04 & Realizzazione di un boilerplate per il collegamento allo store Shopify tramite token, con rinnovo inizialmente manuale e poi automatizzato tramite Vercel Schedules, e avvio della bozza della Specifica Tecnica con technology baseline. \\
     \hline
-    VI\_2026-11-24\_D05 & Rinvio del Piano di Qualifica alla settimana successiva, aggiunta dell'elenco delle tabelle nei documenti principali e riorganizzazione del sito web e del repository (rimozione della sezione Way of Working, cartella RTB e sottocartella per i verbali). \\
+    VI\_2026-11-24\_D05 & Rinvio del Piano di Qualifica alla settimana successiva, aggiunta dell'elenco delle tabelle e delle immagini nei documenti principali e riorganizzazione del sito web e del repository (rimozione della sezione Way of Working, cartella RTB e sottocartella per i verbali). \\
     \hline
     VI\_2026-11-24\_D06 & Preparazione del maggior numero possibile di casi d'uso da discutere nell'incontro esterno con Halue del 02/12/2026. \\
     \hline
