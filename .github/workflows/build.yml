@@ -69,6 +69,16 @@ jobs:
             fi
           done
 
+      # metadata.json di categoria (cartelle di primo livello): ordinamento (index) e categorie passate (past).
+      # Copiati così come sono, il sito li legge da content/<categoria>/metadata.json.
+      - name: Copia metadata di categoria
+        run: |
+          for f in */metadata.json; do
+            [ -f "$f" ] || continue
+            mkdir -p "out/content/$(dirname "$f")"
+            cp "$f" "out/content/$f"
+          done
+
       - name: Show result
         run: find out/content -type f | sort
 
