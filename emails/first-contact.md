@@ -2,7 +2,7 @@
 
 1. **v1.0.0** 16/10/2026 - Filippo Lissandrin
 2. **v1.1.0** 16/10/2026 - Filippo Lissandrin: aggiunta dell'oggetto
-3. **v1.1.1** 16/10/2026 - Filippo Lissandring: fix typo
+3. **v1.1.1** 16/10/2026 - Filippo Lissandrin: fix typo
 
 ## Oggetto
 

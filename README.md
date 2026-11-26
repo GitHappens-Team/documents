@@ -221,6 +221,19 @@ Campi, valori e loro tipo/formato:
    - `version`: numero di versione in formato `x.y.z` (vedi documento di norme di progetto, sez. di versionamento)
    - `atTimestamp`: data di assegnamento della versione `version` in formato ISO 8601 UTC (usare la mezzanotte UTC in caso di assenza di informazioni orarie specifiche).
 
+##### metadata.json di categoria
+
+Ogni cartella di primo livello (e.g. `RTB`, `candidatura`, `verbali`) può contenere un proprio `metadata.json` che controlla come la categoria è mostrata nel sito. Viene pubblicato così com'è, senza campi generati.
+
+```json
+{
+	"index": 0
+}
+```
+
+- `index` (int >= 0): posizione della categoria nella pagina; le categorie con `index` precedono quelle senza e sono ordinate per valore crescente, le restanti in ordine alfabetico;
+- `past` (bool): `true` sposta la categoria nella sezione "Categorie passate" in fondo alla pagina.
+
 #### Checklist di creazione file
 
 1. Creare/aprire la cartella di categoria e sottocategoria (se presente) del documento;
