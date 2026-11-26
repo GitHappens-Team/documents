@@ -24,17 +24,63 @@ Il processo prende avvio con l'analisi approfondita del capitolato d'appalto e d
 \subsubsection{Introduzione}
 Il processo di sviluppo, in accordo con lo standard ISO/IEC 12207:1995, comprende l'insieme delle attività di analisi, progettazione, codifica, testing e configurazione dell'ambiente. \\
 Il gruppo \textbf{Git Happens} adotta un approccio incrementale e iterativo, garantendo la tracciabilità tra i requisiti e l'architettura implementata per il sistema Sonar.
-\subsubsection{\term{Analisi dei Requisiti}} 
-L'attività di analisi dei requisiti ha lo scopo di definire in modo esaustivo le esigenze del proponente Halue S.r.l. SB. Il sistema Sonar si propone di analizzare store Shopify enterprise per mappare configurazioni, app, webhook, metafield e codice di tema, individuando elementi orfani e codice morto. \\
-\\
-Gli analisti del gruppo definiscono:
+\subsection{Analisi dei requisiti}
+
+\subsubsection{Descrizione}
+L'attività di analisi dei requisiti costituisce un momento fondamentale nello sviluppo del progetto Sonar, commissionato dall'azienda Halue S.r.l. SB. Essa ha lo scopo di definire in modo rigoroso, completo e privo di ambiguità le esigenze del proponente, stabilendo le basi per la successiva progettazione, codifica e verifica del sistema. L'analisi si concentra sulla comprensione approfondita del dominio applicativo degli store Shopify enterprise e sulla formalizzazione dei casi d'uso, delle funzionalità e dei vincoli operativi.
+
+\subsubsection{Obiettivi}
+Gli obiettivi principali dell'attività di analisi dei requisiti comprendono:
 \begin{itemize}
-    \item \textbf{Casi d'uso}: scenari d'interazione tra l'utente autenticato (tramite Google OAuth su Supabase) e il sistema, focalizzati sulla gestione delle scansioni e sulla navigazione del grafo delle dipendenze;
-    \item \textbf{\term{Diagrammi UML}}: diagrammi di supporto per la modellazione dei casi d'uso e del dominio applicativo;
-    \item \textbf{Requisiti}: classificazione puntuale in requisiti obbligatori (RFO), desiderabili (RFD) e opzionali (RFOp), con particolare attenzione alla durevolezza delle scansioni tramite Vercel Workflows e al rispetto dei limiti di rate limiting delle Admin API di Shopify.
+    \item Definire con precisione gli obiettivi e le funzionalità del prodotto Sonar in stretta condivisione con l'azienda proponente, rispecchiandone le aspettative;
+    \item Identificare, documentare e validare i requisiti funzionali, qualitativi e di vincolo del sistema;
+    \item Facilitare la comprensione comune tra tutti gli stakeholder del progetto (membri del team, docenti e proponente);
+    \item Permettere una stima accurata delle tempistiche e delle risorse necessarie;
+    \item Fornire ai progettisti specifiche chiare e strutturate per orientare l'architettura software;
+    \item Favorire l'attività di verifica e testing definendo riferimenti pratici e verificabili.
 \end{itemize}
 
-\subsubsection{Progettazione}
+\subsubsection{Documentazione}
+Il gruppo redige il documento \emph{Analisi dei Requisiti}, il quale costituisce il riferimento ufficiale per le specifiche del sistema. Esso contiene:
+\begin{itemize}
+    \item \textbf{Introduzione e Obiettivi:} descrizione dello scopo del documento e panoramica degli obiettivi del prodotto Sonar;
+    \item \textbf{Descrizione del prodotto:} analisi approfondita del contesto, degli obiettivi generali, delle funzionalità core (acquisizione, normalizzazione a grafo, analisi statica del tema, motore di rilevamento orfani e presentazione) e dei vincoli di dominio (operatività in sola lettura, esclusione del monitoraggio real-time e dei dati di business);
+    \item \textbf{Caratteristiche degli utenti:} profilazione delle figure professionali di riferimento (sviluppatori Shopify, architetti software, project manager tecnici);
+    \item \textbf{Tecnologie di riferimento:} quadro tecnologico basato su Next.js, ecosistema Vercel (Workflows, Queues, Sandbox, Blob) e Supabase con Row Level Security (RLS);
+    \item \textbf{Casi d'uso:} modellazione dettagliata degli scenari d'interazione tra gli attori e il sistema;
+    \item \textbf{Requisiti:} classificazione puntuale dei requisiti in obbligatori (RFO), desiderabili (RFD) e opzionali (RFOp).
+\end{itemize}
+
+\subsubsection{Casi d'uso}
+I casi d'uso forniscono una descrizione dettagliata delle funzionalità del sistema dal punto di vista degli utenti e delle entità esterne, illustrando come la piattaforma risponde a determinate azioni o scenari operativi. 
+Ogni caso d'uso è identificato da un codice univoco secondo la sintassi \texttt{UC[Numero caso d'uso].[Numero sottocaso d'uso] - [Titolo]} ed è corredato da una scheda testuale strutturata nei seguenti campi:
+\begin{enumerate}
+    \item \textbf{Identificativo e Titolo:} codice univoco e descrizione sintetica dell'obiettivo funzionale;
+    \item \textbf{Attore principale:} entità esterna che avvia e guida attivamente l'interazione con il sistema;
+    \item \textbf{Descrizione:} sintesi esplicativa della funzionalità modellata;
+    \item \textbf{Precondizioni:} stato in cui deve trovarsi il sistema affinché l'interazione possa avere inizio;
+    \item \textbf{Postcondizioni:} stato risultante del sistema al termine della corretta esecuzione;
+    \item \textbf{Scenario principale:} sequenza ordinata e numerata delle azioni e risposte;
+    \item \textbf{Estensioni:} eventuali flussi alternativi o di gestione degli errori;
+    \item \textbf{User story associata:} formulazione sintetica della funzionalità dal punto di vista dell'utente nella forma \emph{``Come [utente] desidero poter [funzionalità] per [valore aggiunto]''}.
+\end{enumerate}
+Gli attori identificati nel sistema comprendono l'utente non autenticato, l'utente autenticato (sviluppatore o tech lead associato a un tenant) e il temporizzatore (scheduler) per l'avvio delle scansioni periodiche.
+
+\subsubsection{Diagrammi dei casi d'uso}
+I diagrammi dei casi d'uso sono strumenti di modellazione grafica che permettono di visualizzare in modo chiaro, intuitivo e immediato le funzionalità offerte dal sistema e le relative interazioni con gli attori esterni, senza approfondire i dettagli implementativi di basso livello.
+
+\subsubsection{Requisiti}
+La sezione dei requisiti definisce in modo strutturato l'insieme delle richieste, delle specifiche e dei vincoli operativi che il software deve soddisfare. Essi si suddividono in base alla loro priorità e natura:
+\begin{itemize}
+    \item \textbf{Requisiti funzionali obbligatori:} rappresentano il nucleo essenziale e irrinunciabile del sistema, costituendo la base fondamentale su cui viene valutata la realizzazione del progetto.
+    \item \textbf{Requisiti funzionali desiderabili:} comprendono funzionalità non strettamente indispensabili per il funzionamento primario, ma che offrono un significativo valore aggiunto all'utente.
+    \item \textbf{Requisiti funzionali opzionali:} raggruppano caratteristiche secondarie o migliorative la cui implementazione può essere valutata o eventualmente contrattata in base all'effettivo avanzamento temporale e delle risorse.
+\end{itemize}
+
+\subsubsection{Strumenti}
+PlantUML (tramite estensione dedicata per Visual Studio Code): strumento utilizzato dal team per la generazione e la gestione visuale dei diagrammi dei casi d'uso in modalità \emph{Text-to-UML}.
+
+\subsection{Progettazione}
 La fase di progettazione definisce l'architettura logica e di deployment del sistema Sonar, separando nettamente i moduli di acquisizione, normalizzazione, analisi e presentazione. \\
 \\
 I principali aspetti affrontati comprendono:
@@ -45,11 +91,11 @@ I principali aspetti affrontati comprendono:
     \item \textbf{Test}: pianificazione dei test di unità, integrazione e sistema tramite framework dedicati come Vitest e Playwright.
 \end{itemize}
 
-\subsubsection{Codifica}
+\subsection{Codifica}
 L'attività di codifica è affidata ai programmatori del gruppo \textbf{Git Happens}, i quali traducono le specifiche tecniche in codice sorgente robusto e manutenibile scritto in \term{TypeScript} (strict mode). Vengono rigorosamente seguite le norme di codifica ispirate ai principi di "Clean Code", garantendo la pulizia del codice, la modularità e l'assenza di errori di linting in fase di integrazione continua (\term{CI}). \\
 Come strumenti di sviluppo vengono impiegati \term{Visual Studio Code} e la piattaforma \term{GitHub} per il versionamento.
 
-\subsubsection{Configurazione ambiente}
+\subsection{Configurazione ambiente}
 La configurazione dell'ambiente di esecuzione e di sviluppo del progetto Sonar si basa sull'ecosistema Vercel e Supabase. Nello specifico, il gruppo gestisce:
 \begin{itemize}
     \item \textbf{Vercel Workflows e Queues}: per l'orchestrazione durevole e la ripresa delle scansioni in seguito a limiti di rate limiting o interruzioni;
