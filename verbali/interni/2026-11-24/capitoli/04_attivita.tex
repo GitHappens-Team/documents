@@ -1,0 +1,106 @@
+\newpage
+\vspace{0.8cm}
+
+\section{Ordine del giorno}
+
+\subsection{Retrospettiva dello Sprint 1}
+La riunione si è aperta con la retrospettiva dello Sprint 1 (conclusosi il 24/11/2026), finalizzata al completamento del primo periodo del Piano di Progetto.
+
+Sul piano tecnologico si sono riscontrati problemi di configurazione di Vercel e GitHub, dovuti anche a una conoscenza di Vercel ancora insufficiente per lavorare in modo efficace; il POC di codice è stato comunque avviato come esperimento didattico concordato con l'azienda proponente. Sul piano organizzativo è emersa invece una concentrazione delle competenze tecniche su una sola persona.
+
+Tra gli aspetti positivi, il gruppo ha rispettato le tempistiche previste (ad eccezione dell'ultimo verbale, il cui ritardo è stato ritenuto non critico) e ha migliorato la comprensione di Pull Request, workflow e divisione dei ruoli; l'azienda si è inoltre dimostrata molto disponibile. Il lavoro è stato ripartito in modo complessivamente equo tra i membri; tuttavia, in questa fase iniziale, alcuni ruoli hanno avuto meno attività di competenza rispetto ad altri, per cui il carico non è risultato del tutto omogeneo tra i ruoli. Tra le criticità rientra anche la configurazione di Vercel, rivelatasi problematica.
+
+Come azione di miglioramento vengono introdotte riunioni tra analisti per condividere le informazioni e ridurre la concentrazione delle competenze. La retrospettiva verrà completata all'interno del Piano di Progetto e sottoposta a Pull Request.
+
+\subsection{Rotazione dei ruoli per lo Sprint 2}
+Il gruppo ha definito i ruoli per lo Sprint 2 come segue:
+
+\vspace{0.3cm}
+\renewcommand{\arraystretch}{1.3}
+\noindent
+\begin{tabularx}{\textwidth}{|X|X|}
+    \hline
+    \textbf{Membro} & \textbf{Ruolo} \\
+    \hline
+    G. Gambarro & Responsabile \\
+    \hline
+    D. Grosselle & Verificatore \\
+    \hline
+    G. Grinovero & Progettista \\
+    \hline
+    F. Lissandrin & Progettista \\
+    \hline
+    C. Antoniazzo & Analista \\
+    \hline
+    T. Caon & Analista \\
+    \hline
+    A. Tang & Analista \\
+    \hline
+\end{tabularx}
+\vspace{0.3cm}
+
+\noindent Sono state inoltre prese le seguenti decisioni organizzative:
+\begin{itemize}
+    \item \textbf{Assenza dell'Amministratore}: per lo Sprint 2 il ruolo di Amministratore non viene assegnato. La pipeline è già stata impostata, i compiti tipici del ruolo (configurazione degli ambienti e degli strumenti operativi) sono già svolti da quasi tutti i membri e l'osservanza del \emph{Way of Working} viene già controllata da tutto il gruppo. La creazione dello sprint e delle issue su Jira passa al Responsabile. Il ruolo potrà essere reintrodotto nel prossimo sprint, se necessario;
+    \item \textbf{Ripetizione del ruolo di Progettista}: F. Lissandrin ricopre nuovamente il ruolo di Progettista, affiancando G. Grinovero, così da garantire continuità nella fase iniziale del progetto;
+    \item \textbf{Scelta del Verificatore}: il ruolo di Verificatore è stato assegnato tenendo conto delle preferenze espresse e della disponibilità dei membri.
+\end{itemize}
+
+\subsection{Analisi dei Requisiti: casi d'uso e diagrammi PlantUML}
+È stata definita la convenzione per la stesura dei casi d'uso nell'Analisi dei Requisiti:
+\begin{itemize}
+    \item \textbf{Nomenclatura}: ogni caso d'uso è identificato nel formato \texttt{UC[numero].[sottocaso] - [titolo]};
+    \item \textbf{Attori}: utente non autenticato, utente autenticato e scheduler;
+    \item \textbf{Struttura}: per ogni caso d'uso è prevista una tabella con attore, descrizione, precondizioni, postcondizioni, scenario principale (passi), estensioni ed errori e user story associata;
+    \item \textbf{Diagrammi UML}: i diagrammi vengono realizzati con l'estensione \emph{PlantUML} per VS Code, che offre una sintassi semplice e consente l'esportazione in PNG o SVG. Le immagini PNG sono salvate nella cartella \texttt{assets/analisi-dei-requisiti}, mentre il codice sorgente PlantUML viene mantenuto nel repository per garantirne la modificabilità;
+    \item \textbf{Stato di avanzamento}: sono stati completati i casi d'uso relativi all'autenticazione tramite Google (con controllo del token e del tenant) e al logout. Il prossimo caso d'uso prioritario è il collegamento dello store Shopify successivo al login, seguito dall'avvio della scansione e dagli altri casi individuabili dal capitolato;
+    \item \textbf{Requisiti nell'Analisi dei Requisiti}: verrà aggiunta la sezione dedicata ai requisiti, ricavandoli dal documento di progetto Sonar.
+\end{itemize}
+Le Norme di Progetto verranno aggiornate con la nomenclatura dei casi d'uso, le convenzioni di utilizzo di PlantUML (incluso l'uso dell'estensione per VS Code) e le indicazioni sui test di unità.
+
+\subsection{Collegamento allo store Shopify e Specifica Tecnica}
+È stato discusso il funzionamento del collegamento allo store Shopify tramite token:
+\begin{itemize}
+    \item \textbf{Modalità di collegamento}: il collegamento verrà realizzato probabilmente tramite l'SDK TypeScript di Shopify. Verrà predisposto un breve boilerplate il cui risultato atteso è un collegamento funzionante allo store;
+    \item \textbf{Rinnovo del token}: il token ha validità di 24 ore. In una prima fase il rinnovo avverrà manualmente, per poi essere automatizzato tramite un'esecuzione periodica pianificata con \emph{Vercel Schedules};
+    \item \textbf{Multi-tenancy}: per il POC è sufficiente un singolo tenant, ma la struttura verrà comunque impostata correttamente fin da subito per supportarne più di uno.
+\end{itemize}
+Contestualmente è stata avviata la stesura della Specifica Tecnica in versione preliminare (0.x), che conterrà:
+\begin{itemize}
+    \item la \textbf{technology baseline}, ovvero una tabella delle tecnologie scelte con relativa motivazione e collegamento al POC;
+    \item un primo ampliamento dei requisiti in bozza a partire dai casi d'uso individuati.
+\end{itemize}
+
+\newpage
+\subsection{Documentazione, repository e strumenti}
+Sono stati infine trattati alcuni aspetti relativi alla documentazione e all'organizzazione del repository:
+\begin{itemize}
+    \item \textbf{Piano di Qualifica}: l'avvio della stesura (struttura e contenuti generali) è stato rinviato alla settimana prossima, così da concentrare l'impegno del gruppo sull'Analisi dei Requisiti. Il documento conterrà obiettivi quantitativi, metriche con relative soglie, andamento per periodo e azioni correttive;
+    \item \textbf{Elenco delle tabelle e delle immagini}: nei documenti principali verranno aggiunti l'elenco delle tabelle e l'elenco delle immagini, oltre all'indice dei contenuti;
+    \item \textbf{Sito web e repository}: verrà rimossa la sezione \emph{Way of Working}, i cui contenuti sono già presenti nelle Norme di Progetto. La cartella RTB verrà posizionata sopra quella della candidatura, che potrà essere nascosta tramite un menu a tendina. I verbali relativi alla RTB verranno spostati in una sottocartella dedicata;
+    \item \textbf{Jira}: il Responsabile creerà su Jira lo Sprint 2 e le relative issue.
+\end{itemize}
+
+\section{Programmazione prossimo incontro}
+La prossima riunione interna è prevista per \textbf{martedì 01/12/2026}. L'incontro esterno con l'azienda proponente Halue è programmato per \textbf{mercoledì 02/12/2026 dalle ore 14:00 alle ore 15:00} su Google Meet, poiché l'incontro del 25/11/2026 è stato annullato. In vista di tale incontro, gli analisti svolgeranno un'analisi ad alto livello dei casi d'uso base, così da poterli discutere con il proponente.
+
+\section{Tabella decisioni prese}
+\renewcommand{\arraystretch}{1.3}
+\noindent
+\begin{tabularx}{\textwidth}{|l|X|}
+    \hline
+    \textbf{Codice} & \textbf{Decisione} \\
+    \hline
+    VI\_2026-11-24\_D01 & Svolgimento della retrospettiva dello Sprint 1 e introduzione di riunioni tra analisti per ridurre la concentrazione delle competenze tecniche; completamento del primo periodo del Piano di Progetto. \\
+    \hline
+    VI\_2026-11-24\_D02 & Assegnazione dei ruoli per lo Sprint 2, sospensione del ruolo di Amministratore e conferma di F. Lissandrin come Progettista per garantire continuità nella fase iniziale del progetto. \\
+    \hline
+    VI\_2026-11-24\_D03 & Adozione della convenzione \texttt{UC[numero].[sottocaso] - [titolo]} con tabella descrittiva per ogni caso d'uso, uso di PlantUML per i diagrammi UML e aggiornamento conseguente delle Norme di Progetto. \\
+    \hline
+    VI\_2026-11-24\_D04 & Realizzazione di un boilerplate per il collegamento allo store Shopify tramite token, con rinnovo inizialmente manuale e poi automatizzato tramite Vercel Schedules, e avvio della bozza della Specifica Tecnica con technology baseline. \\
+    \hline
+    VI\_2026-11-24\_D05 & Rinvio del Piano di Qualifica alla settimana successiva, aggiunta dell'elenco delle tabelle e delle immagini nei documenti principali e riorganizzazione del sito web e del repository (rimozione della sezione Way of Working, cartella RTB e sottocartella per i verbali). \\
+    \hline
+    VI\_2026-11-24\_D06 & Analisi ad alto livello dei casi d'uso base da discutere nell'incontro esterno con Halue del 02/12/2026. \\
+    \hline
+\end{tabularx}
